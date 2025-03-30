@@ -1,0 +1,27 @@
+
+[data-icon-theme="system"] {
+    .d-icon-system {
+        display: flex !important;
+    }
+    .d-icon-moon, .d-icon-sun {
+        display: none !important;
+    }
+}
+
+[data-icon-theme="dark"] {
+    .d-icon-moon {
+        display: flex !important;
+    }
+    .d-icon-sun, .d-icon-system {
+        display: none !important;
+    }
+}
+
+[data-icon-theme="light"] {
+    .d-icon-moon, .d-icon-system {
+        display: none !important;
+    }
+    .d-icon-sun {
+        display: flex !important;
+    }
+}

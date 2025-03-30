@@ -1,0 +1,33 @@
+<section aria-label='{{ T "arias.side" }}'>
+    <div class="d-flex flex-md-column col-gap-5 row-gap-5">
+        <img src="{{ site.Params.hugo_primer.Logo }}" alt="Logo" width="100%" class="col-4 col-md-12 avatar circle lazyload" />
+        <div class="col-8 col-md-12 flex-content-center">
+            <p class="vcard-fullname m-0" aria-label='{{ T "arias.title" }}'>{{ site.Params.hugo_primer.Title | default site.Title }}</p>
+            <p class="vcard-username m-0" aria-label='{{ T "arias.subtitle" }}'>{{ site.Params.hugo_primer.Subtitle }}</p>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column mt-3">
+        {{ with index site.Menus "profile" }}
+        <div class="col-12">
+            <ul class="d-flex flex-column list-style-none row-gap-1" aria-label='{{ T "arias.extra_links" }}'>
+                {{ range . }}
+                    {{ $page := site.GetPage .URL }}
+                    <li aria-label="{{ .Params.aria_label | default .Name }}">
+                        <span class="d-inline-flex flex-items-center col-gap-3">
+                            <span class="color-fg-muted octicon d-flex flex-items-center">{{ .Pre | readFile | safeHTML }}</span>
+                            {{ if .URL }}
+                                <a class="Link--primary {{ .Params.class }}" href="{{ .URL }}" {{ if not $page }}target="_blank"{{ end }}>{{ .Name }}</a>
+                            {{ else }}
+                                <span class="{{ .Params.class }}">{{ .Name }}</span>
+                            {{ end }}
+                        </span>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+
+        {{ partial "hugo-primer/side.html" }}
+    </div>
+</section>

@@ -1,0 +1,73 @@
+{{ define "main" }}
+    <section id="main" aria-label='{{ T "arias.content" }}'>
+        {{ with site.Taxonomies.tags }}
+        <div class="border-bottom pb-4">
+            <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                {{ range $term, $taxonomy := . }}
+                    <li aria-label="{{ $term | lower }}">
+                        <a class="Link Link--muted text-small" href="{{ .Page.RelPermalink }}">
+                            <span class="d-flex flex-items-center octicon col-gap-2">
+                                {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
+                                {{ $term | lower }}
+                            </span>
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+
+        <!-- pagination settings -->
+        {{ $format := .Params.hugo_primer.pagination.format | default site.Params.hugo_primer.pagination.format }}
+        {{ $order := .Params.hugo_primer.pagination.order | default site.Params.hugo_primer.pagination.order }}
+        {{ $size := .Params.hugo_primer.pagination.pagerSize | default site.Params.hugo_primer.pagination.pagerSize }}
+        {{ $slots := .Params.hugo_primer.pagination.slots | default site.Params.hugo_primer.pagination.slots }}
+        {{ $sort := .Params.hugo_primer.pagination.sort | default site.Params.hugo_primer.pagination.sort }}
+
+        <!-- order all pages by given "order" params -->
+        <!-- sort all pages by given "sort" params -->
+        <!-- for each group of pages of the same "order", sort them by weight -->
+        {{ $pages := slice }}
+        {{ range .RegularPages.GroupByParam $order $sort }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
+
+        {{ range (.Paginate $pages $size).Pages }}
+            <article class="border-bottom py-4" aria-label="{{ .Title }}">
+                <h2 aria-label="Title"><a href="{{ .RelPermalink }}" class="Link">{{ .Title | markdownify }}</a></h2>
+                <summary class="color-fg-muted mb-3 list-style-none" aria-label="Description">{{ .Description | markdownify }}</summary>
+
+                <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                    {{ range .GetTerms "tags" }}
+                        <li aria-label="{{ .Name | lower }}">
+                            <a class="Link Link--muted text-small" href="{{ .RelPermalink }}">
+                                <span class="d-flex flex-items-center octicon col-gap-2">
+                                    {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
+                                    {{ .Name | lower }}
+                                </span>
+                            </a>
+                        </li>
+                    {{ end }}
+
+                    {{ $date := .Date | dateFormat ":date_medium" }}
+                    <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>
+                        {{ T "timings.posted" $date }}
+                    </li>
+
+                    {{ $lastmod := .Lastmod | dateFormat ":date_medium" }}
+                    {{ if .Date.Before .Lastmod }}
+                        <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_modified" }}'>
+                            {{ T "timings.modified" $lastmod }}
+                        </li>
+                    {{ end }}
+
+                    {{ if not (eq .ReadingTime 0) }}
+                        <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
+                            {{ T "timings.reading_time" .ReadingTime }}
+                        </li>
+                    {{ end }}
+                </ul>
+            </article>
+        {{ end }}
+
+        {{ partial "hugo-primer/components/pagination.html" (dict "page" . "format" $format "slots" $slots) }}
+    </section>
+{{ end }}

@@ -1,0 +1,36 @@
+params:
+  hugo_primer:
+    styles:
+      container: container-xl px-3 px-md-4 px-lg-5
+
+    pagination:
+      format: default # pagination format, either 'default' or 'terse'
+      order: date # order field to use, can be date, title, lastmod, etc. even params.<my_field> or weight
+      sort: desc # sort order, either 'desc' or 'asc'
+      # slots: 5 # number of pages to show in pagination (default 5 with 'default' format and 3 with 'terse')
+      # pagerSize: 5 # number of elements per page (in place of pagination.pagerSize since all options are here)
+
+    # see https://www.fusejs.io/
+    search:
+      enabled: false
+
+    # see https://giscus.app
+    giscus:
+      disabled: true
+
+    # see https://instant.page/
+    instantpage:
+      disabled: false
+
+    # see https://afarkas.github.io/lazysizes/index.html
+    lazysizes:
+      disabled: false
+
+    versions:
+      dompurify: 3.2.5
+      fuse: 7.1.0
+      instantpage: 5.2.0
+      primer_css: 21
+      primer_primitives: 10
+      primer_react: 37
+      primer_view_components: 0

@@ -1,0 +1,205 @@
+// Things retrieved directly from github.com ...
+
+.vcard-fullname {
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.vcard-username {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: var(--base-text-weight-light, 300);
+    line-height: 24px;
+    color: var(--fgColor-muted);
+}
+
+.markdown-heading {
+    &:hover .heading-element + .anchor, .heading-element:hover + .anchor {
+        opacity: 1;
+    }
+
+    .anchor {
+        > svg {
+            fill: var(--fgColor-default)
+        }
+
+        opacity: 0;
+        @media (pointer: coarse) {
+            opacity: 1;
+        }
+    }
+}
+
+h2, h3 {
+    &.markdown-heading > .heading-element + .anchor {
+        line-height: inherit !important;
+    }
+}
+
+// Headers inspiration from github.com
+
+.AppHeader--box-shadow {
+    box-shadow: inset 0 calc(var(--borderWidth-thin, 1px) * -1) var(--borderColor-default);
+}
+
+.AppHeader--button {
+    background-color: transparent;
+    color: var(--fgColor-muted);
+
+    &:hover {
+        background-color: var(--control-transparent-bgColor-hover) !important;
+    }
+
+    &:active {
+        background-color: var(--control-transparent-bgColor-active) !important;
+    }
+}
+
+.AppHeader--separator {
+    width: var(--borderWidth-thin, 1px);
+    background-color: var(--borderColor-default);
+    height: var(--base-size-20);
+    margin: 0 var(--base-size-2) !important;
+}
+
+// Tweakings
+
+modal-dialog {
+    z-index: 2;
+}
+
+.Button {
+    transition: none;
+}
+
+.UnderlineNav-octicon {
+    display: flex !important;
+}
+
+.Box-header {
+    margin: 0;
+    border-style: none;
+}
+
+.Box-body {
+    &.markdown-body {
+        padding: var(--base-size-32);
+    }
+
+    border-bottom: none;
+}
+
+.ActionListItem[aria-selected=true] {
+    font-weight: inherit;
+    &:after {
+        left: calc(var(--base-size-8, .5rem) * -1);
+    }
+}
+
+// Overlay additional features on sizing
+
+.Overlay {
+    &.Overlay--size-fit-content {
+        height: fit-content;
+        width: fit-content;
+    }
+
+    &.Overlay--width-fit-content {
+        width: fit-content;
+    }
+
+    &.Overlay--height-fit-content {
+        height: fit-content;
+    }
+
+    $heights: (
+        xsmall 192px,
+        small 256px,
+        medium 320px,
+        large 432px,
+        xlarge 600px,
+    );
+    @each $name, $max in $heights {
+        &.Overlay--max-height-#{$name} {
+            max-height: #{$max};
+        }
+    }
+
+    $widths: (
+        small 256px,
+        medium 320px,
+        large 480px,
+        xlarge 640px,
+        xxlarge 960px
+    );
+    @each $name, $max in $widths {
+        &.Overlay--max-width-#{$name} {
+            max-width: #{$max};
+        }
+    }
+}
+
+// Overlay animation
+
+@keyframes overlay-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(calc(-1 * var(--base-size-8)))
+    }
+}
+
+@media screen and (prefers-reduced-motion:no-preference) {
+    .Overlay {
+        animation: overlay-appear 200ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+}
+
+// 404
+
+@keyframes lightbulb {
+    0%, 8%, 14% {
+        opacity: .1
+    }
+
+    0%, 10%, 25% {
+        opacity: .25
+    }
+
+    5%, 30%, 50%, 70% {
+        opacity: .5
+    }
+
+    16%, 60%, 80% {
+        opacity: .75
+    }
+
+    90% {
+        opacity: .8
+    }
+
+    94% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1;
+        stddeviation: 0
+    }
+}
+
+.not-found-wrapper {
+    font-size: 150px;
+
+    .not-found-lightbulb-ani {
+            opacity: .25;
+        animation-name: lightbulb;
+        animation-duration: 2.5s;
+        animation-fill-mode: forwards;
+        animation-delay: 1.3s
+    }
+
+    .not-found-lightbulb-ani > svg {
+        width: 108px;
+        height: 108px;
+    }
+}

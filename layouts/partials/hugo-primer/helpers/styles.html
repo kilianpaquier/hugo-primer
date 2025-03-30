@@ -1,0 +1,34 @@
+{{ $merged := slice }}
+
+{{ range .remote }}
+    {{ if eq . "" }}{{ continue }}{{ end }}
+    {{ with resources.GetRemote . }}
+        {{ $merged = $merged | append . }}
+    {{ end }}
+{{ end }}
+
+{{ range .local }}
+    {{ $url := . }}
+    {{ if eq $url "" }}{{ continue }}{{ end }}
+
+    {{ $scss := hasSuffix . ".scss" }}
+    {{ $build := printf "css/%s-%s-build.css" (path.BaseName $url) site.Language.Lang }}
+    {{ $tmpl := printf "%s/%s-%s-tmpl.%s" (cond $scss "scss" "css") (path.BaseName $url) site.Language.Lang (cond $scss "scss" "css") }}
+
+    {{ $opts := dict
+        "enableSourceMap" (not hugo.IsProduction)
+        "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+        "targetPath" $build
+        "transpiler" "libsass"
+    }}
+
+    {{ with resources.Get . }}
+        {{ with resources.ExecuteAsTemplate $tmpl site . }}
+            {{ $merged = $merged | append (cond $scss (. | toCSS $opts) .) }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ with $merged | resources.Concat (path.Join "css" (printf "%s.css" (md5 math.Rand))) | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}

@@ -1,0 +1,126 @@
+baseURL: /
+languageCode: en
+defaultContentLanguage: en
+title: Hugo Primer Example Site
+
+copyright: Copyright © 2025 Kilian PAQUIER
+enableGitInfo: true
+
+ignoreLogs:
+  - warning-frontmatter-params-overrides # walkthrough/_index.*.md
+
+taxonomies:
+  tag: tags
+
+outputs:
+  home:
+    - html
+    - json
+    - rss
+
+theme:
+  - github.com/kilianpaquier/hugo-primer
+
+module:
+  imports:
+    - path: github.com/kilianpaquier/hugo-primer
+
+menus:
+  main:
+    - identifier: overview
+      name: Overview
+      pre: /static/primer/book-16.svg
+      pageRef: /
+      weight: 5
+
+    - identifier: walkthrough
+      name: Walkthrough
+      pre: /static/primer/repo-template-16.svg
+      pageRef: /walkthrough
+      weight: 10
+  profile:
+    # - identifier: company
+    #   params:
+    #     aria_label: Company
+    #     class: text-bold
+    #   name: "@soprasteria"
+    #   pre: /static/primer/organization-16.svg
+    #   weight: 5
+
+    # - identifier: github
+    #   params:
+    #     aria_label: GitHub Profile
+    #   name: "@kilianpaquier"
+    #   pre: /static/primer/mark-github-16.svg
+    #   url: https://github.com/kilianpaquier
+    #   weight: 10
+
+    - identifier: theme
+      params:
+        aria_label: Project link
+      name: "@kilianpaquier/hugo-primer"
+      pre: /static/primer/mark-github-16.svg
+      url: https://github.com/kilianpaquier/hugo-primer
+      weight: 15
+
+    # - identifier: website
+    #   name: https://kilianpaquier.com
+    #   pre: /static/primer/link-16.svg
+    #   url: https://kilianpaquier.com
+    #   weight: 20
+
+    # - identifier: linkedin
+    #   name: in/kilianpaquier
+    #   pre: /static/primer/in-16.svg
+    #   url: https://www.linkedin.com/in/kilianpaquier/
+    #   weight: 25
+
+params:
+  hugo_primer:
+    favicon: /logo.webp
+    logo: /logo.webp
+    title: Example Site
+    subtitle: Subtitle
+
+    pagination:
+      pagerSize: 5
+
+    search:
+      enabled: true
+
+    giscus:
+      disabled: false
+      params:
+        data-category-id: DIC_kwDOOJXpa84CodMf
+        data-category: Announcements
+        data-emit-metadata: 0
+        data-input-position: top
+        data-loading: lazy
+        data-mapping: title
+        data-reactions-enabled: 1
+        data-repo-id: R_kgDOOJXpaw
+        data-repo: kilianpaquier/hugo-primer
+        data-strict: 1
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    parser:
+      attribute:
+        block: true
+        title: true
+    renderer:
+      unsafe: true
+
+languages:
+  fr:
+    contentDir: content
+    languageName: Français
+    params:
+      pre: /static/primer/globe-16.svg
+  en:
+    contentDir: content
+    languageName: English
+    params:
+      pre: /static/primer/globe-16.svg

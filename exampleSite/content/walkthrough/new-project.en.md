@@ -1,22 +1,18 @@
-# hugo-primer <!-- omit in toc -->
-
-<p align="center">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/kilianpaquier/hugo-primer?include_prereleases&sort=semver&style=for-the-badge">
-  <img alt="GitHub Issues" src="https://img.shields.io/github/issues-raw/kilianpaquier/hugo-primer?style=for-the-badge">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/kilianpaquier/hugo-primer?style=for-the-badge">
-  <img alt="Go Version" src="https://img.shields.io/github/go-mod/go-version/kilianpaquier/hugo-primer/main?style=for-the-badge&label=Go+Version">
-  <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/kilianpaquier/hugo-primer?style=for-the-badge">
-</p>
-
+---
+date: 2025-04-16
+description: "How to: create a new project with **hugo-primer** theme"
+tags:
+  - Setup
+title: New project
+weight: 5
 ---
 
-- [Project initialization](#project-initialization)
-- [How to use ?](#how-to-use-)
-  - [Hugo module (recommended)](#hugo-module-recommended)
-  - [Git submodule](#git-submodule)
-- [QoL](#qol)
-- [Start website](#start-website)
-- [Features](#features)
+# {{% param "title" %}}
+
+Before any theme setup, we need to create a [**Hugo**](https://gohugo.io/) project.
+
+To achieve that, you may follow directives given on https://gohugo.io/getting-started/quick-start/
+or follow below steps (in case **Hugo** is already installed / **Go** in case you intend to import this theme like recommended).
 
 ## Project initialization
 
@@ -26,11 +22,9 @@ To initialize a **Hugo** project, it's simple (this will generate a minimal boil
 hugo new site <site name> --destination .
 ```
 
-## How to use ?
+## Hugo module (recommended)
 
-### Hugo module (recommended)
-
-To import **hugo-primer** theme, following properties must be added into `hugo.(yaml|toml)` configuration file:
+To import **hugo-primer** theme, following properties must be added into `hugo.(yaml|toml)` configuration file (on my end, I prefer `yaml` format):
 
 ```yaml
 theme: github.com/kilianpaquier/hugo-primer
@@ -47,7 +41,7 @@ hugo mod init github.com/<username>/<site name>
 hugo mod tidy
 ```
 
-### Git submodule
+## Git submodule
 
 If you intend to go with a **Git** submodule, two possibilities:
 
@@ -93,7 +87,3 @@ You are now ready to start you **Hugo** website:
 ```sh
 hugo server --disableFastRender --destination dist
 ```
-
-## Features
-
-See https://hugo-primer.netlify.app/walkthrough.

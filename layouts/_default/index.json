@@ -1,0 +1,49 @@
+{{- $items := slice }}
+{{- range site.RegularPages }}
+    {{- $icon := (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre }}
+    {{- $items = $items | append
+        (dict
+            "content" .Plain
+            "date" (.Date | dateFormat ":date_medium")
+            "description" .Description
+            "icon" (strings.Replace ($icon | default "/static/primer/file-code-16.svg" | readFile) "\n" "")
+            "permalink" .Permalink
+            "section" (.Section | title)
+            "summary" (printf "%s..." (substr (.Summary | plainify) 0 90))
+            "tags" .Params.tags
+            "title" .Title
+
+            "searchDescription" (.Description | lower)
+            "searchSection" (.Section | lower)
+            "searchTags" (apply .Params.tags "lower" ".")
+            "searchTitle" (.Title | lower)
+        )
+    }}
+{{- end }}
+
+{{- $sections := slice }}
+{{- range site.Sections }}
+    {{- $sections = $sections | append
+        (dict
+            "section" .Section
+            "icon" (strings.TrimPrefix "/static" (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre)
+            "permalink" .Path
+        )
+    }}
+{{- end }}
+
+{{- $tags := slice }}
+{{- range $term, $taxonomy := site.Taxonomies.tags }}
+    {{- $tags = $tags | append
+        (dict
+            "tag" $term
+            "icon" "/primer/tag-16.svg"
+            "permalink" .Page.RelPermalink
+
+            "searchTag" ($term | lower)
+        )
+    }}
+{{- end }}
+
+{{- .Store.Set "index" $items }}
+{{- .Store.Get "index" | jsonify }}

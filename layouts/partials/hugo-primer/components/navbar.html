@@ -1,0 +1,36 @@
+{{ $container := site.Params.hugo_primer.styles.container }}
+{{ $menu := index site.Menus "main" }}
+
+<!-- search overlay -->
+<!-- must be outside of div with gaps to avoid unexpected gaps -->
+{{ if site.Params.hugo_primer.search.enabled }}
+    {{ partial "hugo-primer/components/search-overlay.html" . }}
+{{ end }}
+
+<header class="color-bg-inset {{ if not $menu }}AppHeader--box-shadow{{ end }}">
+    <nav class="{{ $container }} d-flex row-gap-5 col-gap-5 pt-3 {{ if $menu }}pb-2{{ else }}pb-3{{ end }}" aria-label="Navigation">
+
+        <!-- navbar start -->
+        <div class="d-flex flex-items-center"><!-- nothing here (yet or never ?) --></div>
+
+        <!-- navbar end -->
+        <div class="d-flex flex-items-center ml-auto col-gap-4">
+            <!-- search -->
+            {{ if site.Params.hugo_primer.search.enabled }}
+                {{ partial "hugo-primer/components/search.html" . }}
+                <div id="header-separator" class="AppHeader--separator" data-variant="filled"></div>
+            {{ end }}
+
+            <!-- langs -->
+            {{ if .IsTranslated }}
+                {{ partial "hugo-primer/components/langs.html" . }}
+            {{ end }}
+
+            <!-- theme -->
+            {{ partial "hugo-primer/components/theme.html" . }}
+
+            <!-- logo -->
+            <img src="{{ site.Params.hugo_primer.Logo }}" class="avatar-5 circle lazyload" alt="Logo" />
+        </div>
+    </nav>
+</header>

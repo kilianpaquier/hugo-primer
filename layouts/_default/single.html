@@ -1,0 +1,81 @@
+{{ define "main" }}
+    {{ $container := site.Params.hugo_primer.styles.container }}
+    <section id="main" class="{{ $container }}" aria-label='{{ T "arias.content" }}'>
+        <div class="Box Box--spacious">
+            {{ if or .Fragments.Headings (.GetTerms "tags") }}
+                <div class="Box-header lh-default border-bottom p-3 d-flex flex-items-center">
+                    {{ $title := index .Fragments.Headings 0 }}
+                    {{ $overlay := and $title (gt (len $title.Headings) 1) }}
+                    <div class="dropdown">
+                        <button id="headings-button" {{ if not $overlay }}disabled{{ end }} popovertarget="headings-overlay" class="Button Button--iconOnly Button--invisible" type="button" aria-haspopup="menu" aria-controls="headings" aria-label='{{ T "arias.headings" }}'>
+                            <span class="octicon d-flex">{{ "/static/primer/list-unordered-16.svg" | readFile | safeHTML }}</span>
+                        </button>
+                        {{ if $overlay }}
+                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" popover="auto" aria-labelledby="headings-button">
+                                <section class="Overlay Overlay--size-auto p-2">
+                                    <ul id="headings" class="ActionListWrap" aria-labelledby="headings-button">
+                                        {{ range $title.Headings }}
+                                            <li id="{{ .ID }}-item" class="ActionListItem mx-2">
+                                                <a href="#{{ .ID }}" class="ActionListContent">
+                                                    <span class="ActionListItem-label">{{ .Title | markdownify }}</span>
+                                                </a>
+                                            </li>
+                                        {{ end }}
+                                    </ul>
+                                </section>
+                            </anchored-position>
+                        {{ end }}
+                    </div>
+
+                    {{ with .GetTerms "tags" }}
+                        <div class="ml-auto">
+                            <ul class="d-flex flex-row-reverse flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                                {{ range . }}
+                                    <li class="d-flex flex-items-center octicon text-small color-fg-muted col-gap-2" aria-label="{{ .Name | lower }}">
+                                        {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
+                                        {{ .Name | lower }}
+                                    </li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                    {{ end }}
+                </div>
+            {{ end }}
+
+            <article class="Box-body markdown-body">
+                {{ .Content }}
+
+                {{ if .Params.hugo_primer.pagination.enabled }}
+                    <!-- pagination settings -->
+                    {{ $format := .Params.hugo_primer.pagination.format | default site.Params.hugo_primer.pagination.format }}
+                    {{ $order := .Params.hugo_primer.pagination.order | default site.Params.hugo_primer.pagination.order }}
+                    {{ $size := .Params.hugo_primer.pagination.pagerSize | default site.Params.hugo_primer.pagination.pagerSize }}
+                    {{ $slots := .Params.hugo_primer.pagination.slots | default site.Params.hugo_primer.pagination.slots }}
+                    {{ $sort := .Params.hugo_primer.pagination.sort | default site.Params.hugo_primer.pagination.sort }}
+
+                    <!-- order all pages by given "order" params -->
+                    <!-- sort all pages by given "sort" params -->
+                    <!-- for each group of pages of the same "order", sort them by weight -->
+                    {{ $pages := slice }}
+                    {{ range (site.GetPage .Section).RegularPages.GroupByParam $order $sort }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
+
+                    {{ range $index, $page := $pages }}
+                        {{ if eq $page $ }}
+                            {{ $prev := dict }}
+                            {{ with index $pages (sub $index 1) }}{{ $prev = dict "URL" (relLangURL .RelPermalink) }}{{ end }}
+
+                            {{ $next := dict }}
+                            {{ with index $pages (add $index 1) }}{{ $next = dict "URL" (relLangURL .RelPermalink) }}{{ end }}
+
+                            {{ partial "hugo-primer/components/pagination.html" (dict "prev" $prev "next" $next "format" $format) }}
+                        {{ break }}
+                        {{ end }}
+                    {{ end }}
+
+                {{ end }}
+            </article>
+        </div>
+    </section>
+
+    {{ partial "hugo-primer/comments.html" . }}
+{{ end }}

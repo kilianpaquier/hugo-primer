@@ -1,0 +1,28 @@
+// Markdown
+
+.markdown-body {
+    font-size: inherit;
+}
+
+.highlight {
+    margin-bottom: 10px;
+
+    background-color: var(--bgColor-muted, var(--color-canvas-subtle));
+    border-radius: var(--base-size-6);
+
+    position: relative;
+
+    .not-copied > svg {
+        fill: var(--fgColor-closed) !important;
+    }
+
+    .copied > svg {
+        fill: var(--fgColor-success) !important;
+    }
+}
+
+[data-dark-theme*="dark"] {
+    .highlight {
+        .na, .p { color:#e6edf3; }
+    }
+}

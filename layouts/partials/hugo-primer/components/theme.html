@@ -1,0 +1,9 @@
+<button id="theme-button" class="Button Button--iconOnly AppHeader--button Button--secondary" type="button" aria-labelledby="tooltip-theme-button">
+    <span class="d-icon-moon">{{ "/static/primer/moon-16.svg" | readFile | safeHTML }}</span>
+    <span class="d-icon-sun">{{ "/static/primer/sun-16.svg" | readFile | safeHTML }}</span>
+    <span class="d-icon-system">{{ "/static/primer/clock-16.svg" | readFile | safeHTML }}</span>
+</button>
+
+<tool-tip id="tooltip-theme-button" for="theme-button" class="position-absolute sr-only" popover="manual" data-direction="se" data-type="label" aria-hidden="true" role="tooltip">
+    {{ T "navigation.change_theme" }}
+</tool-tip>

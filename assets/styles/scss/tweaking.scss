@@ -1,0 +1,98 @@
+// ensure footer is always at bottom even if page content is smaller than screen height
+html {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    > body {
+        @extend html;
+        flex: 1;
+
+        > main {
+            flex: 1;
+        }
+    }
+}
+
+@media screen and (prefers-reduced-motion:no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}
+
+$gaps: (
+    1 --base-size-2,
+    2 --base-size-4,
+    3 --base-size-6,
+    4 --base-size-8,
+    5 --base-size-12,
+    6 --base-size-16,
+);
+@each $n, $gap in $gaps {
+    .col-gap-#{$n} {
+        column-gap: var(#{$gap});
+        -moz-column-gap: var(#{$gap});
+        -webkit-column-gap: var(#{$gap});
+    }
+
+    .row-gap-#{$n} {
+        row-gap: var(#{$gap});
+    }
+}
+
+#search-overlay {
+    .FormControl {
+        margin: 0 var(--base-size-12);
+    }
+
+    #search-input {
+        padding-left: var(--base-size-28);
+    }
+
+    #search-results {
+        margin-right: var(--base-size-12);
+
+        .ActionList-sectionDivider-title, .ActionListItem {
+            margin-left: var(--base-size-12);
+        }
+    }
+    .Overlay-body {
+        padding: var(--base-size-12) 0 !important;
+    }
+    .Overlay-footer {
+        padding: var(--base-size-12) !important;
+    }
+}
+
+ul.pagination {
+    > li {
+        margin-top: 0;
+        display: inline-block;
+
+        &:not(:last-child) {
+            // it might look a lot on local dev environment
+            // but it's fine on production. Why ? Dunno.
+            margin-right: var(--base-size-4);
+        }
+    }
+}
+
+.position-sticky {
+    z-index: 1;
+}
+
+.border-none {
+    border: none;
+}
+
+.scrollbar-thin {
+    scrollbar-width: thin;
+}
+
+.scrollbar-space {
+    padding-right: var(--base-size-6);
+}
+
+[id] {
+    scroll-margin-top: 75px;
+}

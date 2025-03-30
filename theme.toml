@@ -1,0 +1,27 @@
+name = "hugo-primer"
+license = "MIT"
+licenselink = "https://github.com/kilianpaquier/hugo-primer/LICENSE"
+description = "Primer Design System to Hugo"
+
+homepage = "https://github.com/kilianpaquier/hugo-primer"
+demosite = "https://hugo-primer.netlify.app"
+
+tags = [
+  "blog",
+  "portfolio",
+]
+features = [
+  "@primer/primitives",
+  "@primer/css",
+  "@prime/view_components",
+  "Primer Design System",
+]
+
+[author]
+  name = "kilianpaquier"
+  homepage = "https://kilianpaquier.com"
+
+[original]
+  author = "MeiK2333"
+  homepage = "https://meik2333.com"
+  repo = "https://github.com/MeiK2333/github-style"
