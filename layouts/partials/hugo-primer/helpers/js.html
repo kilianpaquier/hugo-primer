@@ -1,0 +1,36 @@
+{{ $merged := slice }}
+
+{{ range .remote }}
+    {{ if eq . "" }}{{ continue }}{{ end }}
+    {{ with resources.GetRemote . }}
+        {{ $merged = $merged | append . }}
+    {{ end }}
+{{ end }}
+
+{{ range .local }}
+    {{ $url := . }}
+    {{ if eq $url "" }}{{ continue }}{{ end }}
+
+    {{ $build := printf "js/%s-%s-build.js" (path.BaseName .) site.Language.Lang }}
+    {{ $tmpl := printf "js/%s-%s-tmpl.js" (path.BaseName .) site.Language.Lang }}
+
+    {{ $opts := dict
+        "minify" hugo.IsProduction
+        "sourceMap" (cond hugo.IsProduction "" "external")
+        "targetPath" $build
+    }}
+
+    {{ with resources.Get . }}
+        {{ with resources.ExecuteAsTemplate $tmpl site . }}
+            {{ $merged = $merged | append (. | js.Build $opts) }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ with $merged | resources.Concat (path.Join "js" (printf "%s.js" (md5 math.Rand))) | minify | fingerprint }}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
+        {{ if $.module }}type="module"{{ end }}
+        {{ if $.async }}async{{ end }}
+        {{ if $.defer }}defer{{ end }}>
+    </script>
+{{ end }}

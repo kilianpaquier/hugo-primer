@@ -1,0 +1,35 @@
+timings:
+  aria_modified: Date de modification
+  aria_posted: Date de publication
+  aria_reading_time: Durée de lecture
+  modified: Modifié le {{ . }}
+  posted: Posté le {{ . }}
+  reading_time: "{{ . }} min de lecture"
+pagination:
+  next: Suivant
+  prev: Précédent
+navigation:
+  change_lang: Changement de langue
+  change_theme: Changement de thème
+  menu: Autres options de navigation
+  not_found: Didn't find anything here!
+search:
+  button: Taper {{ . }} pour rechercher
+  clear: Effacer la recherche
+  dialog: Dialogue de recherche
+  form: Champ de recherche
+  input: Taper pour rechercher
+  jump: Aller à
+  results: Résultats de recherche
+  syntax: Astuces de recherche
+arias:
+  content: Contenu principal
+  copy: Copier
+  extra_links: Liens externes
+  headings: Sommaire
+  langs: Langues
+  side: Contenu latéral
+  skip_to_content: Aller au contenu principal
+  subtitle: Sous-titre
+  tags: Labels
+  title: Titre

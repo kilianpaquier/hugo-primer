@@ -1,0 +1,28 @@
+{{ partialCached "hugo-primer/helpers/js.html"
+    (dict
+        "local" (slice (cond (index site.Menus "main") "js/navigation.js" ""))
+        "remote" (slice (cond site.Params.hugo_primer.instantpage.disabled "" (print "https://instant.page/" site.Params.hugo_primer.versions.instantpage)))
+    )
+    "end-a"
+}}
+
+{{ partialCached "hugo-primer/helpers/js.html"
+    (dict
+        "async" true
+        "module" true
+
+        "local" (slice
+            "js/fragment.js"
+            "js/highlight.js"
+            (cond site.Params.hugo_primer.giscus.disabled "" "js/giscus.js")
+            (cond site.Params.hugo_primer.search.enabled "js/search.js" "")
+        )
+        "remote" (slice
+            (cond site.Params.hugo_primer.lazysizes.disabled "" "https://afarkas.github.io/lazysizes/lazysizes.min.js")
+            (cond site.Params.hugo_primer.search.enabled (printf "https://cdn.jsdelivr.net/npm/dompurify@%v/dist/purify.min.js" site.Params.hugo_primer.versions.dompurify) "")
+            (cond site.Params.hugo_primer.search.enabled (printf "https://cdn.jsdelivr.net/npm/fuse.js@%v" site.Params.hugo_primer.versions.fuse) "")
+            (printf "https://cdn.jsdelivr.net/npm/@primer/view-components@%v/app/assets/javascripts/primer_view_components.js" site.Params.hugo_primer.versions.primer_view_components)
+        )
+    )
+    "end-b"
+}}

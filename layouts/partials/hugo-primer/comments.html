@@ -1,0 +1,11 @@
+<!-- override this layout to replace the comments system content -->
+
+{{ $container := site.Params.hugo_primer.styles.container }}
+{{ if not site.Params.hugo_primer.giscus.disabled }}
+    <section class="{{ $container }}">
+        <hr class="col-12 my-4" aria-hidden="true" />
+        <div class="col-12 px-0 mx-auto">
+            <div id="giscus" class="giscus"></div>
+        </div>
+    </section>
+{{ end }}

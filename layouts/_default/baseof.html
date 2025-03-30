@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
+{{ partial "hugo-primer/components/head.html" . }}
+
+<body>
+    <a href="#main" data-skip-target-assigned="true" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus">{{ T "arias.skip_to_content" }}</a>
+
+    {{ partial "hugo-primer/components/navbar.html" . }}
+    {{ partial "hugo-primer/components/navigation.html" . }}
+
+    <main class="mt-4">
+        {{ $offset := or .IsPage (eq .Kind "404") }}
+        {{ if $offset }}
+            {{ block "main" . }}{{ end }}
+        {{ else }}
+            {{ $container := site.Params.hugo_primer.styles.container }}
+            <div class="{{ $container }}">
+                <!-- for accessibility purposes, rendering is reversed to get access first to main content and then to side content -->
+                <div class="d-flex flex-column-reverse flex-md-row-reverse">
+                    <div class="col-12 col-md-8 col-lg-9">{{ block "main" . }}{{ end }}</div>
+                    <hr class="col-12 my-4 d-md-none" aria-hidden="true" />
+                    <div class="col-12 col-md-4 col-lg-3 pr-4">{{ partial "hugo-primer/components/side.html" . }}</div>
+                </div>
+            </div>
+        {{ end }}
+    </main>
+
+    {{ partial "hugo-primer/footer.html" . }}
+</body>
+
+{{ partial "hugo-primer/components/end.html" . }}
+
+</html>

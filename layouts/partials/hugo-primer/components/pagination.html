@@ -1,0 +1,81 @@
+{{/* See https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_partials/pagination.html
+{{/* --------------------------------------------------------------------- */}}
+
+{{ $validFormats := slice "default" "terse" }}
+
+{{ $page := .page | default . }}
+{{ $format := .format | default "default" | lower }}
+{{ $slots := .slots | default (cond (eq $format "default") 5 3) }}
+
+{{ if in $validFormats $format }}
+    {{ with $page.Paginator }} <!-- expected to be list.html pagination -->
+        {{ if gt .TotalPages 1 }}
+            <ul class="pagination pagination-{{ $format }} prc_PaginationContainer_yNDPO list-style-none" aria-label="Pagination">
+                {{ partial "inline/pagination/prev.html" (dict "prev" .Prev "format" $format) }}
+                {{ partial "inline/pagination/pages.html" (dict "paginator" . "slots" $slots) }}
+                {{ partial "inline/pagination/next.html" (dict "next" .Next "format" $format) }}
+            </ul>
+        {{ end }}
+    {{ else }} <!-- expected to be single.html pagination -->
+        {{ $class := "d-flex flex-justify-between p-0" }}
+        <ul class="pagination pagination-{{ $format }} prc_PaginationContainer_yNDPO {{ $class }} list-style-none" aria-label="Pagination">
+            {{ partial "inline/pagination/prev.html" (dict "prev" .prev "format" $format "class" "") }}
+            {{ partial "inline/pagination/next.html" (dict "next" .next "format" $format "class" "ml-auto") }}
+        </ul>
+    {{ end }}
+{{ else }}
+    {{ errorf "The 'format' specified in the map passed to the internal pagination template is invalid. Valid choices are: %s." (delimit $validFormats ", ") }}
+{{ end }}
+
+{{/* Helpers: pages
+{{/* --------------------------------------------------------------------- */}}
+{{ define "_partials/inline/pagination/pages.html" }}
+    {{ $paginator := .paginator }}
+    {{ $slots := .slots }}
+
+    {{ $start := math.Max 1 (sub $paginator.PageNumber (math.Floor (div $slots 2))) }}
+    {{ $end := math.Min $paginator.TotalPages (sub (add $start $slots) 1) }}
+    {{ if lt (add (sub $end $start) 1) $slots }}
+        {{ $start = math.Max 1 (add (sub $end $slots) 1) }}
+    {{ end }}
+
+    {{ range $k := seq $start $end }}
+        {{ if eq $paginator.PageNumber $k }}
+            <li class="page-item active" aria-label="Page {{ $k }}">
+                <a aria-current="page" aria-label="Page {{ $k }}" class="page-link active prc_Page_yoEQf" role="button">{{ $k }}</a>
+            </li>
+        {{ else }}
+            <li class="page-item" aria-label="Page {{ $k }}">
+                <a href="{{ (index $paginator.Pagers (sub $k 1)).URL }}" aria-label="Page {{ $k }}" class="page-link prc_Page_yoEQf" role="button">{{ $k }}</a>
+            </li>
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{/* Helpers: previous
+{{/* --------------------------------------------------------------------- */}}
+{{ define "_partials/inline/pagination/prev.html" }}
+    {{ if .prev }}
+        <li class="page-item {{ .class }}" aria-label='{{ T "pagination.prev" }}'>
+            <a href="{{ .prev.URL }}" class="page-link prc_Page_yoEQf" role="button" rel="prev">{{ T "pagination.prev" }}</a>
+        </li>
+    {{ else if eq .format "default" }}
+        <li class="page-item disabled {{ .class }}" aria-label='{{ T "pagination.prev" }}'>
+            <button disabled class="page-link prc_Page_yoEQf border-none" role="button" tabindex="-1" rel="prev">{{ T "pagination.prev" }}</button>
+        </li>
+    {{ end }}
+{{ end }}
+
+{{/* Helpers: next
+{{/* --------------------------------------------------------------------- */}}
+{{ define "_partials/inline/pagination/next.html" }}
+    {{ if .next }}
+        <li class="page-item {{ .class }}" aria-label='{{ T "pagination.next" }}'>
+            <a href="{{ .next.URL }}" class="page-link prc_Page_yoEQf" role="button" rel="next">{{ T "pagination.next" }}</a>
+        </li>
+    {{ else if eq .format "default" }}
+        <li class="page-item disabled {{ .class }}" aria-label='{{ T "pagination.next" }}'>
+            <button disabled class="page-link prc_Page_yoEQf border-none" role="button" tabindex="-1" rel="next">{{ T "pagination.next" }}</button>
+        </li>
+    {{ end }}
+{{ end }}

@@ -1,0 +1,53 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <meta name="description" content="{{ .Description | markdownify }}">
+
+    <!-- see https://ogp.me/ -->
+    <meta property="og:description" content="{{ .Description | markdownify }}">
+    <meta property="og:locale" content="{{ site.Language.LanguageCode }}">
+    {{ with .Translations }}
+        {{ range . }}
+            <meta property="og:locale:alternate" content="{{ .Language.LanguageCode }}">
+        {{ end }}
+    {{ end }}
+    <meta property="og:site_name" content="{{ site.Title }}">
+    <meta property="og:title" content="{{ .Title | markdownify }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+
+    <link rel="icon" href="{{ site.Params.hugo_primer.Favicon }}">
+
+    {{ partialCached "hugo-primer/helpers/styles.html"
+        (dict
+            "local" (slice "styles/main.scss")
+            "remote" (slice
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/base/size/size.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/base/typography/typography.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/size/border.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/size/breakpoints.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/size/size.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/size/viewport.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/typography/typography.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/themes/light.css" site.Params.hugo_primer.versions.primer_primitives)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/functional/themes/dark.css" site.Params.hugo_primer.versions.primer_primitives)
+
+                (printf "https://cdn.jsdelivr.net/npm/@primer/css@%v/dist/base.css" site.Params.hugo_primer.versions.primer_css)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/css@%v/dist/utilities.css" site.Params.hugo_primer.versions.primer_css)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/css@%v/dist/layout.css" site.Params.hugo_primer.versions.primer_css)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/css@%v/dist/markdown.css" site.Params.hugo_primer.versions.primer_css)
+
+                (printf "https://cdn.jsdelivr.net/npm/@primer/react@%v/dist/components.css" site.Params.hugo_primer.versions.primer_react)
+                (printf "https://cdn.jsdelivr.net/npm/@primer/view-components@%v/app/assets/styles/primer_view_components.css" site.Params.hugo_primer.versions.primer_view_components)
+            )
+        )
+        "head"
+    }}
+
+    {{ partialCached "hugo-primer/helpers/js.html" (dict "local" (slice "js/theming.js")) "head" }}
+
+    <title>{{ (cond .IsHome (site.Title) (printf "%s | %s" .Title site.Title)) | markdownify }}</title>
+
+    {{ partial "hugo-primer/head.html" . }}
+</head>

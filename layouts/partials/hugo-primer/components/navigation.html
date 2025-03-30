@@ -1,0 +1,64 @@
+{{ $container := site.Params.hugo_primer.styles.container }}
+{{ $menu := index site.Menus "main" }}
+
+{{ if $menu }}
+    <header class="color-bg-inset AppHeader--box-shadow position-sticky top-0">
+        <div class="{{ $container }}">
+            {{ $offset := or .IsPage (eq .Kind "404") }}
+            <nav id="underline-nav" class="UnderlineNav overflow-hidden flex-items-center box-shadow-none col-12 col-md-8 col-lg-9 {{ if not $offset }}offset-md-4 offset-lg-3{{ end }}" aria-label="Navigation">
+                <ul class="UnderlineNav-body list-style-none" aria-label="Navigation">
+                    {{ $currentpage := . }}
+                    {{ range $menu }}
+                        {{ $page := .Page }}
+                        {{ $rel := relLangURL .URL }}
+                        <li id="{{ .Identifier }}" class="d-inline-flex d-none" aria-label="{{ .Name }}">
+                            <a class="UnderlineNav-item flex-items-center" href="{{ $rel }}"
+                                {{ if eq $currentpage.RelPermalink $rel }}aria-current="page"{{ end }}
+                                {{ if $currentpage.HasMenuCurrent .Menu . }}aria-current="true"{{ end }}
+                                {{ if not $page }}target="_blank"{{ end }}>
+                                {{ with .Pre }}
+                                    <span class="UnderlineNav-octicon d-flex">
+                                        {{ . | readFile | safeHTML }}
+                                    </span>
+                                {{ end }}
+                                <span>{{ .Name }}</span>
+                                {{ if and (not .Params.disable_counter) $page (gt $page.RegularPages 0) }}
+                                    <span class="Counter">{{ len $page.RegularPages }}</span>
+                                {{ end }}
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+
+                <!-- button menu for smaller screen -->
+                <button id="menu-button" popovertarget="menu-overlay" class="Button Button--iconOnly Button--secondary flex-shrink-0 d-none" type="button" aria-haspopup="menu" aria-controls="menus" aria-labelledby="tooltip-menu-button">
+                    {{ "/static/primer/kebab-horizontal-16.svg" | readFile | safeHTML }}
+                </button>
+                <tool-tip id="tooltip-menu-button" for="menu-button" class="position-absolute sr-only" popover="manual" data-direction="se" data-type="label" aria-hidden="true" role="tooltip">
+                    {{ T "navigation.menu" }}
+                </tool-tip>
+                <anchored-position id="menu-overlay" anchor="menu-button" anchor-offset="normal" align="end" popover="auto" aria-label="Navigation">
+                    <div class="Overlay Overlay--size-auto p-2">
+                        <ul class="ActionListWrap" aria-label="Navigation">
+                            {{ $currentpage := . }}
+                            {{ range $menu }}
+                                {{ $page := .Page }}
+                                {{ $rel := relLangURL .URL }}
+                                {{ $current := or (eq $currentpage.RelPermalink $rel) ($currentpage.HasMenuCurrent .Menu .) }}
+                                <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2 d-none" aria-label="{{ .Name }}"
+                                    {{ if $current }}aria-selected="true"{{ end }}>
+                                    <a href="{{ $rel }}" class="ActionListContent">
+                                        {{ with .Pre }}
+                                            <span class="ActionListItem-visual ActionListItem-visual--leading">{{ . | readFile | safeHTML }}</span>
+                                        {{ end }}
+                                        <span class="ActionListItem-label">{{ .Name }}</span>
+                                    </a>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </anchored-position>
+            </nav>
+        </div>
+    </header>
+{{ end }}
