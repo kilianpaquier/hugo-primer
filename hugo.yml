@@ -1,3 +1,23 @@
+taxonomies:
+  tag: tags
+
+outputs:
+  home:
+    - html
+    - json
+    - rss
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    parser:
+      attribute:
+        block: true
+        title: true
+    renderer:
+      unsafe: true
+
 params:
   hugo_primer:
     styles:
@@ -8,7 +28,7 @@ params:
       order: date # order field to use, can be date, title, lastmod, etc. even params.<my_field> or weight
       sort: desc # sort order, either 'desc' or 'asc'
       # slots: 5 # number of pages to show in pagination (default 5 with 'default' format and 3 with 'terse')
-      # pagerSize: 5 # number of elements per page (in place of pagination.pagerSize since all options are here)
+      pagerSize: 10 # number of elements per page (in place of pagination.pagerSize since all options are here)
 
     # see https://www.fusejs.io/
     search:
@@ -27,10 +47,10 @@ params:
       disabled: false
 
     versions:
-      dompurify: 3.2.5
-      fuse: 7.1.0
-      instantpage: 5.2.0
-      primer_css: 21
-      primer_primitives: 10
-      primer_react: 37
-      primer_view_components: 0
+      dompurify: v3.2.5
+      fuse: v7.1.0
+      instantpage: v5.2.0
+      primer_css: v21
+      primer_primitives: v10
+      primer_react: v37
+      primer_view_components: v0

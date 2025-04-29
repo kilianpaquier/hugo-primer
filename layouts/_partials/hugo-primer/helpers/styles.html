@@ -29,6 +29,8 @@
     {{ end }}
 {{ end }}
 
-{{ with $merged | resources.Concat (path.Join "css" (printf "%s.css" (md5 math.Rand))) | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ if gt (len $merged) 0 }}
+    {{ with $merged | resources.Concat (path.Join "css" (printf "%s.css" (md5 math.Rand))) | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{ end }}
 {{ end }}

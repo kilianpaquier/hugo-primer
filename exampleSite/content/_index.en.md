@@ -6,7 +6,7 @@ title: Overview
 
 Welcome on **hugo-primer** theme!
 
-This theme is a remake of [**github-style**](https://themes.gohugo.io/themes/github-style) theme with more up-to-date styles
+This theme is greatly inspired of [**github-style**](https://themes.gohugo.io/themes/github-style) theme with more up-to-date styles
 but also more extensibility (all details in [walkthrough](/walkthrough)).
 
 **Primer** ? It's **GitHub** *Design System*, for which you can find the official website [here](https://primer.style/).

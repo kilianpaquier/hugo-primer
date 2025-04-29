@@ -99,7 +99,7 @@ jobs:
           extended: true
       - run: |
           if [ -d exampleSite ]; then cd exampleSite; fi
-          hugo --gc --enableGitInfo --minify --destination "${GITHUB_WORKSPACE}/dist"
+          hugo --gc --enableGitInfo --minify --destination "${GITHUB_WORKSPACE}/dist" --logLevel debug
         env:
           VERSION: ${{ needs.version.outputs.version }}
       - uses: actions/upload-artifact@v4

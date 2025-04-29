@@ -6,7 +6,7 @@ title: Overview
 
 Bienvenue sur le thème **hugo-primer** !
 
-Ce thème est une reprise du thème [**github-style**](https://themes.gohugo.io/themes/github-style) avec des styles plus à jour
+Ce thème est fortement inspiré du thème [**github-style**](https://themes.gohugo.io/themes/github-style) avec des styles plus à jour
 mais aussi plus d'extensibilité (tous les détails dans [walkthrough](/walkthrough)).
 
 Mais sinon, **Primer** ? C'est le *Design System* **GitHub**, dont vous pouvez retrouver le site officiel [ici](https://primer.style/).
