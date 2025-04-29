@@ -44,6 +44,7 @@ jobs:
     needs: run-workflow
     permissions:
       contents: write
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,7 +53,6 @@ jobs:
         with:
           python-version: 3.x
       - uses: pre-commit/action@v3.0.1
-        continue-on-error: true
 
   version:
     name: Version
