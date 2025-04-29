@@ -9,19 +9,11 @@ enableGitInfo: true
 ignoreLogs:
   - warning-frontmatter-params-overrides # walkthrough/_index.*.md
 
-taxonomies:
-  tag: tags
-
-outputs:
-  home:
-    - html
-    - json
-    - rss
-
 theme:
   - github.com/kilianpaquier/hugo-primer
 
 module:
+  replacements: github.com/kilianpaquier/hugo-primer -> ../
   imports:
     - path: github.com/kilianpaquier/hugo-primer
 
@@ -39,22 +31,6 @@ menus:
       pageRef: /walkthrough
       weight: 10
   profile:
-    # - identifier: company
-    #   params:
-    #     aria_label: Company
-    #     class: text-bold
-    #   name: "@soprasteria"
-    #   pre: /static/primer/organization-16.svg
-    #   weight: 5
-
-    # - identifier: github
-    #   params:
-    #     aria_label: GitHub Profile
-    #   name: "@kilianpaquier"
-    #   pre: /static/primer/mark-github-16.svg
-    #   url: https://github.com/kilianpaquier
-    #   weight: 10
-
     - identifier: theme
       params:
         aria_label: Project link
@@ -62,18 +38,6 @@ menus:
       pre: /static/primer/mark-github-16.svg
       url: https://github.com/kilianpaquier/hugo-primer
       weight: 15
-
-    # - identifier: website
-    #   name: https://kilianpaquier.com
-    #   pre: /static/primer/link-16.svg
-    #   url: https://kilianpaquier.com
-    #   weight: 20
-
-    # - identifier: linkedin
-    #   name: in/kilianpaquier
-    #   pre: /static/primer/in-16.svg
-    #   url: https://www.linkedin.com/in/kilianpaquier/
-    #   weight: 25
 
 params:
   hugo_primer:
@@ -102,17 +66,6 @@ params:
         data-repo: kilianpaquier/hugo-primer
         data-strict: 1
 
-markup:
-  highlight:
-    noClasses: false
-  goldmark:
-    parser:
-      attribute:
-        block: true
-        title: true
-    renderer:
-      unsafe: true
-
 languages:
   fr:
     contentDir: content
@@ -124,3 +77,5 @@ languages:
     languageName: English
     params:
       pre: /static/primer/globe-16.svg
+
+_merge: deep
