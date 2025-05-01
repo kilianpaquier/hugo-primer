@@ -7,7 +7,7 @@
             "js/fragment.js"
             "js/highlight.js"
         )
-        "remote" (slice 
+        "remote" (slice
             (cond site.Params.hugo_primer.instantpage.disabled "" (print "https://instant.page/" site.Params.hugo_primer.versions.instantpage))
             (cond site.Params.hugo_primer.lazysizes.disabled "" "https://afarkas.github.io/lazysizes/lazysizes.min.js")
             (printf "https://cdn.jsdelivr.net/npm/@primer/view-components@%v/app/assets/javascripts/primer_view_components.js" site.Params.hugo_primer.versions.primer_view_components)

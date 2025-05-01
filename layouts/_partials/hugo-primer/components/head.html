@@ -21,7 +21,7 @@
 
     {{ partialCached "hugo-primer/helpers/styles.html"
         (dict
-            "local" (slice 
+            "local" (slice
                 "styles/scss/highlight-gen/github.scss"
                 "styles/scss/highlight-gen/github-dark.scss"
                 "styles/scss/highlight.scss"
@@ -55,9 +55,9 @@
         "styles"
     }}
 
-    {{ partialCached "hugo-primer/helpers/js.html" 
-        (dict 
-            "local" (slice 
+    {{ partialCached "hugo-primer/helpers/js.html"
+        (dict
+            "local" (slice
                 "js/theming.js"
                 (cond (index site.Menus "main") "js/navigation.js" "")
             )
