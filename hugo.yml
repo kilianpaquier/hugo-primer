@@ -22,6 +22,7 @@ params:
   hugo_primer:
     styles:
       container: container-xl px-3 px-md-4 px-lg-5
+      custom_file: ""
 
     pagination:
       format: default # pagination format, either 'default' or 'terse'
@@ -49,7 +50,7 @@ params:
     versions:
       dompurify: v3.2.5
       fuse: v7.1.0
-      instantpage: v5.2.0
+      instantpage: 5.2.0
       primer_css: v21
       primer_primitives: v10
       primer_react: v37

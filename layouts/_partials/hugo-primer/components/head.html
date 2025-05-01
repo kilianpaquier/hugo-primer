@@ -21,7 +21,16 @@
 
     {{ partialCached "hugo-primer/helpers/styles.html"
         (dict
-            "local" (slice "styles/main.scss")
+            "local" (slice 
+                "styles/scss/highlight-gen/github.scss"
+                "styles/scss/highlight-gen/github-dark.scss"
+                "styles/scss/highlight.scss"
+                "styles/scss/github.scss"
+                "styles/scss/tweaking.scss"
+                "styles/scss/theming.scss"
+
+                site.Params.hugo_primer.styles.custom_file
+            )
             "remote" (slice
                 (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/base/size/size.css" site.Params.hugo_primer.versions.primer_primitives)
                 (printf "https://cdn.jsdelivr.net/npm/@primer/primitives@%v/dist/css/base/typography/typography.css" site.Params.hugo_primer.versions.primer_primitives)
@@ -42,10 +51,20 @@
                 (printf "https://cdn.jsdelivr.net/npm/@primer/view-components@%v/app/assets/styles/primer_view_components.css" site.Params.hugo_primer.versions.primer_view_components)
             )
         )
-        "head"
+        "minimal"
+        "styles"
     }}
 
-    {{ partialCached "hugo-primer/helpers/js.html" (dict "local" (slice "js/theming.js")) "head" }}
+    {{ partialCached "hugo-primer/helpers/js.html" 
+        (dict 
+            "local" (slice 
+                "js/theming.js"
+                (cond (index site.Menus "main") "js/navigation.js" "")
+            )
+        )
+        "navigation"
+        "theme"
+    }}
 
     <title>{{ (cond .IsHome (site.Title) (printf "%s | %s" .Title site.Title)) | markdownify }}</title>
 
