@@ -71,19 +71,10 @@ theme: hugo-primer
 
 ## QoL
 
-For an expected experience with **hugo-primer** theme, please use at least the following `markup` configuration:
+For an expected experience with **hugo-primer** theme, default configuration should be merged with your own:
 
 ```yaml
-markup:
-  highlight:
-    noClasses: false
-  goldmark:
-    parser:
-      attribute:
-        block: true
-        title: true
-    renderer:
-      unsafe: true
+_merge: deep
 ```
 
 ## Start website

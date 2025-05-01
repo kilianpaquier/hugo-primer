@@ -65,19 +65,10 @@ theme: hugo-primer
 
 ## QoL
 
-Pour une expérience optimale avec **hugo-primer**, la configuration minimale suivante pour `markup` est nécessaire :
+Pour une expérience optimale avec **hugo-primer**, la configuration par défaut devrait être mergée avec celle de votre site :
 
 ```yaml
-markup:
-  highlight:
-    noClasses: false
-  goldmark:
-    parser:
-      attribute:
-        block: true
-        title: true
-    renderer:
-      unsafe: true
+_merge: deep
 ```
 
 ## Démarrer le site
