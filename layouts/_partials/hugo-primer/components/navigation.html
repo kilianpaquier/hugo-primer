@@ -5,7 +5,7 @@
     <header class="color-bg-inset AppHeader--box-shadow position-sticky top-0">
         <div class="{{ $container }}">
             {{ $offset := or .IsPage (eq .Kind "404") }}
-            <nav id="underline-nav" class="UnderlineNav overflow-hidden flex-items-center box-shadow-none col-12 col-md-8 col-lg-9 {{ if not $offset }}offset-md-4 offset-lg-3{{ end }}" aria-label="Navigation">
+            <nav id="underline-nav" class="UnderlineNav overflow-hidden flex-items-center box-shadow-none col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}" aria-label="Navigation">
                 <ul class="UnderlineNav-body list-style-none" aria-label="Navigation">
                     {{ $currentpage := . }}
                     {{ range $menu }}
