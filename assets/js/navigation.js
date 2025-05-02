@@ -2,9 +2,9 @@ import wait from "./lib/wait"
 
 /**
  * width measures the width of an HTML element.
- * 
+ *
  * @param {HTMLElement} el the element to measure its width
- * 
+ *
  * @returns {number} the input element width
  */
 const getWidth = el => {
@@ -31,10 +31,10 @@ wait("#underline-nav", 3000).then(nav => {
     const items = nav.querySelector("ul").querySelectorAll("li")
 
     /** @type {HTMLButtonElement} */
-    const button = nav.getElementById("menu-button")
+    const button = document.getElementById("menu-button")
 
     /** @type {HTMLElement} */
-    const overlay = nav.getElementById("menu-overlay")
+    const overlay = document.getElementById("menu-overlay")
 
     // measure the whole navigation width and compute its mean
     let width = getWidth(button)
