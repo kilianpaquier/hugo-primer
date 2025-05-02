@@ -42,7 +42,8 @@ menus:
 params:
   hugo_primer:
     favicon: /logo.webp
-    logo: /logo.webp
+    nav_logo: /logo.webp
+    profile_logo: /logo.webp
     title: Example Site
     subtitle: Subtitle
 

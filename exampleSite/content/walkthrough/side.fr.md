@@ -18,9 +18,10 @@ Le logo, le titre, le sous-titre peuvent être définis comme suit dans la confi
 ```yaml
 params:
   hugo_primer:
-    logo: /logo.webp
-    title: Title
+    nav_logo: /logo.webp
+    profile_logo: /logo.webp
     subtitle: Subtitle
+    title: Title
 ```
 
 ## Liens

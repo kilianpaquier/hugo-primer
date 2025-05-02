@@ -18,9 +18,10 @@ Logo, title and subtitle may be defined as followed in configuration file `hugo.
 ```yaml
 params:
   hugo_primer:
-    logo: /logo.webp
-    title: Title
+    nav_logo: /logo.webp
+    profile_logo: /logo.webp
     subtitle: Subtitle
+    title: Title
 ```
 
 ## Extras links
