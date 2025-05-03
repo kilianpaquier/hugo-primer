@@ -13,7 +13,7 @@
         <ul class="ActionListWrap" aria-label='{{ T "arias.langs" }}'>
             {{ range .Translations }}
                 <li class="ActionListItem" aria-label="{{ or .Language.LanguageName .Language.Lang }}">
-                    <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" class="ActionListContent d-flex">
+                    <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" class="ActionListContent d-flex flex-items-center">
                         {{ with .Language.Params.Pre }}
                             <span class="ActionListItem-visual ActionListItem-visual--leading">{{ . | readFile | safeHTML }}</span>
                         {{ end }}

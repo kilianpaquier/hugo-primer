@@ -24,7 +24,7 @@ import { escape, sanitize } from "./lib/sanitize"
 const toItemHTML = item => {
     return `
     <li class="ActionListItem" role="option" aria-label="${escape(item.title)}">
-        <a href="${escape(item.permalink)}" class="ActionListContent d-flex" aria-label="${escape(item.title)}">
+        <a href="${escape(item.permalink)}" class="ActionListContent" aria-label="${escape(item.title)}">
             <span class="ActionListItem-visual ActionListItem-visual--leading octicon" aria-label="${escape(item.section)}">${item.icon}</span>
             <span class="ActionListItem-descriptionWrap">
                 <span class="ActionListItem-label">${escape(item.title)}</span>

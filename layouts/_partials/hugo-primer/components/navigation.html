@@ -48,7 +48,7 @@
                                 {{ $current := or (eq $currentpage.RelPermalink $rel) ($currentpage.HasMenuCurrent .Menu .) }}
                                 <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2" role="menuitem"
                                     aria-label="{{ .Name }}" {{ if $current }}aria-selected="true"{{ end }}>
-                                    <a href="{{ $rel }}" class="ActionListContent d-flex">
+                                    <a href="{{ $rel }}" class="ActionListContent d-flex flex-items-center">
                                         {{ with .Pre }}
                                             <span class="ActionListItem-visual ActionListItem-visual--leading">{{ . | readFile | safeHTML }}</span>
                                         {{ end }}
