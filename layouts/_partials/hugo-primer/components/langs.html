@@ -1,4 +1,5 @@
-<button id="langs-button" popovertarget="langs-overlay" class="Button AppHeader--button Button--secondary d-flex px-2" type="button" aria-haspopup="menu" aria-controls="langs" aria-labelledby="tooltip-langs-button">
+<button id="langs-button" popovertarget="langs-overlay" class="Button AppHeader--button Button--secondary d-flex px-2" type="button"
+    aria-haspopup="menu" aria-controls="langs-overlay" aria-labelledby="tooltip-langs-button">
     {{ "/static/reddit/lang-17.svg" | readFile | safeHTML }}
     {{ "/static/primer/triangle-down-16.svg" | readFile | safeHTML }}
 </button>
@@ -9,7 +10,7 @@
 
 <anchored-position id="langs-overlay" anchor="langs-button" anchor-offset="normal" align="end" popover="auto" aria-labelledby="langs">
     <div class="Overlay Overlay--size-auto p-2">
-        <ul id="langs" class="ActionListWrap" aria-label='{{ T "arias.langs" }}'>
+        <ul class="ActionListWrap" aria-label='{{ T "arias.langs" }}'>
             {{ range .Translations }}
                 <li class="ActionListItem" aria-label="{{ or .Language.LanguageName .Language.Lang }}">
                     <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" class="ActionListContent">

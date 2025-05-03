@@ -63,7 +63,7 @@ Vous devez ensuite dans la configuration `hugo.(yaml|toml)` ajouter la propriét
 theme: hugo-primer
 ```
 
-## QoL
+## Configuration par défaut
 
 Pour une expérience optimale avec **hugo-primer**, la configuration par défaut devrait être mergée avec celle de votre site :
 

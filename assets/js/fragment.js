@@ -23,9 +23,10 @@ window.addEventListener("hashchange", hashchange)
 documentReady(hashchange)
 
 documentReady(() => {
-    const titles = document.querySelectorAll(".markdown-body h1, .markdown-body h2") // Note: could handle h3, h4, h5, h6 but it's kinda weird a link by their side
-    for (let i = 0; i < titles.length; i++) {
-        const title = titles[i]
+    // Note: could handle h3, h4, h5, h6 but it's kinda weird a link by their side
+    const titles = document.querySelectorAll(".markdown-body h1, .markdown-body h2")
+
+    for (const title of titles) {
         title.classList.add("markdown-heading")
 
         const content = title.textContent

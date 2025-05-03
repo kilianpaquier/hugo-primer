@@ -63,7 +63,7 @@ You then need to update `hugo.(yaml|toml)` configuration with following property
 theme: hugo-primer
 ```
 
-## QoL
+## Default configuration
 
 For an expected experience with **hugo-primer** theme, default configuration should be merged with your own:
 

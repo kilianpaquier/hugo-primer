@@ -7,15 +7,17 @@
                     {{ $title := index .Fragments.Headings 0 }}
                     {{ $overlay := and $title (gt (len $title.Headings) 1) }}
                     <div class="dropdown">
-                        <button id="headings-button" {{ if not $overlay }}disabled{{ end }} popovertarget="headings-overlay" class="Button Button--iconOnly Button--invisible" type="button" aria-haspopup="menu" aria-controls="headings" aria-label='{{ T "arias.headings" }}'>
+                        <button id="headings-button" {{ if not $overlay }}disabled{{ end }} popovertarget="headings-overlay" class="Button Button--iconOnly Button--invisible" type="button"
+                            aria-haspopup="menu" aria-controls="headings-overlay" aria-label='{{ T "arias.headings" }}'>
                             <span class="octicon d-flex">{{ "/static/primer/list-unordered-16.svg" | readFile | safeHTML }}</span>
                         </button>
                         {{ if $overlay }}
-                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" popover="auto" aria-labelledby="headings-button">
+                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" popover="auto" role="menu"
+                                aria-labelledby="headings-button">
                                 <section class="Overlay Overlay--size-auto p-2">
-                                    <ul id="headings" class="ActionListWrap" aria-labelledby="headings-button">
+                                    <ul class="ActionListWrap" aria-labelledby="headings-button">
                                         {{ range $title.Headings }}
-                                            <li id="{{ .ID }}-item" class="ActionListItem mx-2">
+                                            <li id="{{ .ID }}-item" class="ActionListItem mx-2" role="menuitem">
                                                 <a href="#{{ .ID }}" class="ActionListContent">
                                                     <span class="ActionListItem-label">{{ .Title | markdownify }}</span>
                                                 </a>

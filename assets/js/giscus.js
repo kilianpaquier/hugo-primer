@@ -1,10 +1,10 @@
 import wait from "./lib/wait"
 
-wait("div.giscus").then(() => {
+wait("giscus").then(() => {
     // observer a change of theme to send giscus a message indicating to change its own theme since it's in a iframe
-    const html = document.querySelector("html")
+    const html = document.documentElement
     new MutationObserver(mutations => {
-        for (let mutation of mutations) {
+        for (const mutation of mutations) {
             if (mutation.type !== "attributes" || mutation.attributeName !== "data-light-theme") {
                 continue
             }

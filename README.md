@@ -14,7 +14,7 @@
 - [How to use ?](#how-to-use-)
   - [Hugo module (recommended)](#hugo-module-recommended)
   - [Git submodule](#git-submodule)
-- [QoL](#qol)
+- [Default configuration](#default-configuration)
 - [Start website](#start-website)
 - [Features](#features)
 
@@ -69,7 +69,7 @@ You then need to update `hugo.(yaml|toml)` configuration with following property
 theme: hugo-primer
 ```
 
-## QoL
+## Default configuration
 
 For an expected experience with **hugo-primer** theme, default configuration should be merged with your own:
 

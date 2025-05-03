@@ -55,7 +55,7 @@ const setTheme = theme => {
 // update as fast as possible the theme to avoid rendering issues
 setTheme(themes[getTheme()] ?? themes[0])
 
-wait("#theme-button", 3000).then(button => {
+wait("theme-button", 3000).then(button => {
     // change theme on click with a rotation
     button.addEventListener("click", () => {
         const theme = getTheme()

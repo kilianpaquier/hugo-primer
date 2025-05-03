@@ -1,5 +1,5 @@
 {{ $switch := "d-md" }}
-<button id="search-button" data-show-dialog-id="search-overlay" class="Button Button--secondary color-bg-transparent color-fg-muted d-flex px-2" type="button" aria-haspopup="menu" aria-controls="search" aria-labelledby="tooltip-search-button">
+<button id="search-button" data-show-dialog-id="search-overlay" class="Button Button--secondary color-bg-transparent color-fg-muted d-flex px-2" type="button" aria-haspopup="dialog" aria-controls="search-overlay" aria-labelledby="tooltip-search-button">
     {{ "/static/primer/search-16.svg" | readFile | safeHTML }}
     <span class="d-none {{ $switch }}-block text-normal pr-11">
         {{ T "search.button" "<kbd>/</kbd>" | safeHTML }}

@@ -144,7 +144,7 @@ documentReady(async () => {
     // load search index depending on current lang
     let pages = []
     try {
-        pages = await remote(`/${document.querySelector("html").getAttribute("lang")}/index.json`)
+        pages = await remote(`/${document.documentElement.getAttribute("lang")}/index.json`)
     } catch (e) {
         pages = await remote("/index.json")
     }

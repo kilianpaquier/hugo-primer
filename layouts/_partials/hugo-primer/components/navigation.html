@@ -11,7 +11,7 @@
                     {{ range $menu }}
                         {{ $page := .Page }}
                         {{ $rel := relLangURL .URL }}
-                        <li id="{{ .Identifier }}" class="d-inline-flex d-none" aria-label="{{ .Name }}">
+                        <li id="{{ .Identifier }}" class="d-inline-flex" aria-label="{{ .Name }}">
                             <a class="UnderlineNav-item flex-items-center" href="{{ $rel }}"
                                 {{ if eq $currentpage.RelPermalink $rel }}aria-current="page"{{ end }}
                                 {{ if $currentpage.HasMenuCurrent .Menu . }}aria-current="true"{{ end }}
@@ -31,13 +31,14 @@
                 </ul>
 
                 <!-- button menu for smaller screen -->
-                <button id="menu-button" popovertarget="menu-overlay" class="Button Button--iconOnly Button--secondary flex-shrink-0 d-none" type="button" aria-haspopup="menu" aria-controls="menus" aria-labelledby="tooltip-menu-button">
-                    {{ "/static/primer/kebab-horizontal-16.svg" | readFile | safeHTML }}
+                <button id="menu-button" popovertarget="menu-overlay" class="Button Button--iconOnly Button--secondary flex-shrink-0" type="button"
+                    aria-haspopup="menu" aria-controls="menu-overlay" aria-labelledby="tooltip-menu-button">
+                    <span class="d-flex flex-justify-center">{{ "/static/primer/kebab-horizontal-16.svg" | readFile | safeHTML }}</span>
                 </button>
                 <tool-tip id="tooltip-menu-button" for="menu-button" class="position-absolute sr-only" popover="manual" data-direction="se" data-type="label" aria-hidden="true" role="tooltip">
                     {{ T "navigation.menu" }}
                 </tool-tip>
-                <anchored-position id="menu-overlay" anchor="menu-button" anchor-offset="normal" align="end" popover="auto" aria-label="Navigation">
+                <anchored-position id="menu-overlay" anchor="menu-button" anchor-offset="normal" align="end" popover="auto" role="menu" aria-label="Navigation">
                     <div class="Overlay Overlay--size-auto p-2">
                         <ul class="ActionListWrap" aria-label="Navigation">
                             {{ $currentpage := . }}
@@ -45,8 +46,8 @@
                                 {{ $page := .Page }}
                                 {{ $rel := relLangURL .URL }}
                                 {{ $current := or (eq $currentpage.RelPermalink $rel) ($currentpage.HasMenuCurrent .Menu .) }}
-                                <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2 d-none" aria-label="{{ .Name }}"
-                                    {{ if $current }}aria-selected="true"{{ end }}>
+                                <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2" role="menuitem"
+                                    aria-label="{{ .Name }}" {{ if $current }}aria-selected="true"{{ end }}>
                                     <a href="{{ $rel }}" class="ActionListContent">
                                         {{ with .Pre }}
                                             <span class="ActionListItem-visual ActionListItem-visual--leading">{{ . | readFile | safeHTML }}</span>

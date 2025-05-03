@@ -7,9 +7,7 @@ documentReady(() => {
 
     // setup highlights copy buttons
     const highlights = document.querySelectorAll("div.highlight")
-    for (let i = 0; i < highlights.length; i++) {
-        const highlight = highlights[i]
-
+    for (const highlight of highlights) {
         highlight.classList.add("d-flex", "flex-justify-between")
 
         // create clipboard div
