@@ -24,7 +24,7 @@ que ce soit dans le cadre d'un usage plus poussé du thème ou pour un usage tou
 ---
 
 Comme c'est la page de présentation du thème, et que reconstruire sans **React** les composants a été un peu galère,
-voici deux liens utiles (au moins à moi-même) pour accéder aux styles directement :
+voici quelques liens utiles (au moins à moi-même) pour accéder aux styles directement :
 
 - https://cdn.jsdelivr.net/npm/@primer/react@37/dist/components.css
 - https://cdn.jsdelivr.net/npm/@primer/view-components@0/app/assets/styles/primer_view_components.css (sans *pretty*)
