@@ -37,13 +37,12 @@ wait("underline-nav", 3000).then(nav => {
 
     /** @type {HTMLButtonElement} */
     const button = document.getElementById("menu-button")
-    const bwith = getWidth(button)
 
     /** @type {HTMLElement} */
     const overlay = document.getElementById("menu-overlay")
 
     new ResizeObserver(() => {
-        const max = nav.clientWidth - bwith
+        const max = nav.clientWidth - 50 // keep enough space for button with a margin
 
         // loop over all underline-nav to show and unshow items depending on the number of elements to display
         let width = 0
