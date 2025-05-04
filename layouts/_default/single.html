@@ -5,7 +5,7 @@
             {{ if or .Fragments.Headings (.GetTerms "tags") }}
                 <div class="Box-header lh-default border-bottom p-3 d-flex flex-items-center">
                     {{ $title := index .Fragments.Headings 0 }}
-                    {{ $overlay := and $title (gt (len $title.Headings) 1) }}
+                    {{ $overlay := and $title (gt (len $title.Headings) 1) (not .Params.no_toc) }}
                     <div class="dropdown">
                         <button id="headings-button" {{ if not $overlay }}disabled{{ end }} popovertarget="headings-overlay" class="Button Button--iconOnly Button--invisible" type="button"
                             aria-haspopup="menu" aria-controls="headings-overlay" aria-label='{{ T "arias.headings" }}'>
@@ -31,7 +31,7 @@
 
                     {{ with .GetTerms "tags" }}
                         <div class="ml-auto">
-                            <ul class="d-flex flex-row-reverse flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                            <ul class="d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3 flex-justify-end" aria-label='{{ T "arias.tags" }}'>
                                 {{ range . }}
                                     <li class="d-flex flex-items-center octicon text-small color-fg-muted col-gap-2" aria-label="{{ .Name | lower }}">
                                         {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
