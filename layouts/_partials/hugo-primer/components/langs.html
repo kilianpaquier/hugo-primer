@@ -15,7 +15,7 @@
                 <li class="ActionListItem" aria-label="{{ or .Language.LanguageName .Language.Lang }}">
                     <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" class="ActionListContent d-flex flex-items-center">
                         {{ with .Language.Params.Pre }}
-                            <span class="ActionListItem-visual ActionListItem-visual--leading">{{ . | readFile | safeHTML }}</span>
+                            <span class="ActionListItem-visual ActionListItem-visual--leading avatar-1">{{ . | readFile | safeHTML }}</span>
                         {{ end }}
                         <span class="ActionListItem-label">{{ or .Language.LanguageName .Language.Lang }}</span>
                     </a>
