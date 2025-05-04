@@ -1,20 +1,27 @@
 {{ define "main" }}
     <section id="main" aria-label='{{ T "arias.content" }}'>
-        {{ with site.Taxonomies.tags }}
-        <div class="border-bottom pb-4">
-            <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
-                {{ range $term, $taxonomy := . }}
-                    <li aria-label="{{ $term | lower }}">
-                        <a class="Link Link--muted text-small" href="{{ .Page.RelPermalink }}">
-                            <span class="d-flex flex-items-center octicon col-gap-2">
-                                {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
-                                {{ $term | lower }}
-                            </span>
-                        </a>
-                    </li>
-                {{ end }}
-            </ul>
-        </div>
+        <!-- filter tags for only current section -->
+        {{ $tags := newScratch }}
+        {{ range $term, $pages := site.Taxonomies.tags }}
+            {{ $hasSection := where $pages ".Page.Section" $.Section }}
+            {{ if gt $hasSection 0 }}{{ $tags.Set $term (index site.Taxonomies.tags $term) }}{{ end }}
+        {{ end }}
+
+        {{ with $tags.Values }}
+            <div class="border-bottom pb-4">
+                <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                    {{ range $term, $taxonomy := . }}
+                        <li aria-label="{{ $term | lower }}">
+                            <a class="Link Link--muted text-small" href="{{ .Page.RelPermalink }}">
+                                <span class="d-flex flex-items-center octicon col-gap-2">
+                                    {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
+                                    {{ $term | lower }}
+                                </span>
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
         {{ end }}
 
         <!-- pagination settings -->
@@ -30,13 +37,19 @@
         {{ $pages := slice }}
         {{ range .RegularPages.GroupByParam $order $sort }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
 
-        {{ range (.Paginate $pages $size).Pages }}
-            <article class="border-bottom py-4" aria-label="{{ .Title }}">
-                <h2 aria-label="Title"><a href="{{ .RelPermalink }}" class="Link">{{ .Title | markdownify }}</a></h2>
-                <summary class="color-fg-muted mb-3 list-style-none" aria-label="Description">{{ .Description | markdownify }}</summary>
+        {{ range $index, $page := (.Paginate $pages $size).Pages }}
+            <article class="border-bottom {{ if and (not $tags.Values) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
+                <h2 aria-label="Title">
+                    <a href="{{ $page.RelPermalink }}" class="Link">
+                        {{ $page.Title | markdownify }}
+                    </a>
+                </h2>
+                <summary class="color-fg-muted mb-3 list-style-none" aria-label="Description">
+                    {{ $page.Description | markdownify }}
+                </summary>
 
                 <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
-                    {{ range .GetTerms "tags" }}
+                    {{ range $page.GetTerms "tags" }}
                         <li aria-label="{{ .Name | lower }}">
                             <a class="Link Link--muted text-small" href="{{ .RelPermalink }}">
                                 <span class="d-flex flex-items-center octicon col-gap-2">
@@ -47,21 +60,21 @@
                         </li>
                     {{ end }}
 
-                    {{ $date := .Date | dateFormat ":date_medium" }}
+                    {{ $date := $page.Date | dateFormat ":date_medium" }}
                     <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>
                         {{ T "timings.posted" $date }}
                     </li>
 
-                    {{ $lastmod := .Lastmod | dateFormat ":date_medium" }}
-                    {{ if .Date.Before .Lastmod }}
+                    {{ $lastmod := $page.Lastmod | dateFormat ":date_medium" }}
+                    {{ if $page.Date.Before $page.Lastmod }}
                         <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_modified" }}'>
                             {{ T "timings.modified" $lastmod }}
                         </li>
                     {{ end }}
 
-                    {{ if not (eq .ReadingTime 0) }}
+                    {{ if not (eq $page.ReadingTime 0) }}
                         <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
-                            {{ T "timings.reading_time" .ReadingTime }}
+                            {{ T "timings.reading_time" $page.ReadingTime }}
                         </li>
                     {{ end }}
                 </ul>
