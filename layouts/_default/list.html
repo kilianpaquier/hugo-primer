@@ -40,9 +40,11 @@
         {{ range $index, $page := (.Paginate $pages $size).Pages }}
             <article class="border-bottom {{ if and (not $tags.Values) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
                 <h2 aria-label="Title">
-                    <a href="{{ $page.RelPermalink }}" class="Link">
-                        {{ $page.Title | markdownify }}
-                    </a>
+                    {{ with $page.Params.URL }}
+                        <a href="{{ . }}" class="Link" target="_blank">{{ $page.Title | markdownify }}</a>
+                    {{ else }}
+                        <a href="{{ $page.RelPermalink }}" class="Link">{{ $page.Title | markdownify }}</a>
+                    {{ end }}
                 </h2>
                 <summary class="color-fg-muted mb-3 list-style-none" aria-label="Description">
                     {{ $page.Description | markdownify }}
