@@ -9,23 +9,23 @@
 
     <div class="d-flex flex-column mt-3">
         {{ with index site.Menus "profile" }}
-        <div class="col-12">
-            <ul class="d-flex flex-column list-style-none row-gap-1" aria-label='{{ T "arias.extra_links" }}'>
-                {{ range . }}
-                    {{ $page := site.GetPage .URL }}
-                    <li aria-label="{{ .Params.aria_label | default .Name }}">
-                        <span class="d-inline-flex flex-items-center col-gap-3">
-                            <span class="color-fg-muted octicon d-flex flex-items-center">{{ .Pre | readFile | safeHTML }}</span>
-                            {{ if .URL }}
-                                <a class="Link--primary {{ .Params.class }}" href="{{ .URL }}" {{ if not $page }}target="_blank"{{ end }}>{{ .Name }}</a>
-                            {{ else }}
-                                <span class="{{ .Params.class }}">{{ .Name }}</span>
-                            {{ end }}
-                        </span>
-                    </li>
-                {{ end }}
-            </ul>
-        </div>
+            <div class="col-12">
+                <ul class="d-flex flex-column list-style-none row-gap-1" aria-label='{{ T "arias.extra_links" }}'>
+                    {{ range . }}
+                        {{ $page := site.GetPage .URL }}
+                        <li aria-label="{{ .Params.aria_label | default .Name }}">
+                            <span class="d-inline-flex flex-items-center col-gap-3">
+                                <span class="color-fg-muted octicon d-flex flex-items-center">{{ .Pre | readFile | safeHTML }}</span>
+                                {{ if .URL }}
+                                    <a class="Link--primary {{ .Params.class }}" href="{{ .URL }}" {{ if not $page }}target="_blank"{{ end }}>{{ .Name }}</a>
+                                {{ else }}
+                                    <span class="{{ .Params.class }}">{{ .Name }}</span>
+                                {{ end }}
+                            </span>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
         {{ end }}
 
         {{ partial "hugo-primer/side.html" }}

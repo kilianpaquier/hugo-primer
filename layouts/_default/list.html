@@ -1,13 +1,19 @@
 {{ define "main" }}
     <section id="main" aria-label='{{ T "arias.content" }}'>
-        <!-- filter tags for only current section -->
-        {{ $tags := newScratch }}
-        {{ range $term, $pages := site.Taxonomies.tags }}
-            {{ $hasSection := where $pages ".Page.Section" $.Section }}
-            {{ if gt $hasSection 0 }}{{ $tags.Set $term (index site.Taxonomies.tags $term) }}{{ end }}
+        {{ $section := .Section }}
+        {{ $tags := site.Taxonomies.tags }}
+
+        <!-- filter tags for only current section when page is not tags' one -->
+        {{ if ne $section "tags" }}
+            {{ $filter := newScratch }}
+            {{ range $term, $pages := site.Taxonomies.tags }}
+                {{ $hasSection := where $pages ".Page.Section" $section }}
+                {{ if gt $hasSection 0 }}{{ $filter.Set $term (index site.Taxonomies.tags $term) }}{{ end }}
+            {{ end }}
+            {{ $tags = $filter.Values }}
         {{ end }}
 
-        {{ with $tags.Values }}
+        {{ with $tags }}
             <div class="border-bottom pb-4">
                 <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
                     {{ range $term, $taxonomy := . }}
@@ -38,7 +44,7 @@
         {{ range .RegularPages.GroupByParam $order $sort }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
 
         {{ range $index, $page := (.Paginate $pages $size).Pages }}
-            <article class="border-bottom {{ if and (not $tags.Values) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
+            <article class="border-bottom {{ if and (not $tags) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
                 <h2 aria-label="Title">
                     {{ with $page.Params.URL }}
                         <a href="{{ . }}" class="Link" target="_blank">{{ $page.Title | markdownify }}</a>
@@ -51,13 +57,19 @@
                 </summary>
 
                 <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                    {{ $icon := (index (where (index site.Menus "main") "Identifier" $page.Section) 0).Pre }}
+                    {{ if and (eq $section "tags") $icon }}
+                        <li class="color-fg-muted text-small d-flex flex-items-center col-gap-2" aria-label="Section">
+                            <span class="d-flex octicon">{{ $icon | readFile | safeHTML }}</span>
+                            <span>{{ $page.Section }}</span>
+                        </li>
+                    {{ end }}
+
                     {{ range $page.GetTerms "tags" }}
-                        <li aria-label="{{ .Name | lower }}">
-                            <a class="Link Link--muted text-small" href="{{ .RelPermalink }}">
-                                <span class="d-flex flex-items-center octicon col-gap-2">
-                                    {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
-                                    {{ .Name | lower }}
-                                </span>
+                        <li aria-label="{{ .Name }}">
+                            <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ .RelPermalink }}">
+                                <span class="d-flex octicon">{{ "/static/primer/tag-16.svg" | readFile | safeHTML }}</span>
+                                <span>{{ .Name | lower }}</span>
                             </a>
                         </li>
                     {{ end }}
