@@ -20,7 +20,7 @@
                 <h2 aria-label="Title">
                     <a href="{{ $page.Params.URL | default $page.RelPermalink }}" class="Link" {{ if $page.Params.URL}}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $page.Title | markdownify }}</a>
                 </h2>
-                <summary class="color-fg-muted mb-3 list-style-none" aria-label="Description">
+                <summary class="fgColor-muted mb-3 list-style-none" aria-label="Description">
                     {{ $page.Description | markdownify }}
                 </summary>
 
@@ -47,19 +47,19 @@
                     {{ end }}
 
                     {{ $date := $page.Date | dateFormat ":date_medium" }}
-                    <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>
+                    <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>
                         {{ T "timings.posted" $date }}
                     </li>
 
                     {{ $lastmod := $page.Lastmod | dateFormat ":date_medium" }}
                     {{ if $page.Date.Before $page.Lastmod }}
-                        <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_modified" }}'>
+                        <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_modified" }}'>
                             {{ T "timings.modified" $lastmod }}
                         </li>
                     {{ end }}
 
                     {{ if not (eq $page.ReadingTime 0) }}
-                        <li class="text-small color-fg-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
+                        <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
                             {{ T "timings.reading_time" $page.ReadingTime }}
                         </li>
                     {{ end }}
