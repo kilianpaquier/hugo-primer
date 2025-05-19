@@ -13,7 +13,6 @@ theme:
   - github.com/kilianpaquier/hugo-primer
 
 module:
-  replacements: github.com/kilianpaquier/hugo-primer -> ../
   imports:
     - path: github.com/kilianpaquier/hugo-primer
 
