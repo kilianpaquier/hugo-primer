@@ -5,7 +5,7 @@
             {{ if or .Fragments.Headings (.GetTerms "tags") }}
                 <div class="Box-header lh-default border-bottom p-3 d-flex flex-items-center">
                     {{ $title := index .Fragments.Headings 0 }}
-                    {{ $overlay := and $title (gt (len $title.Headings) 1) (not .Params.no_toc) }}
+                    {{ $overlay := and $title.Headings  (gt (len $title.Headings) 1) (not .Params.no_toc) }}
                     <div class="dropdown">
                         <button id="headings-button" {{ if not $overlay }}disabled{{ end }} popovertarget="headings-overlay" class="Button Button--iconOnly Button--invisible" type="button"
                             aria-haspopup="menu" aria-controls="headings-overlay" aria-label='{{ T "arias.headings" }}'>
