@@ -14,6 +14,7 @@ import { escape, sanitize } from "./lib/sanitize"
  * @property {string} summary
  * @property {string[]} tags
  * @property {string} title
+ * @property {string} url
  */
 
 /**
@@ -24,7 +25,7 @@ import { escape, sanitize } from "./lib/sanitize"
 const toItemHTML = item => {
     return `
     <li class="ActionListItem" role="option" aria-label="${escape(item.title)}">
-        <a href="${escape(item.permalink)}" class="ActionListContent" aria-label="${escape(item.title)}">
+        <a href="${escape(item.url ?? item.permalink)}" class="ActionListContent" aria-label="${escape(item.title)}" ${item.url ? 'target="_blank" rel="noopener noreferrer"' : ""}>
             <span class="ActionListItem-visual ActionListItem-visual--leading octicon" aria-label="${escape(item.section)}">${item.icon}</span>
             <span class="ActionListItem-descriptionWrap">
                 <span class="ActionListItem-label">${escape(item.title)}</span>
