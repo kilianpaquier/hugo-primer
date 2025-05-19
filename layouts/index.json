@@ -12,35 +12,12 @@
             "summary" (printf "%s..." (substr (.Summary | plainify) 0 90))
             "tags" .Params.tags
             "title" .Title
+            "url" .Params.URL
 
             "searchDescription" (.Description | lower)
             "searchSection" (.Section | lower)
             "searchTags" (apply .Params.tags "lower" ".")
             "searchTitle" (.Title | lower)
-        )
-    }}
-{{- end }}
-
-{{- $sections := slice }}
-{{- range site.Sections }}
-    {{- $sections = $sections | append
-        (dict
-            "section" .Section
-            "icon" (strings.TrimPrefix "/static" (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre)
-            "permalink" .Path
-        )
-    }}
-{{- end }}
-
-{{- $tags := slice }}
-{{- range $term, $taxonomy := site.Taxonomies.tags }}
-    {{- $tags = $tags | append
-        (dict
-            "tag" $term
-            "icon" "/primer/tag-16.svg"
-            "permalink" .Page.RelPermalink
-
-            "searchTag" ($term | lower)
         )
     }}
 {{- end }}
