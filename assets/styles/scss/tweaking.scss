@@ -27,6 +27,10 @@ $gaps: (
     4 --base-size-8,
     5 --base-size-12,
     6 --base-size-16,
+    7 --base-size-20,
+    8 --base-size-24,
+    9 --base-size-28,
+    10 --base-size-32,
 );
 @each $n, $gap in $gaps {
     .col-gap-#{$n} {
@@ -95,4 +99,8 @@ ul.pagination {
 
 .markdown-body [id] {
     scroll-margin-top: 75px;
+}
+
+.sizing-border-box {
+    box-sizing: border-box !important;
 }

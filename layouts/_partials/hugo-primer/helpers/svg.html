@@ -1,0 +1,41 @@
+{{ $src := .src }}
+{{ $remote := hasPrefix $src "https://" }}
+
+{{ $resource := dict }}
+{{ if $remote }}
+    {{ with try (resources.GetRemote $src) }}
+        {{ with .Err }}
+            {{ errorf "%s" . }}
+        {{ else with .Value }}
+            {{ $resource = .Content }}
+        {{ else }}
+            {{ errorf "Unable to get remote resource %q" $src }}
+        {{ end }}
+    {{ end }}
+{{ else }}
+    {{ with try ($src | readFile) }}
+        {{ with .Err }}
+            {{ errorf "%s" . }}
+        {{ else with .Value }}
+            {{ $resource = . }}
+        {{ else }}
+            {{ errorf "Unable to get resource %q" $src }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ $base := path.BaseName $src }}
+{{ $size := .size | default "24" }}
+{{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
+{{ $newsvg := printf `<svg class="%s" height="%s" width="%s" ${1}>${2}</svg>` $base $size $size }}
+
+{{ if .tooltip }}
+    {{ $id := replace (.tooltip | lower) " " "-" }}
+    {{ $newsvg = printf `<svg id="%s" aria-labelledby="tooltip-%s" class="%s" height="%s" width="%s" ${1}>${2}</svg>` $id $id $base $size $size }}
+
+    <tool-tip id='tooltip-{{ $id }}' for='{{ $id }}' class="position-absolute sr-only" popover="manual" data-direction="sw" data-type="label" aria-hidden="true" role="tooltip">
+        {{ .tooltip }}
+    </tool-tip>
+{{ end }}
+
+{{ replaceRE $oldsvg $newsvg $resource | safeHTML }}
