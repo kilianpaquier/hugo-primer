@@ -33,7 +33,7 @@
                         <div class="ml-auto">
                             <ul class="d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3 flex-justify-end" aria-label='{{ T "arias.tags" }}'>
                                 {{ range . }}
-                                    <li class="d-flex flex-items-center octicon text-small color-fg-muted col-gap-2" aria-label="{{ .Name | lower }}">
+                                    <li class="d-flex flex-items-center octicon text-small fgColor-muted col-gap-2" aria-label="{{ .Name | lower }}">
                                         {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
                                         {{ .Name | lower }}
                                     </li>
