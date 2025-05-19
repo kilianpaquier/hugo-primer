@@ -3,32 +3,8 @@
         {{ $section := .Section }}
         {{ $tags := site.Taxonomies.tags }}
 
-        <!-- filter tags for only current section when page is not tags' one -->
-        {{ if ne $section "tags" }}
-            {{ $filter := newScratch }}
-            {{ range $term, $pages := site.Taxonomies.tags }}
-                {{ $hasSection := where $pages ".Page.Section" $section }}
-                {{ if gt $hasSection 0 }}{{ $filter.Set $term (index site.Taxonomies.tags $term) }}{{ end }}
-            {{ end }}
-            {{ $tags = $filter.Values }}
-        {{ end }}
-
-        {{ with $tags }}
-            <div class="border-bottom pb-4">
-                <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
-                    {{ range $term, $taxonomy := . }}
-                        <li aria-label="{{ $term | lower }}">
-                            <a class="Link Link--muted text-small" href="{{ .Page.RelPermalink }}">
-                                <span class="d-flex flex-items-center octicon col-gap-2">
-                                    {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
-                                    {{ $term | lower }}
-                                </span>
-                            </a>
-                        </li>
-                    {{ end }}
-                </ul>
-            </div>
-        {{ end }}
+        <!-- show current section tags -->
+        {{ partial "hugo-primer/components/section-tags.html" (dict "section" .Section "taxonomy" $tags) }}
 
         <!-- pagination settings -->
         {{ $format := .Params.hugo_primer.pagination.format | default site.Params.hugo_primer.pagination.format }}
@@ -53,14 +29,18 @@
                 </summary>
 
                 <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
-                    {{ $icon := (index (where (index site.Menus "main") "Identifier" $page.Section) 0).Pre }}
-                    {{ if and (eq $section "tags") $icon }}
-                        <li class="color-fg-muted text-small d-flex flex-items-center col-gap-2" aria-label="Section">
-                            <span class="d-flex octicon">{{ $icon | readFile | safeHTML }}</span>
-                            <span>{{ $page.Section }}</span>
+                    <!-- show section on tags page only -->
+                    {{ $menu := (index (where (index site.Menus "main") "Identifier" $page.Section) 0) }}
+                    {{ if and (eq $section "tags") $menu.Pre }}
+                        <li aria-label="Section">
+                            <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ $menu.URL }}">
+                                <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" (dict "src" $menu.Pre "size" "16") }}</span>
+                                <span>{{ $menu.Identifier }}</span>
+                            </a>
                         </li>
                     {{ end }}
 
+                    <!-- page tags -->
                     {{ range $page.GetTerms "tags" }}
                         <li aria-label="{{ .Name }}">
                             <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ .RelPermalink }}">
