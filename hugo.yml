@@ -48,7 +48,7 @@ params:
       disabled: false
 
     versions:
-      dompurify: v3.2.5
+      dompurify: v3.2.6
       fuse: v7.1.0
       instantpage: 5.2.0
       primer_css: v21
