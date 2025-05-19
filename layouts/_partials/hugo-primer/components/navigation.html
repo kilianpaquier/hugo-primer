@@ -15,12 +15,8 @@
                             <a class="UnderlineNav-item flex-items-center" href="{{ $rel }}"
                                 {{ if eq $currentpage.RelPermalink $rel }}aria-current="page"{{ end }}
                                 {{ if $currentpage.HasMenuCurrent .Menu . }}aria-current="true"{{ end }}
-                                {{ if not $page }}target="_blank"{{ end }}>
-                                {{ with .Pre }}
-                                    <span class="UnderlineNav-octicon d-flex">
-                                        {{ . | readFile | safeHTML }}
-                                    </span>
-                                {{ end }}
+                                {{ if not $page }}target="_blank" rel="noopener noreferrer"{{ end }}>
+                                {{ with .Pre }}<span class="UnderlineNav-octicon d-flex">{{ partial "hugo-primer/helpers/svg.html" (dict "src" . "size" "16") }}</span>{{ end }}
                                 <span>{{ .Name }}</span>
                                 {{ if and (not .Params.disable_counter) $page (gt $page.RegularPages 0) }}
                                     <span class="Counter">{{ len $page.RegularPages }}</span>
@@ -49,9 +45,7 @@
                                 <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2" role="menuitem"
                                     aria-label="{{ .Name }}" {{ if $current }}aria-selected="true"{{ end }}>
                                     <a href="{{ $rel }}" class="ActionListContent d-flex flex-items-center">
-                                        {{ with .Pre }}
-                                            <span class="ActionListItem-visual ActionListItem-visual--leading">{{ . | readFile | safeHTML }}</span>
-                                        {{ end }}
+                                        {{ with .Pre }}<span class="ActionListItem-visual ActionListItem-visual--leading">{{ partial "hugo-primer/helpers/svg.html" (dict "src" . "size" "16") }}</span>{{ end }}
                                         <span class="ActionListItem-label">{{ .Name }}</span>
                                     </a>
                                 </li>
