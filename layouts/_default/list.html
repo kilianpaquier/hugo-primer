@@ -32,16 +32,12 @@
 
         <!-- pagination settings -->
         {{ $format := .Params.hugo_primer.pagination.format | default site.Params.hugo_primer.pagination.format }}
-        {{ $order := .Params.hugo_primer.pagination.order | default site.Params.hugo_primer.pagination.order }}
         {{ $size := .Params.hugo_primer.pagination.pagerSize | default site.Params.hugo_primer.pagination.pagerSize }}
         {{ $slots := .Params.hugo_primer.pagination.slots | default site.Params.hugo_primer.pagination.slots }}
-        {{ $sort := .Params.hugo_primer.pagination.sort | default site.Params.hugo_primer.pagination.sort }}
 
-        <!-- order all pages by given "order" params -->
-        <!-- sort all pages by given "sort" params -->
         <!-- for each group of pages of the same "order", sort them by weight -->
         {{ $pages := slice }}
-        {{ range .RegularPages.GroupByParam $order $sort }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
+        {{ range partial "hugo-primer/helpers/group.html" . }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
 
         {{ range $index, $page := (.Paginate $pages $size).Pages }}
             <article class="border-bottom {{ if and (not $tags) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
