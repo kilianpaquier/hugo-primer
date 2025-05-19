@@ -1,6 +1,6 @@
 ---
 date: {{ .Date }}
-description: ""
+description: "Important for SEO"
 draft: true
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 weight: 5
