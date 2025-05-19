@@ -38,9 +38,9 @@ DOMPurify.addHook('uponSanitizeElement', upon)
 
 /**
  * sanitize sanitizes the input string to avoid any Node.innerHTML issues.
- * 
+ *
  * @param {string} input the input node(s) to sanitize
- * 
+ *
  * @returns sanitized node
  */
 const sanitize = input => DOMPurify.sanitize(input, { ADD_ATTR: ["target"] })
