@@ -15,6 +15,34 @@ const escape = input => {
         .replace(/'/g, "&#039;")
 }
 
-const sanitize = input => DOMPurify.sanitize(input)
+/**
+ * @param {HTMLElement} node
+ */
+const upon = (node, data) => {
+    if (data.tagName !== "a") {
+        return
+    }
+
+    const target = node.getAttribute("target")
+    if (!target || target === "_self") {
+        return
+    }
+
+    const rel = node.getAttribute("rel")
+    if (target !== "_blank" || rel !== "noopener noreferrer") {
+        node.removeAttribute("rel")
+        node.removeAttribute("target")
+    }
+}
+DOMPurify.addHook('uponSanitizeElement', upon)
+
+/**
+ * sanitize sanitizes the input string to avoid any Node.innerHTML issues.
+ * 
+ * @param {string} input the input node(s) to sanitize
+ * 
+ * @returns sanitized node
+ */
+const sanitize = input => DOMPurify.sanitize(input, { ADD_ATTR: ["target"] })
 
 export { escape, sanitize }
