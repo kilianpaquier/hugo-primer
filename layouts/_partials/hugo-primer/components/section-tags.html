@@ -1,0 +1,29 @@
+{{ $section := .section }}
+{{ $tags := .taxonomy }}
+
+<!-- filter tags for only current section when page is not tags' one -->
+{{ if ne $section "tags" }}
+    {{ $filter := newScratch }}
+    {{ range $term, $pages := $tags }}
+        {{ $hasSection := where $pages ".Page.Section" $section }}
+        {{ if gt $hasSection 0 }}{{ $filter.Set $term (index $tags $term) }}{{ end }}
+    {{ end }}
+    {{ $tags = $filter.Values }}
+{{ end }}
+
+{{ with $tags }}
+    <div class="border-bottom pb-4">
+        <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+            {{ range $term, $taxonomy := . }}
+                <li aria-label="{{ $term | lower }}">
+                    <a class="Link Link--muted text-small" href="{{ .Page.RelPermalink }}">
+                        <span class="d-flex flex-items-center octicon col-gap-2">
+                            {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
+                            {{ $term | lower }}
+                        </span>
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}
