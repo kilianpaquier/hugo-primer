@@ -1,0 +1,26 @@
+{{ $order := .Params.hugo_primer.pagination.order | default site.Params.hugo_primer.pagination.order }}
+{{ $sort := .Params.hugo_primer.pagination.sort | default site.Params.hugo_primer.pagination.sort }}
+
+{{ $groups := false }}
+
+{{ if eq (lower $order) "date" }}
+    {{ $groups = .RegularPages.GroupByDate "2006-01-02" $sort }}
+{{ end }}
+
+{{ if eq (lower $order) "expirydate" }}
+    {{ $groups = .RegularPages.GroupByExpiryDate "2006-01-02" $sort }}
+{{ end }}
+
+{{ if eq (lower $order) "lastmod" }}
+    {{ $groups = .RegularPages.GroupByLastmod "2006-01-02" $sort }}
+{{ end }}
+
+{{ if eq (lower $order) "publishdate" }}
+    {{ $groups = .RegularPages.GroupByPublishDate "2006-01-02" $sort }}
+{{ end }}
+
+{{ if not $groups }}
+    {{ $groups = .RegularPages.GroupByParam $sort $order }}
+{{ end }}
+
+{{ return $groups }}
