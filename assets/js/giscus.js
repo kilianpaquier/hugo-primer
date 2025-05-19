@@ -1,6 +1,6 @@
 import wait from "./lib/wait"
 
-wait("giscus").then(() => {
+wait("#giscus").then(() => {
     // observer a change of theme to send giscus a message indicating to change its own theme since it's in a iframe
     const html = document.documentElement
     new MutationObserver(mutations => {

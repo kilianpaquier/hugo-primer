@@ -21,7 +21,7 @@ const getWidth = el => {
 }
 
 // wait for underline-nav to be initialized within 3000 milliseconds
-wait("underline-nav", 3000).then(nav => {
+wait("#underline-nav", 3000).then(nav => {
     /** @type {NodeListOf<HTMLLIElement>} */
     const list = nav.querySelector("ul").querySelectorAll("li")
 
