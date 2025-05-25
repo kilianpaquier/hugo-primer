@@ -25,17 +25,26 @@
 {{ end }}
 
 {{ $base := path.BaseName $src }}
-{{ $size := .size | default "24" }}
 {{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
-{{ $newsvg := printf `<svg class="%s" height="%s" width="%s" ${1}>${2}</svg>` $base $size $size }}
+
+<!-- define all attributes -->
+{{ $attrs := slice }}
+{{ $attrs = $attrs | append (printf "class=%q" (print "octicon" " " $base)) }}
+{{ if .height }}{{ $attrs = $attrs | append (printf "height=%q" .height) }}{{ end }}
+{{ if .width }}{{ $attrs = $attrs | append (printf "width=%q" .width) }}{{ end }}
 
 {{ if .tooltip }}
     {{ $id := replace (.tooltip | lower) " " "-" }}
-    {{ $newsvg = printf `<svg id="%s" aria-labelledby="tooltip-%s" class="%s" height="%s" width="%s" ${1}>${2}</svg>` $id $id $base $size $size }}
+    {{ $attrs = $attrs | append (printf "id=%q" $id) }}
+    {{ $attrs = $attrs | append (printf "aria-labelledby=%q" (print "tooltip-" $id)) }}
 
     <tool-tip id='tooltip-{{ $id }}' for='{{ $id }}' class="position-absolute sr-only" popover="manual" data-direction="sw" data-type="label" aria-hidden="true" role="tooltip">
         {{ .tooltip }}
     </tool-tip>
 {{ end }}
+
+{{ $str := "" }}
+{{ range $attrs }}{{ $str = print $str " " . }}{{ end }}
+{{ $newsvg := printf `<svg %s ${1}>${2}</svg>` $str }}
 
 {{ replaceRE $oldsvg $newsvg $resource | safeHTML }}

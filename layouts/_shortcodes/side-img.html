@@ -1,4 +1,5 @@
-<div class='d-flex flex-items-center {{ .Get "class" }}'>
-    {{ with .Get "img" }}<img class="sizing-border-box" src="{{ . }}" alt="{{ path.BaseName . }}" width='{{ $.Get "size" | default "25px" }}'>{{ end }}
+{{ $src := .Get "src" }}
+<div class='d-flex {{ .Get "class" }}'>
+    <img class='sizing-border-box {{ .Get "img-class" }}' src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
     <div class='d-flex flex-column {{ .Get "inner-class" }}'>{{ .Inner }}</div>
 </div>

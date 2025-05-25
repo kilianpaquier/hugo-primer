@@ -48,6 +48,8 @@ params:
 
     pagination:
       pagerSize: 5
+      sort: weight
+      order: asc
 
     search:
       enabled: true
