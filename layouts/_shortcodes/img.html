@@ -6,5 +6,5 @@
     </figure>
 {{ else }}
     {{ $src := .Get "src" }}
-    <img src="{{ $src }}" class='{{ .Get "class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+    <img src="{{ $src }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
 {{ end }}

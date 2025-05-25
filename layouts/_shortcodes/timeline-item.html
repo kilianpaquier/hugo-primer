@@ -1,4 +1,5 @@
+{{ $badge := .Get "badge" }}
 <div class='TimelineItem {{ .Get "class" }}'>
-    {{ with .Get "badge" }}<img class="TimelineItem-badge sizing-border-box" src="{{ . }}" alt="{{ . }}">{{ end }}
+    <img class="TimelineItem-badge sizing-border-box" src="{{ $badge }}" alt="{{ path.BaseName $badge }}">
     <div class='d-flex flex-column TimelineItem-body {{ .Get "inner-class" }}'>{{ .Inner }}</div>
 </div>

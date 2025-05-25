@@ -15,7 +15,7 @@
                         {{ $page := site.GetPage .URL }}
                         <li aria-label="{{ .Params.aria_label | default .Name }}">
                             <span class="d-inline-flex flex-items-center col-gap-3">
-                                <span class="fgColor-muted octicon d-flex flex-items-center">{{ partial "hugo-primer/helpers/svg.html" (dict "src" .Pre "size" "16") }}</span>
+                                <span class="fgColor-muted octicon d-flex flex-items-center">{{ partial "hugo-primer/helpers/svg.html" (dict "src" .Pre "width" "16") }}</span>
                                 {{ if .URL }}
                                     <a class="Link--primary {{ .Params.class }}" href="{{ .URL }}" {{ if not $page }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
                                 {{ else }}

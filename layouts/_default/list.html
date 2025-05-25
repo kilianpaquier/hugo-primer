@@ -30,7 +30,7 @@
                     {{ if and (eq $section "tags") $menu.Pre }}
                         <li aria-label="Section">
                             <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ $menu.URL }}">
-                                <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" (dict "src" $menu.Pre "size" "16") }}</span>
+                                <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" (dict "src" $menu.Pre "width" "16") }}</span>
                                 <span>{{ $menu.Identifier }}</span>
                             </a>
                         </li>

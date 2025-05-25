@@ -8,7 +8,7 @@ tags:
   - Lazysizes
   - Instant pages
 title: Advanced usage
-weight: 45
+weight: 50
 ---
 
 # {{% param "title" %}}
