@@ -76,6 +76,10 @@ modal-dialog {
     display: flex !important;
 }
 
+.TimelineItem-badge {
+    z-index: 0;
+}
+
 .Box-header {
     margin: 0;
     border-style: none;
