@@ -29,7 +29,12 @@
 
 <!-- define all attributes -->
 {{ $attrs := slice }}
-{{ $attrs = $attrs | append (printf "class=%q" (print "octicon" " " $base)) }}
+{{ if .class }}
+{{ $attrs = $attrs | append (printf "class=%q" (print .class " " $base)) }}
+{{ else }}
+{{ $attrs = $attrs | append (printf "class=%q" $base) }}
+{{ end }}
+
 {{ if .height }}{{ $attrs = $attrs | append (printf "height=%q" .height) }}{{ end }}
 {{ if .width }}{{ $attrs = $attrs | append (printf "width=%q" .width) }}{{ end }}
 
