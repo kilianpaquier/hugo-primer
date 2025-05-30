@@ -1,5 +1,44 @@
 {{ define "main" }}
-    <section id="main" class="Box Box--spacious" aria-label='{{ T "arias.content" }}'>
-        <article class="Box-body markdown-body">{{ .Content }}</article>
+    <section id="main" aria-label='{{ T "arias.content" }}'>
+        <article class="Box Box--spacious mb-3">
+            <div class="Box-body markdown-body">{{ .Content }}</div>
+        </article>
+
+        {{ if site.Taxonomies.pin }}
+            <ol class="list-style-none d-flex flex-wrap gutter-condensed" aria-label="Pins">
+                {{ range $term, $pins := site.Taxonomies.pin }}
+                    {{ range $pins }}
+                        {{ $icon := (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre }}
+                        <li class="col-12 col-md-6 mb-3" aria-label="{{ .Title }}">
+                            <div class="Box height-full">
+                                <div class="Box-body d-flex flex-column row-gap-4">
+                                    <div class="d-flex flex-items-center col-gap-3 row-gap-3">
+                                        <span class="d-flex octicon fgColor-muted">
+                                            {{ partial "hugo-primer/helpers/svg.html" (dict "src" $icon "width" "16") }}
+                                        </span>
+                                        <a class="Link text-bold" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                    </div>
+
+                                    <summary class="text-small fgColor-muted">{{ .Description | markdownify }}</summary>
+
+                                    {{ with .GetTerms "tags" }}
+                                        <ul class="d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                                            {{ range . }}
+                                                <li aria-label="{{ .Name }}">
+                                                    <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ .RelPermalink }}">
+                                                        <span class="d-flex octicon">{{ "/static/primer/tag-16.svg" | readFile | safeHTML }}</span>
+                                                        <span>{{ .Name | lower }}</span>
+                                                    </a>
+                                                </li>
+                                            {{ end }}
+                                        </ul>
+                                    {{ end }}
+                                </div>
+                            </div>
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ol>
+        {{ end }}
     </section>
 {{ end }}

@@ -1,4 +1,5 @@
 taxonomies:
+  pin: pin
   tag: tags
 
 outputs:
@@ -20,6 +21,7 @@ markup:
 
 params:
   hugo_primer:
+    notice: Theme by [hugo-primer](https://github.com/kilianpaquier/hugo-primer)
     styles:
       container: container-xl px-3 px-md-4 px-lg-5
       custom_file: ""
