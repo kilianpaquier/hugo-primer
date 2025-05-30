@@ -38,13 +38,12 @@ Au-delà, il est possible de complètement surcharger le *footer* en surchargean
 {{ $offset := or .IsPage (eq .Kind "404") }}
 
 <footer>
-    {{ if site.Copyright }}
-        <div class="{{ $container }} py-3">
-            <div class="col-12 col-md-8 col-lg-9 {{ if not $offset }}offset-md-4 offset-lg-3{{ end }}">
-                {{ site.Copyright }}
-            </div>
+    <div class="{{ $container }} py-3">
+        <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }} d-flex flex-justify-between flex-column flex-sm-row row-gap-3">
+            {{ with site.Params.hugo_primer.notice }}<span>{{ . | markdownify }}</span>{{ end }}
+            {{ with site.Copyright }}<span>{{ . }}</span>{{ end }}
         </div>
-    {{ end }}
+    </div>
 </footer>
 ```
 
