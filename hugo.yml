@@ -1,4 +1,5 @@
 taxonomies:
+  pin: pin
   tag: tags
 
 outputs:
