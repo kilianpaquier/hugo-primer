@@ -31,14 +31,7 @@
 
                     {{ with .GetTerms "tags" }}
                         <div class="ml-auto">
-                            <ul class="d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3 flex-justify-end" aria-label='{{ T "arias.tags" }}'>
-                                {{ range . }}
-                                    <li class="d-flex flex-items-center octicon text-small fgColor-muted col-gap-2" aria-label="{{ .Name | lower }}">
-                                        {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
-                                        {{ .Name | lower }}
-                                    </li>
-                                {{ end }}
-                            </ul>
+                            {{ partial "hugo-primer/components/tags/many.html" . }}
                         </div>
                     {{ end }}
                 </div>
@@ -64,7 +57,7 @@
                             {{ $next := dict }}
                             {{ with index $pages (add $index 1) }}{{ $next = dict "URL" (relLangURL .RelPermalink) }}{{ end }}
 
-                            {{ partial "hugo-primer/components/pagination.html" (dict "prev" $prev "next" $next "format" $format) }}
+                            {{ partial "hugo-primer/components/primer/pagination.html" (dict "prev" $prev "next" $next "format" $format) }}
                         {{ break }}
                         {{ end }}
                     {{ end }}

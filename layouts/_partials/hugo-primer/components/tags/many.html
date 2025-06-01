@@ -1,0 +1,3 @@
+<ul class="d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+    {{ range . }}<li aria-label="{{ .Name }}">{{ partial "hugo-primer/components/tags/one.html" . }}</li>{{ end }}
+</ul>

@@ -13,6 +13,7 @@ navigation:
   change_theme: Change theme
   menu: Additional navigation options
   not_found: Didn't find anything here!
+  pins: Pinned
 search:
   button: Type {{ . }} to search
   clear: Clear search

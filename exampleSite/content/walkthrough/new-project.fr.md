@@ -1,6 +1,7 @@
 ---
 date: 2025-04-16
 description: "How to : création d'un nouveau projet avec le thème **hugo-primer**"
+pin: true
 tags:
   - Setup
 title: Nouveau projet

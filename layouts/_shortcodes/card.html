@@ -1,0 +1,10 @@
+<!-- FIXME add tags but how with shortcodes format ? -->
+{{ partial "hugo-primer/components/primer/card.html"
+    (dict
+        "description" (.Get "description")
+        "icon" (.Get "icon")
+        "permalink" (.Get "permalink")
+        "title" (.Get "title")
+        "url" (.Get "url")
+    )
+}}

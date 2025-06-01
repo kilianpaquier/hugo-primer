@@ -1,14 +1,14 @@
-<button id="langs-button" popovertarget="langs-overlay" class="Button AppHeader--button Button--secondary d-flex px-2" type="button"
-    aria-haspopup="menu" aria-controls="langs-overlay" aria-labelledby="tooltip-langs-button">
+<button id="lang-button" popovertarget="lang-overlay" class="Button AppHeader--button Button--secondary d-flex px-2" type="button"
+    aria-haspopup="menu" aria-controls="lang-overlay" aria-labelledby="tooltip-lang-button">
     {{ "/static/reddit/lang-17.svg" | readFile | safeHTML }}
     {{ "/static/primer/triangle-down-16.svg" | readFile | safeHTML }}
 </button>
 
-<tool-tip id="tooltip-langs-button" for="langs-button" class="position-absolute sr-only" popover="manual" data-direction="se" data-type="label" aria-hidden="true" role="tooltip">
+<tool-tip id="tooltip-lang-button" for="lang-button" class="position-absolute sr-only" popover="manual" data-direction="se" data-type="label" aria-hidden="true" role="tooltip">
     {{ T "navigation.change_lang" }}
 </tool-tip>
 
-<anchored-position id="langs-overlay" anchor="langs-button" anchor-offset="normal" align="end" popover="auto" aria-labelledby="langs">
+<anchored-position id="lang-overlay" anchor="lang-button" anchor-offset="normal" align="end" popover="auto" aria-label='{{ T "arias.langs" }}'>
     <div class="Overlay Overlay--size-auto p-2">
         <ul class="ActionListWrap" aria-label='{{ T "arias.langs" }}'>
             {{ range .Translations }}

@@ -1,5 +1,8 @@
-{{ $badge := .Get "badge" }}
-<div class='TimelineItem {{ .Get "class" }}'>
-    <img class="TimelineItem-badge sizing-border-box" src="{{ $badge }}" alt="{{ path.BaseName $badge }}">
-    <div class='d-flex flex-column TimelineItem-body {{ .Get "inner-class" }}'>{{ .Inner }}</div>
-</div>
+{{ partial "hugo-primer/components/primer/timeline-item.html"
+    (dict
+        "badge" (.Get "badge")
+        "body_class" (.Get "inner-class")
+        "body" .Inner
+        "class" (.Get "class")
+    )
+}}

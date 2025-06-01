@@ -1,6 +1,7 @@
 ---
 date: 2025-05-19
 description: "How to: use pre-defined shortcodes"
+pin: true
 tags:
   - Setup
   - Shortcodes
@@ -128,12 +129,12 @@ It can also be equipped with a tooltip if `tooltip` attribute is given.
 SVGs are fetched as raw HTML during **Hugo** build and can be remote (`src` starts with `https://`) or local.
 
 ```md
-{{</* svg src="/static/primer/book-16.svg" height="22" width="22" tooltip="A book" */>}}
+{{</* svg src="/static/primer/book-16.svg" class="octicon" height="22" width="22" tooltip="A book" */>}}
 ```
 
 ### Example
 
-{{< svg src="/static/primer/book-16.svg" height="22" width="22" tooltip="A book" >}}
+{{< svg src="/static/primer/book-16.svg" class="octicon" height="22" width="22" tooltip="A book" >}}
 
 ## Timeline item
 

@@ -6,8 +6,8 @@
 <body>
     <a href="#main" data-skip-target-assigned="true" class="p-3 bgColor-accent-emphasis fgColor-onEmphasis show-on-focus">{{ T "arias.skip_to_content" }}</a>
 
-    {{ partial "hugo-primer/components/navbar.html" . }}
-    {{ partial "hugo-primer/components/navigation.html" . }}
+    {{ partial "hugo-primer/components/headers/navbar.html" . }}
+    {{ partial "hugo-primer/components/headers/navigation.html" . }}
 
     <main class="mt-4">
         {{ $offset := or .IsPage (eq .Kind "404") }}
@@ -20,7 +20,7 @@
                 <div class="d-flex flex-column-reverse flex-md-row-reverse">
                     <div class="col-12 col-md-8 col-lg-9">{{ block "main" . }}{{ end }}</div>
                     <hr class="col-12 my-4 d-md-none" aria-hidden="true" />
-                    <div class="col-12 col-md-4 col-lg-3 pr-4">{{ partial "hugo-primer/components/side.html" . }}</div>
+                    <div class="col-12 col-md-4 col-lg-3 pr-4">{{ partial "hugo-primer/components/profile.html" . }}</div>
                 </div>
             </div>
         {{ end }}

@@ -1,0 +1,21 @@
+<div class="Box height-full">
+    <div class="Box-body d-flex flex-column row-gap-4 height-full">
+        {{ if .icon }}
+            <div class="d-flex flex-items-center col-gap-3 row-gap-3">
+                <span class="d-flex octicon fgColor-muted" aria-label="{{ .icon_name | default (path.BaseName .icon) }}">
+                    {{ partial "hugo-primer/helpers/svg.html" (dict "src" .icon "width" "16") }}
+                </span>
+                <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .title }}</a>
+            </div>
+        {{ else }}
+            <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .title }}</a>
+        {{ end }}
+
+        <summary class="text-small fgColor-muted">{{ .description }}</summary>
+
+        <!-- place tags at the bottom as much as possible -->
+        <div class="mt-auto">
+            {{ with .tags }}{{ partial "hugo-primer/components/tags/many.html" . }}{{ end }}
+        </div>
+    </div>
+</div>

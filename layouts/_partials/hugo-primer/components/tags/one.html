@@ -1,0 +1,7 @@
+{{ partial "hugo-primer/components/primer/tag.html"
+    (dict
+        "icon" (dict "src" "/static/primer/tag-16.svg" "width" "16")
+        "name" (.Name | lower)
+        "permalink" .RelPermalink
+    )
+}}
