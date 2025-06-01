@@ -26,7 +26,7 @@ const toItemHTML = item => {
     return `
     <li class="ActionListItem" role="option" aria-label="${escape(item.title)}">
         <a href="${escape(item.url ?? item.permalink)}" class="ActionListContent" aria-label="${escape(item.title)}" ${item.url ? 'target="_blank" rel="noopener noreferrer"' : ""}>
-            <span class="ActionListItem-visual ActionListItem-visual--leading octicon" aria-label="${escape(item.section)}">${item.icon}</span>
+            <span class="ActionListItem-visual ActionListItem-visual--leading octicon">${item.icon}</span>
             <span class="ActionListItem-descriptionWrap">
                 <span class="ActionListItem-label">${escape(item.title)}</span>
                 <span class="ActionListItem-description">${escape(item.description)}</span>
@@ -143,12 +143,7 @@ const remote = async path => {
 
 documentReady(async () => {
     // load search index depending on current lang
-    let pages = []
-    try {
-        pages = await remote(`/${document.documentElement.getAttribute("lang")}/index.json`)
-    } catch (e) {
-        pages = await remote("/index.json")
-    }
+    const pages = await remote(`{{ site.LanguagePrefix }}/index.json`)
 
     // initialize fuse
     const options = {

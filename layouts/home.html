@@ -13,7 +13,6 @@
                             {{ partial "hugo-primer/components/primer/card.html"
                                 (dict
                                     "description" (.Description | markdownify)
-                                    "icon_name" .Section
                                     "icon" ((index (where (index site.Menus "main") "Identifier" .Section) 0).Pre)
                                     "permalink" .RelPermalink
                                     "tags" (.GetTerms "tags")
