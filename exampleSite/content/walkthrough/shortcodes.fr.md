@@ -1,6 +1,7 @@
 ---
 date: 2025-05-19
 description: "How to : utilisation des shortcodes prédéfinis"
+pin: true
 tags:
   - Setup
   - Shortcodes
@@ -128,12 +129,12 @@ Il peut aussi être équipé d'une info-bulle si l'attribut `tooltip` est donné
 Les SVGs sont ajoutés en static lors du build **Hugo** et peuvent être distants (`src` commençe par `https://`) ou locaux.
 
 ```md
-{{</* svg src="/static/primer/book-16.svg" height="22" width="22" tooltip="Un libre" */>}}
+{{</* svg src="/static/primer/book-16.svg" class="octicon" height="22" width="22" tooltip="Un libre" */>}}
 ```
 
 ### Exemple
 
-{{< svg src="/static/primer/book-16.svg" height="22" width="22" tooltip="Un livre" >}}
+{{< svg src="/static/primer/book-16.svg" class="octicon" height="22" width="22" tooltip="Un livre" >}}
 
 ## Item chronologique
 

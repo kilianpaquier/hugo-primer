@@ -4,7 +4,7 @@
         {{ $tags := site.Taxonomies.tags }}
 
         <!-- show current section tags -->
-        {{ partial "hugo-primer/components/section-tags.html" (dict "section" .Section "taxonomy" $tags) }}
+        {{ partial "hugo-primer/components/tags/section.html" (dict "section" .Section "taxonomy" $tags) }}
 
         <!-- pagination settings -->
         {{ $format := .Params.hugo_primer.pagination.format | default site.Params.hugo_primer.pagination.format }}
@@ -15,58 +15,60 @@
         {{ $pages := slice }}
         {{ range partial "hugo-primer/helpers/group.html" . }}{{ $pages = $pages | append .Pages.ByWeight }}{{ end }}
 
-        {{ range $index, $page := (.Paginate $pages $size).Pages }}
-            <article class="border-bottom {{ if and (not $tags) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
-                <h2 aria-label="Title">
-                    <a href="{{ $page.Params.URL | default $page.RelPermalink }}" class="Link" {{ if $page.Params.URL}}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $page.Title | markdownify }}</a>
-                </h2>
-                <summary class="fgColor-muted mb-3 list-style-none" aria-label="Description">
-                    {{ $page.Description | markdownify }}
-                </summary>
+        <ul class="list-style-none">
+            {{ range $index, $page := (.Paginate $pages $size).Pages }}
+                <li class="border-bottom {{ if and (not $tags) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
+                    <h2 aria-label="Title">
+                        <a href="{{ $page.Params.URL | default $page.RelPermalink }}" class="Link" {{ if $page.Params.URL}}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $page.Title | markdownify }}</a>
+                    </h2>
+                    <summary class="fgColor-muted mb-3 list-style-none" aria-label="Description">
+                        {{ $page.Description | markdownify }}
+                    </summary>
 
-                <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
-                    <!-- show section on tags page only -->
-                    {{ $menu := (index (where (index site.Menus "main") "Identifier" $page.Section) 0) }}
-                    {{ if and (eq $section "tags") $menu.Pre }}
-                        <li aria-label="Section">
-                            <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ $menu.URL }}">
-                                <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" (dict "src" $menu.Pre "width" "16") }}</span>
-                                <span>{{ $menu.Identifier }}</span>
-                            </a>
+                    <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                        <!-- show section on tags page only -->
+                        {{ $menu := (index (where (index site.Menus "main") "Identifier" $page.Section) 0) }}
+                        {{ if and (eq $section "tags") $menu.Pre }}
+                            <li aria-label="Section">
+                                {{ partial "hugo-primer/components/primer/tag.html"
+                                    (dict
+                                        "icon" (dict "src" $menu.Pre "width" "16")
+                                        "name" $menu.Identifier
+                                        "permalink" $menu.URL
+                                    )
+                                }}
+                            </li>
+                        {{ end }}
+
+                        <!-- page tags -->
+                        {{ range $page.GetTerms "tags" }}
+                            <li aria-label="{{ .Name }}">
+                                {{ partial "hugo-primer/components/tags/one.html" . }}
+                            </li>
+                        {{ end }}
+
+                        {{ $date := $page.Date | dateFormat ":date_medium" }}
+                        <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>
+                            {{ T "timings.posted" $date }}
                         </li>
-                    {{ end }}
 
-                    <!-- page tags -->
-                    {{ range $page.GetTerms "tags" }}
-                        <li aria-label="{{ .Name }}">
-                            <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ .RelPermalink }}">
-                                <span class="d-flex octicon">{{ "/static/primer/tag-16.svg" | readFile | safeHTML }}</span>
-                                <span>{{ .Name | lower }}</span>
-                            </a>
-                        </li>
-                    {{ end }}
+                        {{ $lastmod := $page.Lastmod | dateFormat ":date_medium" }}
+                        {{ if $page.Date.Before $page.Lastmod }}
+                            <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_modified" }}'>
+                                {{ T "timings.modified" $lastmod }}
+                            </li>
+                        {{ end }}
 
-                    {{ $date := $page.Date | dateFormat ":date_medium" }}
-                    <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>
-                        {{ T "timings.posted" $date }}
-                    </li>
+                        {{ if not (eq $page.ReadingTime 0) }}
+                            <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
+                                {{ T "timings.reading_time" $page.ReadingTime }}
+                            </li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ end }}
+        </ul>
 
-                    {{ $lastmod := $page.Lastmod | dateFormat ":date_medium" }}
-                    {{ if $page.Date.Before $page.Lastmod }}
-                        <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_modified" }}'>
-                            {{ T "timings.modified" $lastmod }}
-                        </li>
-                    {{ end }}
-
-                    {{ if not (eq $page.ReadingTime 0) }}
-                        <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
-                            {{ T "timings.reading_time" $page.ReadingTime }}
-                        </li>
-                    {{ end }}
-                </ul>
-            </article>
-        {{ end }}
-
-        {{ partial "hugo-primer/components/pagination.html" (dict "page" . "format" $format "slots" $slots) }}
+        {{ partial "hugo-primer/components/primer/pagination.html" (dict "page" . "format" $format "slots" $slots) }}
     </section>
 {{ end }}

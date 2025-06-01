@@ -16,12 +16,13 @@
         <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
             {{ range $term, $taxonomy := . }}
                 <li aria-label="{{ $term | lower }}">
-                    <a class="Link Link--muted text-small" href="{{ .Page.RelPermalink }}">
-                        <span class="d-flex flex-items-center octicon col-gap-2">
-                            {{ "/static/primer/tag-16.svg" | readFile | safeHTML }}
-                            {{ $term | lower }}
-                        </span>
-                    </a>
+                    {{ partial "hugo-primer/components/primer/tag.html"
+                        (dict
+                            "icon" (dict "src" "/static/primer/tag-16.svg" "width" "16")
+                            "name" ($term | lower)
+                            "permalink" .Page.RelPermalink
+                        )
+                    }}
                 </li>
             {{ end }}
         </ul>

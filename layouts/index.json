@@ -5,9 +5,9 @@
         (dict
             "content" .Plain
             "date" (.Date | dateFormat ":date_medium")
-            "description" .Description
+            "description" (.Description)
             "icon" (strings.Replace ($icon | default "/static/primer/file-code-16.svg" | readFile) "\n" "")
-            "permalink" .Permalink
+            "permalink" .RelPermalink
             "section" (.Section | title)
             "summary" (printf "%s..." (substr (.Summary | plainify) 0 90))
             "tags" .Params.tags

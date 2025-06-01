@@ -1,0 +1,11 @@
+{{ if .permalink }}
+    <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ .permalink }}">
+        <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" .icon }}</span>
+        <span>{{ .name }}</span>
+    </a>
+{{ else }}
+    <div class="fgColor-muted text-small d-flex flex-items-center col-gap-2">
+        <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" .icon }}</span>
+        <span>{{ .name }}</span>
+    </div>
+{{ end }}

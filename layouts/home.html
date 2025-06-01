@@ -1,5 +1,30 @@
 {{ define "main" }}
-    <section id="main" class="Box Box--spacious" aria-label='{{ T "arias.content" }}'>
-        <article class="Box-body markdown-body">{{ .Content }}</article>
+    <section id="main" aria-label='{{ T "arias.content" }}'>
+        <article class="Box Box--spacious mb-3">
+            <div class="Box-body markdown-body">{{ .Content }}</div>
+        </article>
+
+        {{ if site.Taxonomies.pin }}
+            <h2 class="f4 mb-2 text-normal">{{ T "navigation.pins" }}</h2>
+            <ul class="list-style-none d-flex flex-wrap gutter-condensed" aria-label="Pins">
+                {{ range $term, $pins := site.Taxonomies.pin }}
+                    {{ range $pins }}
+                        <li class="col-12 col-md-6 mb-3" aria-label="{{ .Title }}">
+                            {{ partial "hugo-primer/components/primer/card.html"
+                                (dict
+                                    "description" (.Description | markdownify)
+                                    "icon_name" .Section
+                                    "icon" ((index (where (index site.Menus "main") "Identifier" .Section) 0).Pre)
+                                    "permalink" .RelPermalink
+                                    "tags" (.GetTerms "tags")
+                                    "title" .Title
+                                    "url" .Params.URL
+                                )
+                            }}
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+        {{ end }}
     </section>
 {{ end }}

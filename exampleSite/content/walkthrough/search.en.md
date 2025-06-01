@@ -1,6 +1,7 @@
 ---
 date: 2025-04-16
 description: "How to: configure global search"
+pin: true
 tags:
   - Setup
   - Search

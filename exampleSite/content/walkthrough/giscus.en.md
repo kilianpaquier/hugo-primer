@@ -1,6 +1,7 @@
 ---
 date: 2025-04-16
 description: "How to: enable and use comments system"
+pin: true
 tags:
   - Setup
   - Comments System
