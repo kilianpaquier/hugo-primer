@@ -40,9 +40,12 @@ menus:
 
 params:
   hugo_primer:
-    favicon: /logo.webp
-    nav_logo: /logo.webp
-    profile_logo: /logo.webp
+    favicon: /logo/10-rounded.webp
+    nav_logo: /logo/10.webp
+    profile_logo:
+      sizes: "(max-width: 768px) 170px, 290px"
+      src: /logo/20.webp
+      srcset: /logo/10.webp 192w, /logo/20.webp 384w
     title: Example Site
     subtitle: Subtitle
 

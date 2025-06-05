@@ -1,6 +1,8 @@
 <section aria-label='{{ T "arias.side" }}'>
     <div class="d-flex flex-md-column col-gap-6 row-gap-6">
-        <img src="{{ site.Params.hugo_primer.profile_logo }}" alt="Logo" width="100%" class="col-4 col-sm-3 col-md-12 avatar circle" />
+        {{ with site.Params.hugo_primer.profile_logo }}
+            <img src="{{ .src }}" srcset="{{ .srcset }}" sizes="{{ .sizes }}" alt="Logo" width="100%" class="col-4 col-sm-3 col-md-12 avatar circle" />
+        {{ end }}
         <div class="col-8 col-md-12 flex-content-center">
             <p class="vcard-fullname m-0" aria-label='{{ T "arias.title" }}'>{{ site.Params.hugo_primer.title | default site.Title }}</p>
             <p class="vcard-username m-0" aria-label='{{ T "arias.subtitle" }}'>{{ site.Params.hugo_primer.subtitle }}</p>
