@@ -23,7 +23,7 @@ params:
   hugo_primer:
     notice:
       - Styles by [**Primer**](https://primer.style/), **GitHub** Design System
-      - Theme by [hugo-primer](https://github.com/kilianpaquier/hugo-primer)
+      - Theme by [**hugo-primer**](https://github.com/kilianpaquier/hugo-primer)
     styles:
       container: container-xl px-3 px-md-4 px-lg-5
       custom_file: ""
