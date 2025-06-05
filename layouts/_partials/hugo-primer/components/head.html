@@ -19,6 +19,10 @@
 
     <link rel="icon" href="{{ site.Params.hugo_primer.Favicon }}">
 
+    {{ with site.Params.hugo_primer.profile_logo }}
+        <link rel="preload" as="image" imagesrcset="{{ .srcset }}" imagesizes="{{ .sizes }}">
+    {{ end }}
+
     {{ partialCached "hugo-primer/helpers/styles.html"
         (dict
             "local" (slice
