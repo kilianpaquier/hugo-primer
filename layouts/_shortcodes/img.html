@@ -1,10 +1,12 @@
+{{ $src := .Get "src" }}
+{{ $srcset := .Get "srcset" }}
+{{ $sizes := .Get "sizes" }}
+
 {{ if .Get "caption" }}
     <figure class='d-inline-flex flex-column flex-items-center {{ .Get "class" }}' aria-label='{{ .Get "caption" }}'>
-        {{ $src := .Get "src" }}
-        <img src="{{ $src }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+        <img src="{{ $src }}" srcset="{{ $srcset }}" sizes="{{ $sizes }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
         <figcaption class='{{ .Get "caption-class" }}' aria-label='{{ .Get "caption" }}'>{{ .Get "caption" }}</figcaption>
     </figure>
 {{ else }}
-    {{ $src := .Get "src" }}
-    <img src="{{ $src }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+    <img src="{{ $src }}" srcset="{{ $srcset }}" sizes="{{ $sizes }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
 {{ end }}
