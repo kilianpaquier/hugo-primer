@@ -23,7 +23,6 @@ params:
   hugo_primer:
     notice:
       - Styles by [**Primer**](https://primer.style/), **GitHub** Design System
-      - Inspired from [**github-style**](https://github.com/MeiK2333/github-style)
       - Theme by [**hugo-primer**](https://github.com/kilianpaquier/hugo-primer)
     styles:
       container: container-xl px-3 px-md-4 px-lg-5
