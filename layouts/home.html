@@ -10,10 +10,11 @@
                 {{ range $term, $pins := site.Taxonomies.pin }}
                     {{ range $pins }}
                         <li class="col-12 col-md-6 mb-3" aria-label="{{ .Title }}">
+                            {{ $icon := (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre }}
                             {{ partial "hugo-primer/components/primer/card.html"
                                 (dict
                                     "description" (.Description | markdownify)
-                                    "icon" ((index (where (index site.Menus "main") "Identifier" .Section) 0).Pre)
+                                    "icon" ($icon | default "/static/primer/file-code-16.svg")
                                     "permalink" .RelPermalink
                                     "tags" (.GetTerms "tags")
                                     "title" .Title
