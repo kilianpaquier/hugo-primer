@@ -9,15 +9,9 @@
             "icon" (strings.Replace ($icon | default "/static/primer/file-code-16.svg" | readFile) "\n" "")
             "permalink" .RelPermalink
             "section" (.Section | title)
-            "summary" (printf "%s..." (substr (.Summary | plainify) 0 90))
             "tags" .Params.tags
             "title" .Title
             "url" .Params.URL
-
-            "searchDescription" (.Description | lower)
-            "searchSection" (.Section | lower)
-            "searchTags" (apply .Params.tags "lower" ".")
-            "searchTitle" (.Title | lower)
         )
     }}
 {{- end }}

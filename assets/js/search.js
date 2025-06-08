@@ -11,7 +11,6 @@ import { escape, sanitize } from "./lib/sanitize"
  * @property {string} icon
  * @property {string} permalink
  * @property {string} section
- * @property {string} summary
  * @property {string[]} tags
  * @property {string} title
  * @property {string} url
@@ -148,7 +147,12 @@ documentReady(async () => {
     // initialize fuse
     const options = {
         includeScore: true,
-        keys: [{ name: "title", weight: 2 }, "section", { name: "description", weight: .5 }, { name: "tags", weight: .5 }],
+        keys: [
+            { name: "title", weight: 2 },
+            { name: "section", weight: 1 },
+            { name: "description", weight: .5 },
+            { name: "tags", weight: .5 },
+        ],
         shouldSort: true,
         useExtendedSearch: true,
         threshold: .2, // don't show too high fuzzy matches
