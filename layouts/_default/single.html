@@ -19,7 +19,7 @@
                                         {{ range $title.Headings }}
                                             <li id="{{ .ID }}-item" class="ActionListItem mx-2" role="menuitem">
                                                 <a href="#{{ .ID }}" class="ActionListContent">
-                                                    <span class="ActionListItem-label">{{ .Title | markdownify }}</span>
+                                                    <span class="ActionListItem-label">{{ .Title | markdownify | plainify }}</span>
                                                 </a>
                                             </li>
                                         {{ end }}
