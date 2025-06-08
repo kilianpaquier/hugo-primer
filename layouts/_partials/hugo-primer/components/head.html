@@ -2,15 +2,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
 
-    <meta name="description" content="{{ .Description | markdownify }}">
+    <meta name="description" content="{{ .Description | markdownify | plainify }}">
 
     <!-- see https://ogp.me/ -->
-    <meta property="og:description" content="{{ .Description | markdownify }}">
+    <meta property="og:description" content="{{ .Description | markdownify | plainify }}">
     <meta property="og:locale" content="{{ site.Language.LanguageCode }}">
-    {{ with .Translations }}
-        {{ range . }}
-            <meta property="og:locale:alternate" content="{{ .Language.LanguageCode }}">
-        {{ end }}
+    {{ range .Translations }}
+        <meta property="og:locale:alternate" content="{{ .Language.LanguageCode }}">
     {{ end }}
     <meta property="og:site_name" content="{{ site.Title }}">
     <meta property="og:title" content="{{ .Title | markdownify }}">
@@ -73,7 +71,7 @@
         "theme"
     }}
 
-    <title>{{ (cond .IsHome (site.Title) (printf "%s | %s" .Title site.Title)) | markdownify }}</title>
+    <title>{{ (cond .IsHome site.Title (printf "%s | %s" .Title site.Title)) | markdownify | plainify }}</title>
 
     {{ partial "hugo-primer/head.html" . }}
 </head>

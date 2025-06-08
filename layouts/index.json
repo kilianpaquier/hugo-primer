@@ -5,7 +5,7 @@
         (dict
             "content" .Plain
             "date" (.Date | dateFormat ":date_medium")
-            "description" (.Description)
+            "description" (.Description | markdownify | plainify)
             "icon" (strings.Replace ($icon | default "/static/primer/file-code-16.svg" | readFile) "\n" "")
             "permalink" .RelPermalink
             "section" (.Section | title)

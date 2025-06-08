@@ -15,8 +15,8 @@ html {
 }
 
 * {
-    touch-action: manipulation !important;
-    -ms-touch-action: manipulation !important;
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
 }
 
 @media screen and (prefers-reduced-motion:no-preference) {
