@@ -9,7 +9,7 @@ Welcome on **hugo-primer** theme!
 This theme is inspired of [**github-style**](https://github.com/MeiK2333/github-style) theme with more up-to-date styles
 but also more extensibility (all details in [walkthrough](/walkthrough)).
 
-**Primer** ? It's the *Design System* for **GitHub**, for which you can find the official website [here](https://primer.style/).
+**Primer** ? It's the Design System for **GitHub**, for which you can find the official website [here](https://primer.style/).
 
 This theme is 100% based on **Primer** styles:
 

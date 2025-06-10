@@ -19,7 +19,10 @@ Le logo, le titre, le sous-titre peuvent être définis comme suit dans la confi
 params:
   hugo_primer:
     nav_logo: /logo.webp
-    profile_logo: /logo.webp
+    profile_logo:
+      sizes: "(max-width: 768px) 170px, 290px"
+      src: /logo/20.webp
+      srcset: /logo/10.webp 192w, /logo/20.webp 384w
     subtitle: Subtitle
     title: Title
 ```
@@ -61,4 +64,4 @@ Vous pouvez obtenir plus d'information sur menus [ici](https://gohugo.io/content
 ## Suppléments
 
 Au-delà du menu `profile`, il est possible de surcharger le *layout* `layouts/partials/hugo-primer/side.html`
-pour ajouter des éléments supplémentaires en dessous des liens supplémentaires.
+pour ajouter des éléments supplémentaires en dessous des liens *extras*.

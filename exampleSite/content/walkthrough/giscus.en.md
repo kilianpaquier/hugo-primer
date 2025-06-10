@@ -34,8 +34,8 @@ params:
       #   data-strict:
 ```
 
-**Giscus** was choosen for this theme since they provide both day and night theme in coherence with **GitHub** website style.
-Also because authentication goes through their **GitHub** App, as such it's less painful to integrate an authenticated comment system.
+**Giscus** was choosen for this theme since it provides both day and night theme in coherence with **GitHub** website style.
+Also because authentication goes through its **GitHub** App, as such it's less painful to integrate an authenticated comment system.
 
 ## Replace giscus
 

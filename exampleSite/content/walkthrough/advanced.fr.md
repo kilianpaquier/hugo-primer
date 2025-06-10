@@ -16,7 +16,7 @@ weight: 50
 ## Favicon
 
 Le *favicon* représente la petite icône que vous pouvez voir dans le nom de l'onglet.
-Il est donc primordial de pouvoir configurer cette petite icône car il s'agit souvent du logo d'un site (dans la configuration `hugo.(yaml|toml)`) :
+Il est donc primordial de pouvoir la configurer car il s'agit souvent du logo d'un site (dans la configuration `hugo.(yaml|toml)`) :
 
 ```yaml
 params:
@@ -37,14 +37,31 @@ Au-delà, il est possible de complètement surcharger le *footer* en surchargean
 {{ $container := site.Params.hugo_primer.styles.container }}
 {{ $offset := or .IsPage (eq .Kind "404") }}
 
+{{ if or site.Copyright site.Params.hugo_primer.notices }}
 <footer>
-    <div class="{{ $container }} py-3">
-        <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }} d-flex flex-justify-between flex-column flex-sm-row row-gap-3">
-            {{ with site.Params.hugo_primer.notice }}<span>{{ . | markdownify }}</span>{{ end }}
-            {{ with site.Copyright }}<span>{{ . }}</span>{{ end }}
+    <div class="{{ $container }} py-6">
+        <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}">
+            <ol class="list-style-none d-flex flex-justify-center col-gap-6 row-gap-2 flex-wrap text-small fgColor-muted">
+                {{ with site.Copyright }}<li>{{ . }}</li>{{ end }}
+                {{ range site.Params.hugo_primer.notices }}<li>{{ . | markdownify }}</li>{{ end }}
+            </ol>
         </div>
     </div>
 </footer>
+{{ end }}
+```
+
+## Notices
+
+Par défaut (au niveau du *footer*), certaines notices sont présentes pour indiquer des liens utiles associés au thème.
+Ces notices sont modifiables facilement et rapidement (à vos risques et périls ?) pour y en ajouter de nouvelles ou en supprimer :
+
+```yaml
+params:
+  hugo_primer:
+    notices:
+      - Styles by [**Primer**](https://primer.style/)
+      - Theme by [**hugo-primer**](https://github.com/kilianpaquier/hugo-primer)
 ```
 
 ## Conteneur du site
@@ -61,7 +78,7 @@ params:
 
 Vous pouvez le modifier pour élargir et jouer avec les *paddings* globaux.
 La modification de ce style impacte à la fois la navigation, le contenu principal, la section des commentaires **giscus** et le *footer*.
-Vous pourrez trouver plus d'information sur le *grid* système de **Primer** [ici](https://primer.style/css/storybook/?path=/story/utilities-grid--container).
+Vous pouvez trouver plus d'information sur le *grid* système de **Primer** [ici](https://primer.style/css/storybook/?path=/story/utilities-grid--container).
 
 ## Lazysizes
 
@@ -120,11 +137,13 @@ Enfin, pour finir sur cette partie "avancée", les versions utilisées des style
 params:
   hugo_primer:
     versions:
+      dompurify: v3.2.6
+      fuse: v7.1.0
       instantpage: 5.2.0
-      primer_css: 21
-      primer_primitives: 10
-      primer_react: 37
-      primer_view_components: 0
+      primer_css: v21
+      primer_primitives: v10
+      primer_react: v37
+      primer_view_components: v0
 ```
 
 Il est donc possible de les modifier pour fixer une version ou mettre à jour sur une plus récente.

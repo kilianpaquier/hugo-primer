@@ -34,8 +34,8 @@ params:
       #   data-strict:
 ```
 
-Le choix de **giscus** repose sur leur capacité à fournir le thème jour et nuit en cohérence avec le site **GitHub**.
-Aussi car l'authentification est gérée par leur application **GitHub**, ce qui simplifie l'intégration d'un système de commentaires authentifié.
+Le choix de **giscus** repose sur sa capacité à fournir le thème jour et nuit en cohérence avec le site **GitHub**.
+Aussi car l'authentification est gérée par son application **GitHub**, ce qui simplifie l'intégration d'un système de commentaires authentifié.
 
 ## Remplacer giscus
 

@@ -57,7 +57,7 @@ L'attribut `alt` aura comme valeur le nom de l'image (i.e. `src="/images/my-imag
 ```md
 {{</* img
   class="col-2"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="100px"
   img-class="mb-1"
   caption="Arthur in The Beginning After the End"
@@ -67,7 +67,7 @@ L'attribut `alt` aura comme valeur le nom de l'image (i.e. `src="/images/my-imag
 
 {{< img
   class="col-2"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="100px"
   img-class="mb-1"
   caption="Arthur in The Beginning After the End"
@@ -99,7 +99,7 @@ Markdown content:
 ```md
 {{%/* side-img
   class="row-gap-3 col-gap-3 mt-3"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="50px"
 */%}}
 
@@ -112,7 +112,7 @@ Markdown content:
 
 {{% side-img
   class="row-gap-3 col-gap-3 mt-3"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="50px"
 %}}
 
@@ -157,14 +157,14 @@ Markdown content:
 ### Exemple
 
 ```md
-{{%/* timeline-item badge="/logo.webp" inner-class="fgColor-default" */%}}
+{{%/* timeline-item badge="/logo/10.webp" inner-class="fgColor-default" */%}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{%/* /timeline-item */%}}
-{{%/* timeline-item badge="/logo.webp" inner-class="fgColor-default" */%}}
+{{%/* timeline-item badge="/logo/10.webp" inner-class="fgColor-default" */%}}
 
 Markdown content:
 {class="mb-0"}
@@ -173,17 +173,57 @@ Markdown content:
 {{%/* /timeline-item */%}}
 ```
 
-{{% timeline-item badge="/logo.webp" inner-class="fgColor-default" %}}
+{{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{% /timeline-item %}}
-{{% timeline-item badge="/logo.webp" inner-class="fgColor-default" %}}
+{{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{% /timeline-item %}}
+
+## Paginate
+
+Un *shortcode* simple permettant d'afficher en face à face deux boutons (ou un seul) `< Précédent` et `Suivant >`
+avec des *URL*s personalisées :
+
+```md
+{{</* paginate next="/path/to/next" prev="/path/to/previous" format="default OU terse" */>}}
+```
+
+En mode *terse*, si `next` ou `prev` n'est pas fourni, alors le bouton associé n'est pas affiché.
+En mode *default*, le bouton associé est affiché mais désactivé.
+
+### Exemple
+
+#### Avec deux liens
+
+```md
+{{</* paginate next="/fr/walkthrough/shortcodes#paginate" prev="/fr/walkthrough/shortcodes#paginate" format="terse" */>}}
+{{</* paginate next="/fr/walkthrough/shortcodes#paginate" prev="/fr/walkthrough/shortcodes#paginate" format="default" */>}}
+```
+
+{{< paginate next="/fr/walkthrough/shortcodes#paginate" prev="/fr/walkthrough/shortcodes#paginate" format="terse" >}}
+{{< paginate next="/fr/walkthrough/shortcodes#paginate" prev="/fr/walkthrough/shortcodes#paginate" format="default" >}}
+
+#### Avec un seul lien
+
+```md
+{{</* paginate prev="/fr/walkthrough/shortcodes#paginate" format="terse" */>}}
+{{</* paginate next="/fr/walkthrough/shortcodes#paginate" format="terse" */>}}
+{{</* paginate prev="/fr/walkthrough/shortcodes#paginate" format="default" */>}}
+{{</* paginate next="/fr/walkthrough/shortcodes#paginate" format="default" */>}}
+```
+
+{{< paginate prev="/fr/walkthrough/shortcodes#paginate" format="terse" >}}
+{{< paginate next="/fr/walkthrough/shortcodes#paginate" format="terse" >}}
+{{< paginate prev="/fr/walkthrough/shortcodes#paginate" format="default" >}}
+{{< paginate next="/fr/walkthrough/shortcodes#paginate" format="default" >}}
+
+---

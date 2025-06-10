@@ -19,7 +19,10 @@ Logo, title and subtitle may be defined as followed in configuration file `hugo.
 params:
   hugo_primer:
     nav_logo: /logo.webp
-    profile_logo: /logo.webp
+    profile_logo:
+      sizes: "(max-width: 768px) 170px, 290px"
+      src: /logo/20.webp
+      srcset: /logo/10.webp 192w, /logo/20.webp 384w
     subtitle: Subtitle
     title: Title
 ```

@@ -1,0 +1,7 @@
+{{ partial "hugo-primer/components/primer/pagination.html"
+    (dict
+        "format" (.Get "format" | default site.Params.hugo_primer.pagination.format)
+        "next" (cond (.Get "next") (dict "URL" (.Get "next")) "")
+        "prev" (cond (.Get "prev") (dict "URL" (.Get "prev")) "")
+    )
+}}

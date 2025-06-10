@@ -59,7 +59,7 @@
                             </li>
                         {{ end }}
 
-                        {{ if not (eq $page.ReadingTime 0) }}
+                        {{ if ne $page.ReadingTime 0 }}
                             <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_reading_time" }}'>
                                 {{ T "timings.reading_time" $page.ReadingTime }}
                             </li>

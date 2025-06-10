@@ -37,14 +37,31 @@ Beyond this configuration, you are also able to completely override footer by ov
 {{ $container := site.Params.hugo_primer.styles.container }}
 {{ $offset := or .IsPage (eq .Kind "404") }}
 
+{{ if or site.Copyright site.Params.hugo_primer.notices }}
 <footer>
-    <div class="{{ $container }} py-3">
-        <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }} d-flex flex-justify-between flex-column flex-sm-row row-gap-3">
-            {{ with site.Params.hugo_primer.notice }}<span>{{ . | markdownify }}</span>{{ end }}
-            {{ with site.Copyright }}<span>{{ . }}</span>{{ end }}
+    <div class="{{ $container }} py-6">
+        <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}">
+            <ol class="list-style-none d-flex flex-justify-center col-gap-6 row-gap-2 flex-wrap text-small fgColor-muted">
+                {{ with site.Copyright }}<li>{{ . }}</li>{{ end }}
+                {{ range site.Params.hugo_primer.notices }}<li>{{ . | markdownify }}</li>{{ end }}
+            </ol>
         </div>
     </div>
 </footer>
+{{ end }}
+```
+
+## Notices
+
+By default (in the footer), a minimal number of notices are present to redirect users to the right links this theme is based on.
+Those notices can be modified through the configuration file `hugo.(yaml|toml)` to add, edit or remove one (or more) or all of them:
+
+```yaml
+params:
+  hugo_primer:
+    notices:
+      - Styles by [**Primer**](https://primer.style/)
+      - Theme by [**hugo-primer**](https://github.com/kilianpaquier/hugo-primer)
 ```
 
 ## Website container
@@ -121,11 +138,13 @@ At last, to end this "advanced" section, all **Primer** styles versions (and oth
 params:
   hugo_primer:
     versions:
+      dompurify: v3.2.6
+      fuse: v7.1.0
       instantpage: 5.2.0
-      primer_css: 21
-      primer_primitives: 10
-      primer_react: 37
-      primer_view_components: 0
+      primer_css: v21
+      primer_primitives: v10
+      primer_react: v37
+      primer_view_components: v0
 ```
 
 It is as such feasible to edit those to fix a specific version or to update one (or all) to a newer version.

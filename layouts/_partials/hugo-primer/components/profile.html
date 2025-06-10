@@ -1,7 +1,14 @@
 <section aria-label='{{ T "arias.side" }}'>
     <div class="d-flex flex-md-column col-gap-6 row-gap-6">
         {{ with site.Params.hugo_primer.profile_logo }}
-            <img src="{{ .src }}" srcset="{{ .srcset }}" sizes="{{ .sizes }}" fetchpriority="high" alt="Logo" width="100%" class="col-4 col-sm-3 col-md-12 avatar circle" />
+        {{ if ne (printf "%T" .) "string" }}
+            <img src="{{ .src }}" fetchpriority="high" alt="Logo" width="100%"
+                {{ with .srcset }}{{ printf "srcset=%q" . | safeHTMLAttr }}{{ end }}
+                {{ with .sizes }}{{ printf "sizes=%q" . | safeHTMLAttr }}{{ end }}
+                class="col-4 col-sm-3 col-md-12 avatar circle" />
+        {{ else }}
+            <img src="{{ . }}" fetchpriority="high" alt="Logo" width="100%" class="col-4 col-sm-3 col-md-12 avatar circle" />
+        {{ end }}
         {{ end }}
         <div class="col-8 col-md-12 flex-content-center">
             <p class="vcard-fullname m-0" aria-label='{{ T "arias.title" }}'>{{ site.Params.hugo_primer.title | default site.Title }}</p>

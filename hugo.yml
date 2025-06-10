@@ -21,7 +21,7 @@ markup:
 
 params:
   hugo_primer:
-    notice:
+    notices:
       - Styles by [**Primer**](https://primer.style/)
       - Theme by [**hugo-primer**](https://github.com/kilianpaquier/hugo-primer)
     styles:

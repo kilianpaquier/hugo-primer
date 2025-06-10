@@ -26,7 +26,7 @@ params:
 ## Single pages "pagination"
 
 On single pages (like this one for instance), only `< Previous` and `Next >` slots can be displayed.
-This pagination is disabled by default, and can be simply by giving in `front matter` page properties the following configuration:
+This pagination is disabled by default, and can be enabled simply by giving in `front matter` page properties the following configuration:
 
 ```yaml
 ---
@@ -37,8 +37,7 @@ params:
 ---
 ```
 
-It can also be configured globally on the whole section with `cascade` property on the parent page
-(like [walkthrough](/walkthrough) for this current case):
+It can also be configured globally on the whole section with `cascade` property on the parent page (section):
 
 ```yaml
 ---
@@ -49,6 +48,9 @@ cascade:
         enabled: true
 ---
 ```
+
+In more advanced cases, you might want to use the [**`paginate`**](/walkthrough/shortcodes#paginate) shortcode to have a more precise pagination.
+Well, this shortcode at least allows you to specify custom `< Previous` and `Next >` URLs, even give only one of them.
 
 ## List pages pagination
 

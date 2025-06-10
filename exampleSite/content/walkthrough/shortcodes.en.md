@@ -57,7 +57,7 @@ The HTML attribute `alt` cannot be provided and will have the image name as valu
 ```md
 {{</* img
   class="col-2"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="100px"
   img-class="mb-1"
   caption="Arthur in The Beginning After the End"
@@ -67,7 +67,7 @@ The HTML attribute `alt` cannot be provided and will have the image name as valu
 
 {{< img
   class="col-2"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="100px"
   img-class="mb-1"
   caption="Arthur in The Beginning After the End"
@@ -99,7 +99,7 @@ Markdown content:
 ```md
 {{%/* side-img
   class="row-gap-3 col-gap-3 mt-3"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="50px"
 */%}}
 
@@ -112,7 +112,7 @@ Markdown content:
 
 {{% side-img
   class="row-gap-3 col-gap-3 mt-3"
-  src="/logo.webp"
+  src="/logo/10.webp"
   height="50px"
 %}}
 
@@ -157,14 +157,14 @@ Markdown content:
 ### Example
 
 ```md
-{{%/* timeline-item badge="/logo.webp" inner-class="fgColor-default" */%}}
+{{%/* timeline-item badge="/logo/10.webp" inner-class="fgColor-default" */%}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{%/* /timeline-item */%}}
-{{%/* timeline-item badge="/logo.webp" inner-class="fgColor-default" */%}}
+{{%/* timeline-item badge="/logo/10.webp" inner-class="fgColor-default" */%}}
 
 Markdown content:
 {class="mb-0"}
@@ -173,17 +173,56 @@ Markdown content:
 {{%/* /timeline-item */%}}
 ```
 
-{{% timeline-item badge="/logo.webp" inner-class="fgColor-default" %}}
+{{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{% /timeline-item %}}
-{{% timeline-item badge="/logo.webp" inner-class="fgColor-default" %}}
+{{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{% /timeline-item %}}
+
+## Paginate
+
+A simple shortcode to display face to face two buttons (or only one) `< Previous` et `Next >` with custom URLs:
+
+```md
+{{</* paginate next="/path/to/next" prev="/path/to/previous" format="default OU terse" */>}}
+```
+
+In terse mode, if `next` or `previous` isn't provided, then the associated button is not displayed.
+In default mode, the associated button is shown but disabled.
+
+### Example
+
+#### With both links
+
+```md
+{{</* paginate next="/en/walkthrough/shortcodes#paginate" prev="/en/walkthrough/shortcodes#paginate" format="terse" */>}}
+{{</* paginate next="/en/walkthrough/shortcodes#paginate" prev="/en/walkthrough/shortcodes#paginate" format="default" */>}}
+```
+
+{{< paginate next="/en/walkthrough/shortcodes#paginate" prev="/en/walkthrough/shortcodes#paginate" format="terse" >}}
+{{< paginate next="/en/walkthrough/shortcodes#paginate" prev="/en/walkthrough/shortcodes#paginate" format="default" >}}
+
+#### With one link
+
+```md
+{{</* paginate prev="/en/walkthrough/shortcodes#paginate" format="terse" */>}}
+{{</* paginate next="/en/walkthrough/shortcodes#paginate" format="terse" */>}}
+{{</* paginate prev="/en/walkthrough/shortcodes#paginate" format="default" */>}}
+{{</* paginate next="/en/walkthrough/shortcodes#paginate" format="default" */>}}
+```
+
+{{< paginate prev="/en/walkthrough/shortcodes#paginate" format="terse" >}}
+{{< paginate next="/en/walkthrough/shortcodes#paginate" format="terse" >}}
+{{< paginate prev="/en/walkthrough/shortcodes#paginate" format="default" >}}
+{{< paginate next="/en/walkthrough/shortcodes#paginate" format="default" >}}
+
+---

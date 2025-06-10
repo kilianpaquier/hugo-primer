@@ -37,8 +37,7 @@ params:
 ---
 ```
 
-La pagination peut aussi être activée au global d'une section avec la propriété `cascade` sur la page parent
-(par exemple la page représent [walkthrough](/walkthrough) ici) :
+La pagination peut aussi être activée au global d'une section avec la propriété `cascade` sur la page parent (section) :
 
 ```yaml
 ---
@@ -49,6 +48,10 @@ cascade:
         enabled: true
 ---
 ```
+
+Dans des cas plus poussés, il est possible d'utiliser le shortcode [**`paginate`**](/walkthrough/shortcodes#paginate) pour utiliser une pagination plus personalisable.
+Enfin, c'est la même que présentée ci-dessus mais les éléments pointés par `< Précédent` et `Suivant >` sont personalisables,
+et il est possible de nous fournir que l'un des deux.
 
 ## Pagination sur les pages listées
 
