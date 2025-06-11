@@ -165,6 +165,14 @@ documentReady(async () => {
 
     // define search wrapper with HTML after search setup
     const search = value => {
+        // show spinner while loading
+        results.innerHTML = sanitize(`
+            <div class="d-flex flex-justify-center p-3">
+                <span class="d-flex flex-items-center spinner">
+                    {{ strings.Replace ("/static/spinner-16.svg" | readFile) "\n" "" }}
+                    <span class="prc_VisuallyHidden_UNWQp">{{ T "arias.loading" }}</span>
+                </span>
+            </div>`)
         const finds = fuse.search(value)
         results.innerHTML = "" // clean results before showing new ones
         if (finds.length == 0) return
