@@ -1,15 +1,14 @@
 # Craft configuration file (https://github.com/kilianpaquier/craft)
 # yaml-language-server: $schema=https://raw.githubusercontent.com/kilianpaquier/craft/beta/.schemas/craft.schema.json
 ci:
+  deployment:
+    auto: true
+    platform: netlify
   name: github
   options:
     - labeler
-  static:
-    auto: true
-    name: netlify
 exclude:
   - chart
-  - pre-commit:auto-commit
 license: mit
 maintainers:
   - name: kilianpaquier
