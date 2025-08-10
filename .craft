@@ -7,8 +7,6 @@ ci:
   name: github
   options:
     - labeler
-exclude:
-  - chart
 license: mit
 maintainers:
   - name: kilianpaquier
