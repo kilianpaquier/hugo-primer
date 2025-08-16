@@ -52,10 +52,17 @@ params:
       disabled: false
 
     versions:
+      # renovate: datasource=npm packageName=dompurify
       dompurify: v3.2.6
+      # renovate: datasource=npm packageName=fuse.js
       fuse: v7.1.0
+      # renovate: datasource=github-tags packageName=instantpage/instant.page depName=instant.page
       instantpage: 5.2.0
-      primer_css: v21
-      primer_primitives: v10
-      primer_react: v37
-      primer_view_components: v0
+      # renovate: datasource=npm packageName=@primer/css
+      primer_css: v21.5.0
+      # renovate: datasource=npm packageName=@primer/primitives
+      primer_primitives: v10.7.0
+      # renovate: datasource=npm packageName=@primer/react
+      primer_react: v37.31.0
+      # renovate: datasource=npm packageName=@primer/view-components
+      primer_view_components: v0.44.0
