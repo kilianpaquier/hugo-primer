@@ -1,5 +1,7 @@
 module github.com/kilianpaquier/hugo-primer/exampleSite
 
-go 1.24.3
+go 1.24.0
+
+toolchain go1.25.0
 
 replace github.com/kilianpaquier/hugo-primer => ../
