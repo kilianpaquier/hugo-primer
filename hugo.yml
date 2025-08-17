@@ -59,7 +59,7 @@ params:
       # renovate: datasource=github-tags packageName=instantpage/instant.page depName=instant.page
       instantpage: 5.2.0
       # renovate: datasource=npm packageName=@primer/css
-      primer_css: 21.5.1
+      primer_css: 22.0.2
       # renovate: datasource=npm packageName=@primer/primitives
       primer_primitives: 11.1.0
       # renovate: datasource=npm packageName=@primer/react
