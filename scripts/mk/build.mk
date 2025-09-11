@@ -6,15 +6,27 @@ clean:
 
 .PHONY: build
 build:
-	@hugo --gc --minify --destination dist --logLevel debug
+	@hugo --gc --minify --destination dist --logLevel debug --source .
 
 .PHONY: serve
 serve:
-	@hugo server --disableFastRender --destination dist --logLevel debug
+	@hugo server --disableFastRender --destination dist --logLevel debug --source .
 
 .PHONY: production
-production:
-	@netlify dev -c "make serve" \
+production: build
+	@python3 -m http.server --directory dist
+
+.PHONY: build-exampleSite
+build-exampleSite:
+	@hugo --gc --minify --destination dist --logLevel debug --source exampleSite
+
+.PHONY: serve-exampleSite
+serve-exampleSite:
+	@hugo server --disableFastRender --destination dist --logLevel debug --source exampleSite
+
+.PHONY: production-exampleSite
+production-exampleSite:
+	@netlify dev -c "make serve-exampleSite" \
 		--target-port 1313 --port 8888
 		--dir dist
 		--framework hugo
