@@ -1,9 +1,0 @@
-# Kickr configuration file (https://github.com/kickr-dev/kickr)
-# yaml-language-server: $schema=https://raw.githubusercontent.com/kickr-dev/kickr/beta/.schemas/kickr.schema.json
-exclude:
-  - chart
-  - pre-commit
-license: mit
-maintainers:
-  - name: kilianpaquier
-platform: github
