@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.0...v1.0.1) (2025-09-22)
+
+### Chores
+
+* **deps:** update dependency dompurify to v3.2.7 ([7bc09b6](https://github.com/kilianpaquier/hugo-primer/commit/7bc09b667652040e6de36cb3ac62171cdab04284))
+
 ## 1.0.0 (2025-09-14)
 
 ### Features
