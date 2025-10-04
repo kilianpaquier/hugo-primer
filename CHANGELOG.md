@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.1...v1.0.2) (2025-10-04)
+
+### Chores
+
+* **deps:** update dependency @primer/primitives to v11.2.0 ([555748e](https://github.com/kilianpaquier/hugo-primer/commit/555748e0ba10b73e156ae8f2c65eeb344443ed9f))
+
 ## [1.0.1](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.0...v1.0.1) (2025-09-22)
 
 ### Chores
