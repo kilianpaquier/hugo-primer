@@ -65,4 +65,4 @@ params:
       # renovate: datasource=npm packageName=@primer/react
       primer_react: v37.31.0
       # renovate: datasource=npm packageName=@primer/view-components
-      primer_view_components: 0.44.1
+      primer_view_components: 0.45.1
