@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.3...v1.0.4) (2025-10-15)
+
+### Chores
+
+* **deps:** update dependency @primer/view-components to v0.45.2 ([58f963c](https://github.com/kilianpaquier/hugo-primer/commit/58f963c43ac39c70b08fcfe8167d0675ee4d84f7))
+
 ## [1.0.3](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.2...v1.0.3) (2025-10-13)
 
 ### Chores
