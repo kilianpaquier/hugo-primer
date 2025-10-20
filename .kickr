@@ -7,6 +7,7 @@ ci:
     - codeql
     - harden-runner
     - ossf-scorecard
+    - renovate:personal-token
   release:
     auth: github-token
     auto: true
@@ -14,11 +15,12 @@ ci:
     auto: true
     hosting: netlify
     directory: exampleSite
-  renovate:
-    auth: personal-token
 dependencies:
   manager: renovate
 license: mit
 maintainers:
   - name: kilianpaquier
 platform: github
+pre-commit:
+  - conventional-commits
+  - gitflow-branches
