@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.4...v1.0.5) (2025-10-20)
+
+### Chores
+
+* **deps:** update dependency @primer/primitives to v11.2.1 ([cc0fb64](https://github.com/kilianpaquier/hugo-primer/commit/cc0fb645bfd49c0fb9731251730ba0e2cdf3865b))
+* **deps:** update dependency dompurify to v3.3.0 ([c95c55f](https://github.com/kilianpaquier/hugo-primer/commit/c95c55fd04947bd91c79c77a810dc865444e9605))
+
 ## [1.0.4](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.3...v1.0.4) (2025-10-15)
 
 ### Chores
