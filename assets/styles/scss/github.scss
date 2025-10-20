@@ -158,6 +158,26 @@ modal-dialog {
     }
 }
 
+// Spinner
+
+@keyframes rotate-360 {
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.spinner {
+    --base-duration-1000: 1s;
+    --base-easing-linear: cubic-bezier(0,0,1,1);
+
+    >svg {
+        width: 32px;
+        height: 32px;
+
+        animation: rotate-360 var(--base-duration-1000) var(--base-easing-linear) infinite
+    }
+}
+
 // 404
 
 @keyframes lightbulb {
@@ -195,7 +215,7 @@ modal-dialog {
     font-size: 150px;
 
     .not-found-lightbulb-ani {
-            opacity: .25;
+        opacity: .25;
         animation-name: lightbulb;
         animation-duration: 2.5s;
         animation-fill-mode: forwards;
