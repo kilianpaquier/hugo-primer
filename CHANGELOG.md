@@ -1,3 +1,13 @@
+## [1.0.6](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.5...v1.0.6) (2025-10-21)
+
+### Chores
+
+* **deps:** update dependency @primer/view-components to v0.46.0 ([25bed2d](https://github.com/kilianpaquier/hugo-primer/commit/25bed2db19371f989def06da0f282e126f044b10))
+
+### Continuous Integration
+
+* **layout:** regenerate kickr layout ([2794e66](https://github.com/kilianpaquier/hugo-primer/commit/2794e66b0ee9331e8002a76d5f08049e7a429d88))
+
 ## [1.0.5](https://github.com/kilianpaquier/hugo-primer/compare/v1.0.4...v1.0.5) (2025-10-20)
 
 ### Chores
