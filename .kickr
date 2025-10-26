@@ -6,6 +6,7 @@ ci:
   options:
     - codeql
     - harden-runner
+    - kickr:github-app
     - ossf-scorecard
     - renovate:personal-token
   release:
@@ -23,4 +24,3 @@ maintainers:
 platform: github
 pre-commit:
   - conventional-commits
-  - gitflow-branches
