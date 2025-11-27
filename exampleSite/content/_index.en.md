@@ -26,6 +26,6 @@ whether it may be used in a more advanced use of this theme or for another use (
 As it's the overview page, and that reusing without **React** those components was a small hell,
 here is some (very) useful links to access styles directly:
 
-- https://cdn.jsdelivr.net/npm/@primer/react@37/dist/components.css
+- https://cdn.jsdelivr.net/npm/@primer/react@38/dist/Pagination/Pagination-16a5b4c6.css (no pretty)
 - https://cdn.jsdelivr.net/npm/@primer/view-components@0/app/assets/styles/primer_view_components.css (no pretty)
 - https://cdn.jsdelivr.net/npm/@primer/view-components@0/app/assets/javascripts/primer_view_components.js (no pretty)
