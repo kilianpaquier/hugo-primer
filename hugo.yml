@@ -53,7 +53,7 @@ params:
 
     versions:
       # renovate: datasource=npm packageName=dompurify
-      dompurify: 3.3.0
+      dompurify: 3.3.1
       # renovate: datasource=npm packageName=fuse.js
       fuse: v7.1.0
       # renovate: datasource=github-tags packageName=instantpage/instant.page depName=instant.page
