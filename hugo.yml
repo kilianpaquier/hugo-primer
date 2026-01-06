@@ -27,6 +27,7 @@ params:
     styles:
       container: container-xl px-3 px-md-4 px-lg-5
       custom_file: ""
+      transpiler: dartsass
 
     pagination:
       format: default # pagination format, either 'default' or 'terse'

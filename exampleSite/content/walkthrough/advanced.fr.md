@@ -80,6 +80,30 @@ Vous pouvez le modifier pour élargir et jouer avec les *paddings* globaux.
 La modification de ce style impacte à la fois la navigation, le contenu principal, la section des commentaires **giscus** et le *footer*.
 Vous pouvez trouver plus d'information sur le *grid* système de **Primer** [ici](https://primer.style/css/storybook/?path=/story/utilities-grid--container).
 
+## Stylesheet personnalisée
+
+Il est possible d'ajouter une feuille de style "maison" au format Sass ou CSS via la configuration hugo suivante :
+
+```yaml
+params:
+  hugo_primer:
+    styles:
+      custom_file: ""
+```
+
+## Sass vers CSS
+
+Par défaut si une feuille Sass existe, la conversion sera réalisée avec [**dart-sass**](https://github.com/sass/dart-sass).
+Il est possible d'utiliser un autre outil en surchargeant la configuration `hugo.(yaml|toml)`
+mais il faut noter qu'Hugo [ne supporte que](https://gohugo.io/functions/css/sass/#transpiler) **dart-sass** ou **libsass** dont le dernier est déprécié.
+
+```yaml
+params:
+  hugo_primer:
+    styles:
+      transpiler: dartsass
+```
+
 ## Lazysizes
 
 Avec le thème, vous pouvez utiliser la classe CSS `lazyload` afin de ne charger les images que lorsqu'elles rentrent dans le champs de vision de la page.

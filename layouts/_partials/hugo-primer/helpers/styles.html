@@ -19,7 +19,7 @@
         "enableSourceMap" (not hugo.IsProduction)
         "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
         "targetPath" $build
-        "transpiler" "libsass"
+        "transpiler" site.Params.hugo_primer.styles.transpiler
     }}
 
     {{ with resources.Get . }}

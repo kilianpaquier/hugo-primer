@@ -80,6 +80,30 @@ You may modify it to increase content space and also play with global paddings.
 Note that modification of this style affects top navigation, main content, **giscus** comments section and footer.
 You can find more information about **Primer** grid system [here](https://primer.style/css/storybook/?path=/story/utilities-grid--container).
 
+## Custom stylesheet
+
+It is possible to add a custom stylesheet through to following `hugo.(yaml|toml)` configuration:
+
+```yaml
+params:
+  hugo_primer:
+    styles:
+      custom_file: ""
+```
+
+## Sass transpiler
+
+By default, in case a Sass stylesheet file is present in the project (and expected to be used), the default transpiler will be [**dart-sass**](https://github.com/sass/dart-sass).
+It's possible to override this configuration but note that only **dart-sass**
+and **libsass** [are supported by](https://gohugo.io/functions/css/sass/#transpiler) **Hugo** where the latter is deprecated.
+
+```yaml
+params:
+  hugo_primer:
+    styles:
+      transpiler: dartsass
+```
+
 ## Lazysizes
 
 With this theme, you can use CSS class `lazyload` to load images only once they enter page view.
