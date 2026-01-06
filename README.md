@@ -1,13 +1,12 @@
 # hugo-primer <!-- omit in toc -->
 
-<p align="center">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/kilianpaquier/hugo-primer?include_prereleases&sort=semver&style=for-the-badge">
-  <img alt="GitHub Issues" src="https://img.shields.io/github/issues-raw/kilianpaquier/hugo-primer?style=for-the-badge">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/kilianpaquier/hugo-primer?style=for-the-badge">
-  <img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/kilianpaquier/hugo-primer/integration.yml?style=for-the-badge">
-  <img alt="Go Version" src="https://img.shields.io/github/go-mod/go-version/kilianpaquier/hugo-primer?style=for-the-badge">
-  <img alt="OpenSSF Scorecard" src="https://img.shields.io/ossf-scorecard/github.com/kilianpaquier/hugo-primer?label=OpenSSF+Scorecard&style=for-the-badge">
-</p>
+<div align="center">
+  <img alt="GitLab Release" src="https://img.shields.io/gitlab/v/release/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&include_prereleases&sort=semver&style=for-the-badge">
+  <img alt="GitLab Issues" src="https://img.shields.io/gitlab/issues/open/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge">
+  <img alt="GitLab License" src="https://img.shields.io/gitlab/license/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge">
+  <img alt="GitLab CICD" src="https://img.shields.io/gitlab/pipeline-status/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&branch=main&style=for-the-badge">
+  <img alt="Go Version" src="https://img.shields.io/gitlab/go-mod/go-version/kilianpaquier/hugo-primer?style=for-the-badge">
+</div>
 
 ---
 
