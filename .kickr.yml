@@ -6,13 +6,11 @@ ci:
   options:
     - kickr
   release: {}
-  website:
-    auto: true
-    hosting: netlify
-    directory: exampleSite
-dependencies:
-  manager: renovate
 license: mit
 maintainers:
   - name: u.kilianpaquier
 platform: gitlab
+website:
+  auto: true
+  directory: exampleSite
+  hosting: netlify
