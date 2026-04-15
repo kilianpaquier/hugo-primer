@@ -2,4 +2,4 @@ module github.com/kilianpaquier/hugo-primer
 
 go 1.24.0
 
-toolchain go1.26.1
+toolchain go1.26.2
