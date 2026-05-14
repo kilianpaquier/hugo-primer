@@ -1,5 +1,5 @@
 baseURL: /
-languageCode: en
+locale: en
 defaultContentLanguage: en
 title: Hugo Primer Example Site
 
@@ -74,12 +74,12 @@ params:
 languages:
   fr:
     contentDir: content
-    languageName: Français
+    label: Français
     params:
       pre: /static/primer/globe-16.svg
   en:
     contentDir: content
-    languageName: English
+    label: English
     params:
       pre: /static/primer/globe-16.svg
 

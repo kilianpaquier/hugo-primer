@@ -6,9 +6,9 @@
 
     <!-- see https://ogp.me/ -->
     <meta property="og:description" content="{{ .Description | markdownify | plainify }}">
-    <meta property="og:locale" content="{{ site.Language.LanguageCode }}">
+    <meta property="og:locale" content="{{ site.Language.Locale }}">
     {{ range .Translations }}
-        <meta property="og:locale:alternate" content="{{ .Language.LanguageCode }}">
+        <meta property="og:locale:alternate" content="{{ .Language.Locale }}">
     {{ end }}
     <meta property="og:site_name" content="{{ site.Title }}">
     <meta property="og:title" content="{{ .Title | markdownify }}">
