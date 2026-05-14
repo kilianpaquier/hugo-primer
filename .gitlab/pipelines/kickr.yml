@@ -27,9 +27,9 @@ kickr:
     - apk update -q && apk add -q curl git jq
     - curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise MISE_VERSION=$MISE_VERSION sh
     # renovate: datasource=golang-version packageName=golang/go depName=golang
-    - mise use -g golang@1.25.5
+    - mise use -g golang@1.26.3
     # renovate: datasource=gitlab-tags packageName=gitlab-org/cli depName=glab
-    - mise use -g glab@1.80.4
+    - mise use -g glab@1.97.0
     - go install github.com/kickr-dev/kickr/cmd/kickr@beta
   script:
     - kickr generate
