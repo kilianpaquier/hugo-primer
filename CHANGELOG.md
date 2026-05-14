@@ -1,3 +1,26 @@
+## [1.2.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.1.0...v1.2.0) (2026-05-14)
+
+### Code Refactoring
+
+* **hugo:** migrate deprecated configurations to new keys ([61db956](https://gitlab.com/kilianpaquier/hugo-primer/commit/61db95698ac4f811fed07e88728068878aebda6b))
+
+### Continuous Integration
+
+* **deps:** update dependency go to v1.25.7 ([b14ad0d](https://gitlab.com/kilianpaquier/hugo-primer/commit/b14ad0d4b7813581413ef126d2047d3d66585497))
+* **deps:** update dependency go to v1.26.0 ([64a0eb0](https://gitlab.com/kilianpaquier/hugo-primer/commit/64a0eb062e6922149d6f24c44ae9ad4a9866e2c1))
+* **deps:** update dependency go to v1.26.1 ([3d5a8e7](https://gitlab.com/kilianpaquier/hugo-primer/commit/3d5a8e75e8383e7dff4a3273694ee65234e1e3ea))
+* **deps:** update dependency go to v1.26.2 ([a5f84d9](https://gitlab.com/kilianpaquier/hugo-primer/commit/a5f84d90aa4ea1b9afac017e9d25595b6d5ee8b4))
+* **deps:** update go toolchain directive to v1.26.3 ([97e0466](https://gitlab.com/kilianpaquier/hugo-primer/commit/97e046608fecb61d5def5488d5d7d49ebf3e2422))
+* **deps:** upgrade ci dependencies ([4ace212](https://gitlab.com/kilianpaquier/hugo-primer/commit/4ace2128b3883567b56d8bacd177dcebd45f86cb))
+* **layout:** regenerate kickr layout ([faa9597](https://gitlab.com/kilianpaquier/hugo-primer/commit/faa959755fa9431f03486ecbfbfa375640051754))
+* **layout:** regenerate kickr layout ([c32d119](https://gitlab.com/kilianpaquier/hugo-primer/commit/c32d119a9783132714a6d8a6a91f74a0727769b7))
+* **layout:** regenerate kickr layout ([2ae34c0](https://gitlab.com/kilianpaquier/hugo-primer/commit/2ae34c0458b3510df09c76768427f27610a97a88))
+* **layout:** regenerate kickr layout ([f5a722c](https://gitlab.com/kilianpaquier/hugo-primer/commit/f5a722ce6218b4481d49105653d6279afe83831c))
+
+### Styles
+
+* **search:** add more gap between search results and search bar ([7aa94f5](https://gitlab.com/kilianpaquier/hugo-primer/commit/7aa94f5fc546c3a659cc14afb44c11b9a19068cb))
+
 ## [1.1.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.0.6...v1.1.0) (2026-01-20)
 
 ### Features
