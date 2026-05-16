@@ -27,7 +27,7 @@
             (cond site.Params.hugo_primer.search.enabled "js/search.js" "")
         )
         "remote" (slice
-            (cond site.Params.hugo_primer.search.enabled (printf "https://cdn.jsdelivr.net/npm/fuse.js@%v/dist/fuse.min.js" site.Params.hugo_primer.versions.fuse) "")
+            (cond site.Params.hugo_primer.search.enabled (printf "https://cdn.jsdelivr.net/npm/fuse.js@%v/dist/fuse.min.mjs" site.Params.hugo_primer.versions.fuse) "")
         )
     )
     "search"

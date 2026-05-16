@@ -141,6 +141,8 @@ const remote = async path => {
 }
 
 documentReady(async () => {
+    const Fuse = Y;
+
     // load search index depending on current lang
     const pages = await remote(`{{ site.LanguagePrefix }}/index.json`)
 
