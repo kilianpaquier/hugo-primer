@@ -1,3 +1,14 @@
+## [1.2.1](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.0...v1.2.1) (2026-05-16)
+
+### Chores
+
+* **deps:** update dependency @primer/css to v22.1.1 ([44076d7](https://gitlab.com/kilianpaquier/hugo-primer/commit/44076d73c97cf904f8738908e2060c3d0d040ba4))
+* **deps:** update dependency @primer/primitives to v11.8.0 ([e0f291d](https://gitlab.com/kilianpaquier/hugo-primer/commit/e0f291dc930af7c2cd380183dd541b3b1b3241e8))
+* **deps:** update dependency @primer/react to v38.22.0 ([2d22812](https://gitlab.com/kilianpaquier/hugo-primer/commit/2d228121836d865893a5c54b1b12d5d125666469))
+* **deps:** update dependency @primer/view-components to v0.51.4 ([d19f895](https://gitlab.com/kilianpaquier/hugo-primer/commit/d19f895d8a436af081f69655cac48248cd6f7800))
+* **deps:** update dependency dompurify to v3.4.2 ([ffd0265](https://gitlab.com/kilianpaquier/hugo-primer/commit/ffd0265bc4d06b09b7922e0fa5ce619213b73a0e))
+* **deps:** update dependency fuse.js to v7.3.0 ([3960749](https://gitlab.com/kilianpaquier/hugo-primer/commit/39607491031cbf4dbeaf9d6e472c9477fc61de17))
+
 ## [1.2.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.1.0...v1.2.0) (2026-05-14)
 
 ### Code Refactoring
