@@ -1,3 +1,12 @@
+## [1.2.2](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.1...v1.2.2) (2026-05-20)
+
+### Chores
+
+* **deps:** update dependency @primer/primitives to v11.9.0 ([2d289b4](https://gitlab.com/kilianpaquier/hugo-primer/commit/2d289b475192590856f7917ea99dcd267252a28d))
+* **deps:** update dependency @primer/react to v38.23.0 ([40ab184](https://gitlab.com/kilianpaquier/hugo-primer/commit/40ab1844b38708302ce59cba706f48fbfe589781))
+* **deps:** update dependency @primer/view-components to v0.51.5 ([f28a9f9](https://gitlab.com/kilianpaquier/hugo-primer/commit/f28a9f98477ba55893085477ad339030591a458e))
+* **deps:** update dependency dompurify to v3.4.3 ([d7cba8a](https://gitlab.com/kilianpaquier/hugo-primer/commit/d7cba8a6d3549d7a8c0cfbc456a4e43bbe7feead))
+
 ## [1.2.1](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.0...v1.2.1) (2026-05-16)
 
 ### Chores
