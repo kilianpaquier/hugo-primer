@@ -1,3 +1,23 @@
+## [1.2.3](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.2...v1.2.3) (2026-06-06)
+
+### Bug Fixes
+
+* **fuse:** use unminified build to ensure Hugo minification catches Fuse export ([5ec8c64](https://gitlab.com/kilianpaquier/hugo-primer/commit/5ec8c6475899c09b96225cb7b1f5422fc8ff90d5))
+
+### Chores
+
+* **deps:** update dependency @primer/css to v22.2.0 ([deaecba](https://gitlab.com/kilianpaquier/hugo-primer/commit/deaecba51cd530e39130b39b3ab269d1c6161f30))
+* **deps:** update dependency @primer/react to v38.24.0 ([72bf24d](https://gitlab.com/kilianpaquier/hugo-primer/commit/72bf24d280e7d9dce164559a144d83f080c84681))
+* **deps:** update dependency @primer/react to v38.26.0 ([45cd672](https://gitlab.com/kilianpaquier/hugo-primer/commit/45cd6726d9d90c764eb62e171331b80bb030a9c4))
+* **deps:** update dependency dompurify to v3.4.5 ([d41e290](https://gitlab.com/kilianpaquier/hugo-primer/commit/d41e290ff9fb04cff2b2d2881398b914bbcaf8db))
+* **deps:** update dependency dompurify to v3.4.7 ([2963f3b](https://gitlab.com/kilianpaquier/hugo-primer/commit/2963f3b96649052df640eb5f877c36bca250ab3a))
+* **deps:** update dependency fuse.js to v7.4.0 ([eab33f1](https://gitlab.com/kilianpaquier/hugo-primer/commit/eab33f16f77a5ebc8c0f6ba90aec9b7b14b4135a))
+
+### Continuous Integration
+
+* **layout:** regenerate kickr layout ([7815bf8](https://gitlab.com/kilianpaquier/hugo-primer/commit/7815bf8c30fd6782cc8a93fb2669507f8ecf6920))
+* **layout:** regenerate kickr layout ([7cc117d](https://gitlab.com/kilianpaquier/hugo-primer/commit/7cc117d20e4f6fb50e51d4ef1342448dc274f10f))
+
 ## [1.2.2](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.1...v1.2.2) (2026-05-20)
 
 ### Chores
