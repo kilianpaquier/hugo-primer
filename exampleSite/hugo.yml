@@ -9,9 +9,6 @@ enableGitInfo: true
 ignoreLogs:
   - warning-frontmatter-params-overrides # walkthrough/_index.*.md
 
-theme:
-  - github.com/kilianpaquier/hugo-primer
-
 module:
   imports:
     - path: github.com/kilianpaquier/hugo-primer
