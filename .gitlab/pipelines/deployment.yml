@@ -63,6 +63,7 @@
       done
 
 .netlify-cleanup-review:
+  extends: .netlify-cleanup
   environment:
     name: review${NETLIFY_ENVIRONMENT_NAMESPACE}/${CI_COMMIT_REF_NAME}
     action: stop
