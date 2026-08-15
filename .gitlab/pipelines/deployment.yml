@@ -51,7 +51,7 @@ netlify-deploy-review:
     - when: manual
       allow_failure: true
   variables:
-    ARGS: --prod --message=$CI_COMMIT_REF_NAME
+    ARGS: --alias=$BRANCH_SHA --context branch:$BRANCH_SHA --message=$CI_COMMIT_REF_NAME
 
 netlify-cleanup-review:
   extends: .netlify-cleanup
@@ -78,4 +78,4 @@ netlify-deploy-production:
       when: never
     - when: on_success
   variables:
-    ARGS: --alias=$BRANCH_SHA --context branch:$BRANCH_SHA --message=$CI_COMMIT_REF_NAME
+    ARGS: --prod --message=$CI_COMMIT_REF_NAME
