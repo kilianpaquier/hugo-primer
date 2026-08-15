@@ -2,13 +2,15 @@
 
 # Various build / compile directories
 dist/
+logs/
 reports/
+tmp/
 
-# Local Netlify folder
-.netlify
+# Hugo direct module checksums
+hugo.direct.sum
 
-# Created by https://www.toptal.com/developers/gitignore/api/hugo,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=hugo,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/dotenv,hugo
+# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,hugo
 
 ### dotenv ###
 .env
@@ -28,4 +30,4 @@ hugo.linux
 # Temporary lock file while building
 /.hugo_build.lock
 
-# End of https://www.toptal.com/developers/gitignore/api/hugo,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/dotenv,hugo
