@@ -1,3 +1,45 @@
+## [1.2.4](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.3...v1.2.4) (2026-08-16)
+
+### Chores
+
+* **deps:** update dependency @primer/css to v22.2.1 ([ba1ca1f](https://gitlab.com/kilianpaquier/hugo-primer/commit/ba1ca1ffa4f725fadf3392fdb55bfe85d451a1bc))
+* **deps:** update dependency @primer/css to v22.3.0 ([460b0c5](https://gitlab.com/kilianpaquier/hugo-primer/commit/460b0c59fba6f453fa892fc5acd41d235ff927a2))
+* **deps:** update dependency @primer/primitives to v11.10.0 ([787ba7f](https://gitlab.com/kilianpaquier/hugo-primer/commit/787ba7fdacc5556a583be5a32e40b78a1a47e942))
+* **deps:** update dependency @primer/react to v38.27.0 ([fdfe686](https://gitlab.com/kilianpaquier/hugo-primer/commit/fdfe686f44d6a4e622463bb43326a2f537add5ad))
+* **deps:** update dependency @primer/react to v38.28.0 ([0d9e868](https://gitlab.com/kilianpaquier/hugo-primer/commit/0d9e8680b0c9ce6f47c0fcf5d35c925594a62c8b))
+* **deps:** update dependency @primer/react to v38.29.0 ([f05f0e9](https://gitlab.com/kilianpaquier/hugo-primer/commit/f05f0e906c7524a376047a5da62e97018825d690))
+* **deps:** update dependency @primer/react to v38.30.0 ([11f014c](https://gitlab.com/kilianpaquier/hugo-primer/commit/11f014caa3cef3ca8033e5e82dbe8e3a43278801))
+* **deps:** update dependency @primer/react to v38.31.0 ([99f8bfe](https://gitlab.com/kilianpaquier/hugo-primer/commit/99f8bfebc6fff028558b9d91df8c7ad084e22306))
+* **deps:** update dependency @primer/react to v38.32.0 ([07de3e4](https://gitlab.com/kilianpaquier/hugo-primer/commit/07de3e4f8a15608eb4fb24482caa53efe02e86bf))
+* **deps:** update dependency @primer/react to v38.35.0 ([5252eed](https://gitlab.com/kilianpaquier/hugo-primer/commit/5252eedb5406abdd4d050daa9657a2278f8bb47c))
+* **deps:** update dependency @primer/view-components to v0.52.2 ([591c05a](https://gitlab.com/kilianpaquier/hugo-primer/commit/591c05aa0066a995361edbfdf5b54d4d94deb5c9))
+* **deps:** update dependency @primer/view-components to v0.53.1 ([ee94d93](https://gitlab.com/kilianpaquier/hugo-primer/commit/ee94d93c3298f7cc760f7990c4ea2f07e037c638))
+* **deps:** update dependency @primer/view-components to v0.53.2 ([0a4198b](https://gitlab.com/kilianpaquier/hugo-primer/commit/0a4198b84b38c0e1b05c6559629ace3ad20a07d2))
+* **deps:** update dependency dompurify to v3.4.10 ([3a79a08](https://gitlab.com/kilianpaquier/hugo-primer/commit/3a79a08f4066f6f6dc5b15aecad9c3081fa5bb5c))
+* **deps:** update dependency dompurify to v3.4.11 ([7e6b314](https://gitlab.com/kilianpaquier/hugo-primer/commit/7e6b31487ac846f072c5d908fc77e378d972d993))
+* **deps:** update dependency dompurify to v3.4.12 ([721a400](https://gitlab.com/kilianpaquier/hugo-primer/commit/721a400a7ee33b7be198c48fe2e2817b3cc9912f))
+* **deps:** update dependency dompurify to v3.4.13 ([5ae1457](https://gitlab.com/kilianpaquier/hugo-primer/commit/5ae14576f82a0fcfaa5c709ac4fe39415063b3d9))
+* **deps:** update dependency dompurify to v3.4.8 ([cf0700d](https://gitlab.com/kilianpaquier/hugo-primer/commit/cf0700d8f44f46fecf9ec6e365a1a9497e0b983f))
+* **deps:** update dependency fuse.js to v7.4.2 ([24a2ad9](https://gitlab.com/kilianpaquier/hugo-primer/commit/24a2ad9d35ecc260dc75a69d45f6c2987625aa36))
+* **deps:** update dependency fuse.js to v7.5.0 ([0228bba](https://gitlab.com/kilianpaquier/hugo-primer/commit/0228bbae4da0eb3e1393cea2a8d93239ecbe4edf))
+* **exampleSite:** remove duplicated theme (classic + Hugo module) ([c5104f3](https://gitlab.com/kilianpaquier/hugo-primer/commit/c5104f3f750897b5af334b38532526cf9e5970f1))
+* **layout:** regenerate kickr layout ([2fcbba0](https://gitlab.com/kilianpaquier/hugo-primer/commit/2fcbba0162e67e09969db94d2f941fef0eaf29bb))
+* **layout:** regenerate kickr layout ([66a4638](https://gitlab.com/kilianpaquier/hugo-primer/commit/66a46383bcb47785937a9cc40ef6b35ea7ea1171))
+
+### Continuous Integration
+
+* **build:** add safe.directory for Hugo git functions calls ([6d4b79f](https://gitlab.com/kilianpaquier/hugo-primer/commit/6d4b79fc696221cf38b25ebac93e3ff6e86ad1c3))
+* **deps:** update go toolchain dependency to v1.26.4 ([808be54](https://gitlab.com/kilianpaquier/hugo-primer/commit/808be540774f4746af4e2d8010ca4b65577d8adb))
+* **deps:** update go toolchain directive to v1.26.5 ([08311c0](https://gitlab.com/kilianpaquier/hugo-primer/commit/08311c011d4715a30b65d0fbad9f3541316f4ffe))
+* **layout:** regenerate kickr layout ([60aea69](https://gitlab.com/kilianpaquier/hugo-primer/commit/60aea69aa64be04096b251dafb67ac58cd83f181))
+* **layout:** regenerate kickr layout ([5322d5b](https://gitlab.com/kilianpaquier/hugo-primer/commit/5322d5beadb03a9858d4caae47ae85868b9661f2))
+* **layout:** regenerate kickr layout ([d66fcfe](https://gitlab.com/kilianpaquier/hugo-primer/commit/d66fcfee8053218f4446f4232679c8e94e42f51e))
+* **layout:** regenerate kickr layout ([44edba5](https://gitlab.com/kilianpaquier/hugo-primer/commit/44edba51c5f1e9c17f3f6e9dc8ab4b4ac8178e10))
+* **layout:** regenerate kickr layout ([bb94230](https://gitlab.com/kilianpaquier/hugo-primer/commit/bb94230f2b69274d3844284067b5458a534ca57a))
+* **netlify:** fix inverted args for deployment review and production ([acb6b66](https://gitlab.com/kilianpaquier/hugo-primer/commit/acb6b661858d8f64f7441ebeb7f10f04d561c16b))
+* **netlify:** missing extends in cleanup job ([abd9d6f](https://gitlab.com/kilianpaquier/hugo-primer/commit/abd9d6f27be2906d200439eaae37aad00eb811c3))
+* **netlify:** reorganize jobs structure ([4e0da2a](https://gitlab.com/kilianpaquier/hugo-primer/commit/4e0da2a6627b55a6046cbd3addc395a2e27d454b))
+
 ## [1.2.3](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.2...v1.2.3) (2026-06-06)
 
 ### Bug Fixes
