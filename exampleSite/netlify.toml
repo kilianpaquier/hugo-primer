@@ -1,0 +1,5 @@
+[[redirects]]
+  force = true
+  from = "https://hugo-primer.netlify.app/*"
+  status = 301
+  to = "https://hugo-primer.kilianpaquier.dev/:splat"
