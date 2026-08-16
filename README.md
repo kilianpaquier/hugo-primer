@@ -83,4 +83,4 @@ hugo server --disableFastRender --destination dist
 
 ## Features
 
-See https://hugo-primer.netlify.app/walkthrough.
+See https://hugo-primer.kilianpaquier.dev/walkthrough.
