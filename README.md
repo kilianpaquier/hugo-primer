@@ -34,10 +34,6 @@ To import **hugo-primer** theme, following properties must be added into `hugo.(
 
 ```yaml
 theme: github.com/kilianpaquier/hugo-primer
-
-module:
-  imports:
-    - path: github.com/kilianpaquier/hugo-primer
 ```
 
 You then can initialize `go.mod` file and tidy with the following commands to download this theme as dependency (like you would do with **Go**):
