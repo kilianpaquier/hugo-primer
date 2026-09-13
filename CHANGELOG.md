@@ -1,3 +1,27 @@
+## [1.2.5](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.4...v1.2.5) (2026-09-13)
+
+### Documentation
+
+* **import:** prefer 'theme' to take advantage of go.mod and go.sum dependencies ([5a978a6](https://gitlab.com/kilianpaquier/hugo-primer/commit/5a978a64c822c426fa3f6e42abf301c1bc9a3f08))
+* update all links to custom domain ([fc472f4](https://gitlab.com/kilianpaquier/hugo-primer/commit/fc472f422e01c866052fd0dea2510f00f009f8cc))
+
+### Chores
+
+* **deps:** update dependency @primer/react to v38.35.1 ([b354f4e](https://gitlab.com/kilianpaquier/hugo-primer/commit/b354f4e7ed3ce488638f0c4c66cb414477f9fba3))
+* **deps:** update dependency @primer/react to v38.36.0 ([094f296](https://gitlab.com/kilianpaquier/hugo-primer/commit/094f296cb4853332f9ad1ec8a0aae2f2a488fd09))
+* **deps:** update dependency @primer/react to v38.38.0 ([c376ddd](https://gitlab.com/kilianpaquier/hugo-primer/commit/c376ddd371949c65e51ad3706b4f9c1ee4f806fa))
+* **deps:** update dependency @primer/view-components to v0.53.3 ([3100f28](https://gitlab.com/kilianpaquier/hugo-primer/commit/3100f283e08d4e2135d49a9c84d9b1335a7b50ba))
+* **deps:** update dependency @primer/view-components to v0.53.4 ([864365e](https://gitlab.com/kilianpaquier/hugo-primer/commit/864365ea82e41b0f64bc11a053d9c7d032628f38))
+* **deps:** update dependency dompurify to v3.4.14 ([e188e26](https://gitlab.com/kilianpaquier/hugo-primer/commit/e188e2629bad30bb89236934233b76d5e751caf2))
+* **deps:** update dependency dompurify to v3.4.15 ([5510683](https://gitlab.com/kilianpaquier/hugo-primer/commit/55106835d2d5e11b56701af956b5a830425d843f))
+
+### Continuous Integration
+
+* **deps:** update go toolchain directive to v1.26.6 ([c1f432a](https://gitlab.com/kilianpaquier/hugo-primer/commit/c1f432a84ce4734822974631d28887dd13c39395))
+* **deps:** update go toolchain directive to v1.27.0 ([f28d1e0](https://gitlab.com/kilianpaquier/hugo-primer/commit/f28d1e0454884015e6fe826d9fc6ea331474368f))
+* **deps:** update go toolchain directive to v1.27.1 ([826ac80](https://gitlab.com/kilianpaquier/hugo-primer/commit/826ac801a0bbd6270b80ce0118674df87b5ebf39))
+* **netlify:** add redirection from netlify.app to custom domain ([865a4ec](https://gitlab.com/kilianpaquier/hugo-primer/commit/865a4ecf9ca87c5a5d97acb2daa080f2308b34e1))
+
 ## [1.2.4](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.3...v1.2.4) (2026-08-16)
 
 ### Chores
