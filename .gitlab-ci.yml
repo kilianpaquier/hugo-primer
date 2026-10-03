@@ -24,13 +24,43 @@ include:
 # (define the variables below in your GitLab group/project variables)
 
 # https://gitlab.com/to-be-continuous/semantic-release
-# RELEASE_TOKEN: A GitLab 'group access token' or 'project access token' or 'personal access token' with `api` and `write_repository` scopes and at least a `Developer` role.
+# RELEASE_TOKEN: A GitLab 'service account token', 'group access token', 'project access token' or 'personal access token' with `api`
+# and `write_repository` scopes and at least a `Developer` role,
+# or a 'fine-grained personal access token' with the following permissions on this project:
+#   - Code: Download, Push
+#   - Commit merge request: Read
+#   - Issue note: Create
+#   - Markdown upload: Create
+#   - Merge request closes issue: Read
+#   - Merge request note: Create
+#   - Project: Read
+#   - Release: Create
 # SEMREL_GPG_SIGNKEY: Path to the GPG signkey exported with `gpg --armor --export-secret-key` (optional).
 
 # NETLIFY_SITE_ID: The netlify site ID where builds will be published (should be retrieved if the project name is the same here https://app.netlify.com/sites/hugo-primer/configuration/general).
 # NETLIFY_AUTH_TOKEN: The netlify authentication token (it's a personal token) to use for deployments (once connected, can be retrieved here https://app.netlify.com/user/applications#content).
 
-# KICKR_TOKEN: A GitLab access token to allow kickr layout update (`write_repository` and `api` scopes with a `Developer` role).
+# https://gitlab.com/getplumber/plumber
+# PLUMBER_GITLAB_TOKEN: A GitLab 'service account token', 'group access token', 'project access token' or 'personal access token' with `api`
+# and `read_repository` scopes and at least a `Maintainer` role,
+# or a 'fine-grained personal access token' with the following permissions on this project and its parent groups:
+#   - Approval configuration: Read
+#   - Approval rule: Read
+#   - Branch: Read
+#   - Commit: Read
+#   - Group: Read
+#   - Project: Read
+#   - Protected branch: Read
+#   - Repository file: Read
+#   - Repository tag: Read
+
+# KICKR_TOKEN: A GitLab 'service account token', 'group access token', 'project access token' or 'personal access token' with `api`
+# and `write_repository` scopes and at least a `Developer` role,
+# or a 'fine-grained personal access token' with the following permissions on this project:
+#   - Code: Push
+#   - Merge request: Create, Read, Update
+#   - Project: Read
+#   - User: Read (user and global)
 
 default:
   interruptible: true
