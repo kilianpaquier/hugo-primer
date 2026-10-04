@@ -1,3 +1,27 @@
+## [1.2.6](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.5...v1.2.6) (2026-10-04)
+
+### Documentation
+
+* **license:** specify what's not owned and credit design instead of port mode since code isn't ported but completely rewritten ([8ceae24](https://gitlab.com/kilianpaquier/hugo-primer/commit/8ceae24a0f0641fc3d0d04d71a5e34502f1b5bbc))
+* **theme:** fix npmjs reference ([2df9345](https://gitlab.com/kilianpaquier/hugo-primer/commit/2df9345edea5f6ac2e58aa6bd75ebf1f01f6e7fd))
+
+### Chores
+
+* **deps:** update dependency @primer/css to v22.3.1 ([1d4509f](https://gitlab.com/kilianpaquier/hugo-primer/commit/1d4509f19f0128c8ddcb2b74afdb5760c34165ad))
+* **deps:** update dependency @primer/css to v22.3.2 ([858aa79](https://gitlab.com/kilianpaquier/hugo-primer/commit/858aa79569d01dfb175e933bacb596e778646788))
+* **deps:** update dependency @primer/react to v38.39.0 ([1e480b5](https://gitlab.com/kilianpaquier/hugo-primer/commit/1e480b5705caa71d86d2e6096062cdba48069050))
+* **deps:** update dependency @primer/react to v38.40.0 ([430b6a7](https://gitlab.com/kilianpaquier/hugo-primer/commit/430b6a7890ae24f94b855ddab01508836d3dc51b))
+* **deps:** update dependency @primer/view-components to v0.53.5 ([15d9d1c](https://gitlab.com/kilianpaquier/hugo-primer/commit/15d9d1c6d59f72cf12edba167a8da23bedec1b9c))
+* **deps:** update dependency dompurify to v3.4.16 ([bf2a02a](https://gitlab.com/kilianpaquier/hugo-primer/commit/bf2a02a6f2e7f52d5103574e6d273405356734dc))
+
+### Continuous Integration
+
+* **layout:** correctly disable deployment jobs on merge trains ([1c6e7e9](https://gitlab.com/kilianpaquier/hugo-primer/commit/1c6e7e9aca313ba2d4befa836848647870b35562))
+* **layout:** regenerate kickr layout ([9048342](https://gitlab.com/kilianpaquier/hugo-primer/commit/9048342045b11ba9351563a9b8bae98b2df3209e))
+* **layout:** regenerate kickr layout ([d8a5655](https://gitlab.com/kilianpaquier/hugo-primer/commit/d8a5655e77ee1f36974cc197e98beb9fbb9a2aa5))
+* **layout:** regenerate kickr layout ([1f099ed](https://gitlab.com/kilianpaquier/hugo-primer/commit/1f099ed48ee9a3d13fca6b118712e66e77d69004))
+* **layout:** regenerate kickr layout ([65051c7](https://gitlab.com/kilianpaquier/hugo-primer/commit/65051c7ab4e317316cae57f0451b751cedfb5d66))
+
 ## [1.2.5](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.4...v1.2.5) (2026-09-13)
 
 ### Documentation
