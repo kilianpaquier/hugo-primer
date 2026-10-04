@@ -1,6 +1,6 @@
 name = "hugo-primer"
 license = "MIT"
-licenselink = "https://github.com/kilianpaquier/hugo-primer/LICENSE"
+licenselink = "https://github.com/kilianpaquier/hugo-primer/blob/main/LICENSE"
 description = "Primer Design System to Hugo"
 
 homepage = "https://github.com/kilianpaquier/hugo-primer"
@@ -13,15 +13,10 @@ tags = [
 features = [
   "@primer/primitives",
   "@primer/css",
-  "@prime/view_components",
+  "@primer/view_components",
   "Primer Design System",
 ]
 
 [author]
   name = "kilianpaquier"
   homepage = "https://kilianpaquier.dev"
-
-[original]
-  author = "MeiK2333"
-  homepage = "https://meik2333.com"
-  repo = "https://github.com/MeiK2333/github-style"

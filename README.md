@@ -94,3 +94,12 @@ hugo server --disableFastRender --destination dist
 ## Features
 
 See https://hugo-primer.kilianpaquier.dev/walkthrough.
+
+## License
+
+The [LICENSE](LICENSE) does not cover:
+
+- The `static/primer/` directory, which holds [Octicons](https://github.com/primer/octicons) under their own [LICENSE](static/primer/LICENSE).
+- The `static/material/` directory, which holds [Material Icons](https://github.com/google/material-design-icons) under their own [LICENSE](static/material/LICENSE).
+
+Design inspired by [github-style](https://github.com/MeiK2333/github-style).
