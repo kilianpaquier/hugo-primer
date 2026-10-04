@@ -11,9 +11,10 @@ tags = [
   "portfolio",
 ]
 features = [
-  "@primer/primitives",
   "@primer/css",
-  "@primer/view_components",
+  "@primer/primitives",
+  "@primer/react",
+  "@primer/view-components",
   "Primer Design System",
 ]
 
