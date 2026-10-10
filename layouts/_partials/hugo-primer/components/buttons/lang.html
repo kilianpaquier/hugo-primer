@@ -11,16 +11,16 @@
 <anchored-position id="lang-overlay" anchor="lang-button" anchor-offset="normal" align="end" popover="auto" aria-label='{{ T "arias.langs" }}'>
     <div class="Overlay Overlay--size-auto p-2">
         <ul class="ActionListWrap" aria-label='{{ T "arias.langs" }}'>
-            {{ range .Translations }}
+            {{- range .Translations }}
                 <li class="ActionListItem" aria-label="{{ or .Language.Label .Language.Lang }}">
                     <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}" class="ActionListContent d-flex flex-items-center">
-                        {{ with .Language.Params.Pre }}
+                        {{- with .Language.Params.Pre }}
                             <span class="ActionListItem-visual ActionListItem-visual--leading avatar-1">{{ partial "hugo-primer/helpers/svg.html" (dict "src" . "width" "16") }}</span>
-                        {{ end }}
+                        {{- end }}
                         <span class="ActionListItem-label">{{ or .Language.Label .Language.Lang }}</span>
                     </a>
                 </li>
-            {{ end }}
+            {{- end }}
         </ul>
     </div>
 </anchored-position>

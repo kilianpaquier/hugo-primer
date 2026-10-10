@@ -10,11 +10,11 @@
     {{ partial "hugo-primer/components/headers/navigation.html" . }}
 
     <main class="mt-4">
-        {{ $offset := or .IsPage (eq .Kind "404") }}
-        {{ if $offset }}
+        {{- $offset := or .IsPage (eq .Kind "404") }}
+        {{- if $offset }}
             {{ block "main" . }}{{ end }}
-        {{ else }}
-            {{ $container := site.Params.hugo_primer.styles.container }}
+        {{- else }}
+            {{- $container := site.Params.hugo_primer.styles.container }}
             <div class="{{ $container }}">
                 <!-- for accessibility purposes, rendering is reversed to get access first to main content and then to side content -->
                 <div class="d-flex flex-column-reverse flex-md-row-reverse">
@@ -23,7 +23,7 @@
                     <div class="col-12 col-md-4 col-lg-3 pr-4">{{ partial "hugo-primer/components/profile.html" . }}</div>
                 </div>
             </div>
-        {{ end }}
+        {{- end }}
     </main>
 
     {{ partial "hugo-primer/footer.html" . }}

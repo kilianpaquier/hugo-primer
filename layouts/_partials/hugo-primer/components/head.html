@@ -7,9 +7,9 @@
     <!-- see https://ogp.me/ -->
     <meta property="og:description" content="{{ .Description | markdownify | plainify }}">
     <meta property="og:locale" content="{{ site.Language.Locale }}">
-    {{ range .Translations }}
+    {{- range .Translations }}
         <meta property="og:locale:alternate" content="{{ .Language.Locale }}">
-    {{ end }}
+    {{- end }}
     <meta property="og:site_name" content="{{ site.Title }}">
     <meta property="og:title" content="{{ .Title | markdownify }}">
     <meta property="og:type" content="website">
@@ -17,15 +17,15 @@
 
     <link rel="icon" href="{{ site.Params.hugo_primer.Favicon }}">
 
-    {{ with site.Params.hugo_primer.profile_logo }}
-    {{ if ne (printf "%T" .) "string" }}
+    {{- with site.Params.hugo_primer.profile_logo }}
+    {{- if ne (printf "%T" .) "string" }}
         <link rel="preload" as="image" href="{{ .src }}"
             {{ with .srcset }}{{ printf "imagesrcset=%q" . | safeHTMLAttr }}{{ end }}
             {{ with .sizes }}{{ printf "imagesizes=%q" . | safeHTMLAttr }}{{ end }}>
-    {{ else }}
+    {{- else }}
         <link rel="preload" as="image" href="{{ . }}">
-    {{ end }}
-    {{ end }}
+    {{- end }}
+    {{- end }}
 
     {{ partialCached "hugo-primer/helpers/styles.html"
         (dict

@@ -1,20 +1,20 @@
-{{ $section := .section }}
-{{ $tags := .taxonomy }}
+{{- $section := .section }}
+{{- $tags := .taxonomy }}
 
 <!-- filter tags for only current section when page is not tags' one -->
-{{ if ne $section "tags" }}
-    {{ $filter := newScratch }}
-    {{ range $term, $pages := $tags }}
-        {{ $hasSection := where $pages ".Page.Section" $section }}
+{{- if ne $section "tags" }}
+    {{- $filter := newScratch }}
+    {{- range $term, $pages := $tags }}
+        {{- $hasSection := where $pages ".Page.Section" $section }}
         {{ if gt $hasSection 0 }}{{ $filter.Set $term (index $tags $term) }}{{ end }}
-    {{ end }}
-    {{ $tags = $filter.Values }}
-{{ end }}
+    {{- end }}
+    {{- $tags = $filter.Values }}
+{{- end }}
 
-{{ with $tags }}
+{{- with $tags }}
     <div class="border-bottom pb-4">
         <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
-            {{ range $term, $taxonomy := . }}
+            {{- range $term, $taxonomy := . }}
                 <li aria-label="{{ $term | lower }}">
                     {{ partial "hugo-primer/components/primer/tag.html"
                         (dict
@@ -24,7 +24,7 @@
                         )
                     }}
                 </li>
-            {{ end }}
+            {{- end }}
         </ul>
     </div>
-{{ end }}
+{{- end }}

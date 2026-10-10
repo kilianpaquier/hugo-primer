@@ -1,9 +1,9 @@
 <!-- override this layout to replace the footer content -->
 
-{{ $container := site.Params.hugo_primer.styles.container }}
-{{ $offset := or .IsPage (eq .Kind "404") }}
+{{- $container := site.Params.hugo_primer.styles.container }}
+{{- $offset := or .IsPage (eq .Kind "404") }}
 
-{{ if or site.Copyright site.Params.hugo_primer.notices }}
+{{- if or site.Copyright site.Params.hugo_primer.notices }}
 <footer>
     <div class="{{ $container }} py-6">
         <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}">
@@ -14,4 +14,4 @@
         </div>
     </div>
 </footer>
-{{ end }}
+{{- end }}

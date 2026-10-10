@@ -1,11 +1,11 @@
-{{ $container := site.Params.hugo_primer.styles.container }}
-{{ $menu := index site.Menus "main" }}
+{{- $container := site.Params.hugo_primer.styles.container }}
+{{- $menu := index site.Menus "main" }}
 
 <!-- search overlay -->
 <!-- must be outside of div with gaps to avoid unexpected gaps -->
-{{ if site.Params.hugo_primer.search.enabled }}
+{{- if site.Params.hugo_primer.search.enabled }}
     {{ partial "hugo-primer/components/overlays/search.html" . }}
-{{ end }}
+{{- end }}
 
 <header class="bgColor-inset {{ if not $menu }}AppHeader--box-shadow{{ end }}">
     <nav class="{{ $container }} d-flex row-gap-5 col-gap-5 pt-3 {{ if $menu }}pb-2{{ else }}pb-3{{ end }}" aria-label="Navigation">
@@ -16,15 +16,15 @@
         <!-- navbar end -->
         <div class="d-flex flex-items-center ml-auto col-gap-4">
             <!-- search -->
-            {{ if site.Params.hugo_primer.search.enabled }}
+            {{- if site.Params.hugo_primer.search.enabled }}
                 {{ partial "hugo-primer/components/buttons/search.html" . }}
                 <div class="AppHeader--separator" data-variant="filled"></div>
-            {{ end }}
+            {{- end }}
 
             <!-- langs -->
-            {{ if .IsTranslated }}
+            {{- if .IsTranslated }}
                 {{ partial "hugo-primer/components/buttons/lang.html" . }}
-            {{ end }}
+            {{- end }}
 
             <!-- theme -->
             {{ partial "hugo-primer/components/buttons/theme.html" . }}

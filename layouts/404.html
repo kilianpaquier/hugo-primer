@@ -1,5 +1,5 @@
-{{ define "main" }}
-    {{ $container := site.Params.hugo_primer.styles.container }}
+{{- define "main" }}
+    {{- $container := site.Params.hugo_primer.styles.container }}
     <section id="main" class="{{ $container }}" aria-label='{{ T "arias.content" }}'>
         <div class="not-found-wrapper d-flex flex-items-center flex-justify-center col-gap-3 text-bold octicon">
             4
@@ -8,4 +8,4 @@
         </div>
         <p class="text-center f3 text-bold">{{ T "navigation.not_found" }}</p>
     </section>
-{{ end }}
+{{- end }}

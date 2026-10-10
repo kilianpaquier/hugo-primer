@@ -1,13 +1,13 @@
 <div class="Box height-full">
     <div class="Box-body d-flex flex-column row-gap-4 height-full">
-        {{ if .icon }}
+        {{- if .icon }}
             <div class="d-flex flex-items-center col-gap-3 row-gap-3">
                 <span class="d-flex octicon fgColor-muted">{{ partial "hugo-primer/helpers/svg.html" (dict "src" .icon "width" "16") }}</span>
                 <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .title }}</a>
             </div>
-        {{ else }}
+        {{- else }}
             <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .title }}</a>
-        {{ end }}
+        {{- end }}
 
         <summary class="text-small fgColor-muted">{{ .description }}</summary>
 
