@@ -1,3 +1,17 @@
+{{- /*
+Renders previous and next pagination buttons with custom URLs.
+In terse format, a button without URL isn't rendered. In default format, it's rendered disabled.
+
+@param {string} [format] The pagination format, either default or terse, falling back to site.Params.hugo_primer.pagination.format.
+@param {string} [next] The URL of the next button.
+@param {string} [prev] The URL of the previous button.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< paginate prev="/posts/first" next="/posts/third" format="terse" >}}
+*/}}
 {{ partial "hugo-primer/components/primer/pagination.html"
     (dict
         "format" (.Get "format" | default site.Params.hugo_primer.pagination.format)

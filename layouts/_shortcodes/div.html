@@ -1,1 +1,21 @@
+{{- /*
+Renders a div element around the inner content.
+Use the {{% %}} form for Markdown content, and the {{< >}} form for raw HTML or other shortcodes.
+
+@param {string} [class] The value of the element's class attribute.
+
+@returns {template.HTML}
+
+@examples
+
+  {{% div class="d-flex flex-justify-center" %}}
+
+  Some Markdown content.
+
+  {{% /div %}}
+
+  {{< div class="d-flex flex-justify-center" >}}
+  {{< svg src="/static/primer/book-16.svg" width="22" >}}
+  {{< /div >}}
+*/}}
 <div class='{{ .Get "class" }}'>{{ .Inner }}</div>

@@ -1,3 +1,19 @@
+{{- /*
+Renders a Primer timeline item with a side badge and some content.
+
+@param {string} badge The badge image URL, its base name is used as alt text.
+@param {template.HTML} [body] The item content.
+@param {string} [body_class] The CSS classes of the content.
+@param {string} [class] The CSS classes of the item.
+
+@returns {template.HTML}
+
+@reference https://primer.style/product/components/timeline/
+
+@examples
+
+  {{ partial "hugo-primer/components/primer/timeline-item.html" (dict "badge" "/logo/10.webp" "body" .Content) }}
+*/}}
 <div class='TimelineItem {{ .class }}'>
     <img class="TimelineItem-badge sizing-border-box" src="{{ .badge }}" alt="{{ path.BaseName .badge }}">
     <div class='d-flex flex-column TimelineItem-body {{ .body_class }}'>{{ .body }}</div>

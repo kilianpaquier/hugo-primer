@@ -1,3 +1,14 @@
+{{- /*
+Renders one tag linking to its taxonomy term page.
+
+@param {page} . The taxonomy term page.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ range .GetTerms "tags" }}{{ partial "hugo-primer/components/tags/one.html" . }}{{ end }}
+*/}}
 {{ partial "hugo-primer/components/primer/tag.html"
     (dict
         "icon" (dict "src" "/static/primer/tag-16.svg" "width" "16")

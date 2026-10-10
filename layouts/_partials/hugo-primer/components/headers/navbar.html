@@ -1,3 +1,14 @@
+{{- /*
+Renders the top header: search overlay and button when enabled, language switcher when translated, theme switcher and navigation logo.
+
+@param {page} . The current page.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/headers/navbar.html" . }}
+*/}}
 {{- $container := site.Params.hugo_primer.styles.container }}
 {{- $menu := index site.Menus "main" }}
 

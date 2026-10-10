@@ -1,5 +1,25 @@
-{{/* See https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_partials/pagination.html
-{{- /* --------------------------------------------------------------------- */}}
+{{- /*
+Renders a Primer pagination.
+When the given page has a paginator, renders previous, numbered and next buttons.
+Otherwise, renders previous and next buttons from prev and next.
+In terse format, a missing previous or next button isn't rendered. In default format, it's rendered disabled.
+
+@param {string} [format=default] The pagination format, either default or terse.
+@param {map} [next] The next button target, with its URL under the URL key.
+@param {page} [page=.] The page whose paginator is rendered.
+@param {map} [prev] The previous button target, with its URL under the URL key.
+@param {int} [slots] The number of numbered buttons, 5 in default format and 3 in terse format.
+
+@returns {template.HTML}
+
+@reference https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_partials/pagination.html
+
+@examples
+
+  {{ partial "hugo-primer/components/primer/pagination.html" (dict "page" . "format" "terse") }}
+
+  {{ partial "hugo-primer/components/primer/pagination.html" (dict "prev" (dict "URL" "/posts/first") "next" (dict "URL" "/posts/third")) }}
+*/}}
 
 {{- $validFormats := slice "default" "terse" }}
 

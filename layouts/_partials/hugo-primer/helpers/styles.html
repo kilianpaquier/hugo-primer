@@ -1,3 +1,17 @@
+{{- /*
+Bundles remote and local stylesheets into one minified and fingerprinted link element.
+Local files are executed as templates with the site as context, and SCSS files are transpiled with site.Params.hugo_primer.styles.transpiler.
+Empty entries are skipped and nothing is rendered when no file remains.
+
+@param {slice} [local] The asset paths of local CSS or SCSS files.
+@param {slice} [remote] The URLs of remote CSS files.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partialCached "hugo-primer/helpers/styles.html" (dict "local" (slice "styles/main.scss")) "main" }}
+*/}}
 {{- $merged := slice }}
 
 {{- range .remote }}

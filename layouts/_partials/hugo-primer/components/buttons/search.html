@@ -1,3 +1,12 @@
+{{- /*
+Renders the button opening the search overlay, with its keyboard shortcut hint on medium screens and up.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/buttons/search.html" . }}
+*/}}
 {{- $switch := "d-md" }}
 <button id="search-button" data-show-dialog-id="search-overlay" class="Button Button--secondary bgColor-transparent fgColor-muted d-flex px-2" type="button" aria-haspopup="dialog" aria-controls="search-overlay" aria-labelledby="tooltip-search-button">
     {{ "/static/primer/search-16.svg" | readFile | safeHTML }}

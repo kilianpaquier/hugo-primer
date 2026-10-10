@@ -1,3 +1,25 @@
+{{- /*
+Renders an image, wrapped in a figure element with a caption when caption is given.
+The image base name is used as alt text.
+
+@param {string} [caption] The figure caption, no figure element is rendered without it.
+@param {string} [caption-class] The CSS classes of the caption.
+@param {string} [class] The CSS classes of the figure, ignored without caption.
+@param {string} [height] The image height.
+@param {string} [img-class] The CSS classes of the image.
+@param {string} [sizes] The value of the image's sizes attribute.
+@param {string} src The image URL.
+@param {string} [srcset] The value of the image's srcset attribute.
+@param {string} [width] The image width.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< img src="/logo/10.webp" height="100px" >}}
+
+  {{< img src="/logo/10.webp" height="100px" caption="Arthur" caption-class="text-italic text-center" >}}
+*/}}
 {{- $src := .Get "src" }}
 {{- $srcset := .Get "srcset" }}
 {{- $sizes := .Get "sizes" }}

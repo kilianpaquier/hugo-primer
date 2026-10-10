@@ -1,3 +1,20 @@
+{{- /*
+Bundles remote and local JavaScript files into one minified and fingerprinted script element.
+Local files are executed as templates with the site as context, then built with js.Build.
+Empty entries are skipped and nothing is rendered when no file remains.
+
+@param {bool} [async=false] Whether to add the async attribute.
+@param {bool} [defer=false] Whether to add the defer attribute.
+@param {slice} [local] The asset paths of local JavaScript files.
+@param {bool} [module=false] Whether to set the module script type.
+@param {slice} [remote] The URLs of remote JavaScript files.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partialCached "hugo-primer/helpers/js.html" (dict "local" (slice "js/theming.js") "async" true) "theming" }}
+*/}}
 {{- $merged := slice }}
 
 {{- range .remote }}

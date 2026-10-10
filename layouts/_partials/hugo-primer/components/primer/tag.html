@@ -1,3 +1,16 @@
+{{- /*
+Renders a tag with an icon, as a muted link when permalink is given.
+
+@param {map} icon The hugo-primer/helpers/svg.html context of the icon.
+@param {string} name The tag name.
+@param {string} [permalink] The tag link target.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/primer/tag.html" (dict "name" "hugo" "permalink" "/tags/hugo" "icon" (dict "src" "/static/primer/tag-16.svg" "width" "16")) }}
+*/}}
 {{- if .permalink }}
     <a class="Link Link--muted text-small d-flex flex-items-center col-gap-2" href="{{ .permalink }}">
         <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" .icon }}</span>

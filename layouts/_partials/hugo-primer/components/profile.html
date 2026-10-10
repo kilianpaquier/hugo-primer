@@ -1,3 +1,12 @@
+{{- /*
+Renders the profile sidebar: profile logo, title and subtitle, profile menu links, then the hugo-primer/side.html hook.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/profile.html" . }}
+*/}}
 <section aria-label='{{ T "arias.side" }}'>
     <div class="d-flex flex-md-column col-gap-6 row-gap-6">
         {{- with site.Params.hugo_primer.profile_logo }}

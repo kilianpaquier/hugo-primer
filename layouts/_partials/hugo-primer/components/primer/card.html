@@ -1,3 +1,19 @@
+{{- /*
+Renders a Primer Box card with a title link, an optional icon, a description and optional tags at the bottom.
+
+@param {string} [description] The text below the title.
+@param {string} [icon] The SVG source (local path or https URL) shown before the title.
+@param {string} [permalink] The internal link target of the title.
+@param {page.Pages} [tags] The taxonomy terms rendered at the bottom, for instance the result of .GetTerms "tags".
+@param {string} title The card title, rendered as a link.
+@param {string} [url] The external link target of the title, opened in a new tab and preferred over permalink.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/primer/card.html" (dict "title" .Title "permalink" .RelPermalink "description" .Description "tags" (.GetTerms "tags")) }}
+*/}}
 <div class="Box height-full">
     <div class="Box-body d-flex flex-column row-gap-4 height-full">
         {{- if .icon }}

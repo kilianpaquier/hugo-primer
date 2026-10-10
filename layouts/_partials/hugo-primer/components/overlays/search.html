@@ -1,3 +1,12 @@
+{{- /*
+Renders the search modal dialog: search input, results list and search syntax link.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/overlays/search.html" . }}
+*/}}
 <div class="Overlay--hidden" data-modal-dialog-overlay>
     <modal-dialog id="search-overlay" class="Overlay Overlay--width-xlarge Overlay--height-fit-content Overlay--max-height-xlarge flex-column mx-auto mt-2 position-absolute bgColor-default color-shadow-large border" role="dialog"
         aria-modal="true" aria-label='{{ T "search.dialog" }}'>

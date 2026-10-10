@@ -1,3 +1,22 @@
+{{- /*
+Renders a Primer timeline item with a side badge and the inner Markdown content.
+
+@param {string} badge The badge image URL, its base name is used as alt text.
+@param {string} [class] The CSS classes of the item.
+@param {string} [inner-class] The CSS classes of the content.
+
+@returns {template.HTML}
+
+@reference https://primer.style/product/components/timeline/
+
+@examples
+
+  {{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
+
+  Some Markdown content.
+
+  {{% /timeline-item %}}
+*/}}
 {{ partial "hugo-primer/components/primer/timeline-item.html"
     (dict
         "badge" (.Get "badge")

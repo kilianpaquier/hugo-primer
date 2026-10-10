@@ -1,3 +1,15 @@
+{{- /*
+Renders the tags used by the pages of a section, or all tags when the section is tags.
+
+@param {string} section The section name.
+@param {page.Taxonomy} taxonomy The tags taxonomy.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/tags/section.html" (dict "section" .Section "taxonomy" site.Taxonomies.tags) }}
+*/}}
 {{- $section := .section }}
 {{- $tags := .taxonomy }}
 

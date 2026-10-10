@@ -1,3 +1,21 @@
+{{- /*
+Renders an inline SVG fetched at build time, with an optional tooltip.
+Fails the build when the SVG can't be read.
+
+@param {string} [class] The CSS classes of the SVG, its base name is always appended.
+@param {string} [height] The SVG height.
+@param {string} src The SVG source, a local path or a remote URL starting with https://.
+@param {string} [tooltip] The tooltip text, also used as accessible label.
+@param {string} [width] The SVG width.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/helpers/svg.html" (dict "src" "/static/primer/tag-16.svg" "width" "16") }}
+
+  {{ partial "hugo-primer/helpers/svg.html" (dict "src" "https://cdn.simpleicons.org/gitlab" "width" "22" "tooltip" "GitLab") }}
+*/}}
 {{- $src := .src }}
 {{- $remote := hasPrefix $src "https://" }}
 

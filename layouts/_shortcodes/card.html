@@ -1,4 +1,18 @@
-<!-- FIXME add tags but how with shortcodes format ? -->
+{{- /*
+Renders a Primer Box card with a title link, an optional icon and a description.
+
+@param {string} [description] The text below the title.
+@param {string} [icon] The SVG source (local path or https URL) shown before the title.
+@param {string} [permalink] The internal link target of the title.
+@param {string} title The card title, rendered as a link.
+@param {string} [url] The external link target of the title, opened in a new tab and preferred over permalink.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< card title="Hugo" url="https://gohugo.io" description="The world's fastest framework for building websites." >}}
+*/}}
 {{ partial "hugo-primer/components/primer/card.html"
     (dict
         "description" (.Get "description")

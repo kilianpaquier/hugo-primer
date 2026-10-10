@@ -1,3 +1,17 @@
+{{- /*
+Groups the regular pages of a list page by its pagination order and sort, falling back to site.Params.hugo_primer.pagination.
+Orders date, expirydate, lastmod and publishdate group by day, any other order groups by that page parameter.
+
+@param {page} . The list page.
+
+@returns {page.PagesGroup}
+
+@examples
+
+  {{ range partial "hugo-primer/helpers/group.html" . }}
+    {{ range .Pages.ByWeight }}{{ .Title }}{{ end }}
+  {{ end }}
+*/}}
 {{- $order := .Params.hugo_primer.pagination.order | default site.Params.hugo_primer.pagination.order }}
 {{- $sort := .Params.hugo_primer.pagination.sort | default site.Params.hugo_primer.pagination.sort }}
 

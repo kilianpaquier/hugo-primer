@@ -1,3 +1,12 @@
+{{- /*
+Renders the button switching between light, dark and system themes.
+
+@returns {template.HTML}
+
+@examples
+
+  {{ partial "hugo-primer/components/buttons/theme.html" . }}
+*/}}
 <button id="theme-button" class="Button Button--iconOnly AppHeader--button Button--secondary" type="button" aria-labelledby="tooltip-theme-button">
     <span class="d-icon-moon">{{ "/static/primer/moon-16.svg" | readFile | safeHTML }}</span>
     <span class="d-icon-sun">{{ "/static/primer/sun-16.svg" | readFile | safeHTML }}</span>
