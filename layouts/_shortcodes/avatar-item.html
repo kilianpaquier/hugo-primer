@@ -1,0 +1,32 @@
+{{- /*
+Renders an image on the side of the inner Markdown content.
+The image is always round and vertically centered.
+Without inner content (self-closing shortcode), only the round image is rendered.
+
+@param {string} [class] The CSS classes of the wrapper, ignored without inner content.
+@param {string} [height] The image height.
+@param {string} src The image URL, its base name is used as alt text.
+@param {string} [width] The image width.
+
+@returns {template.HTML}
+
+@examples
+
+  {{% avatar-item src="/logo/10.webp" width="30px" class="col-gap-5 mb-3" %}}
+
+  ### Title
+  Some Markdown content.
+
+  {{% /avatar-item %}}
+
+  {{% avatar-item src="/logo/10.webp" height="50px" /%}}
+*/}}
+{{- $src := .Get "src" }}
+{{- if .Inner }}
+<div class='d-flex {{ .Get "class" }}'>
+    <img class="sizing-border-box flex-self-center circle" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+    <div class="d-flex flex-column row-gap-1">{{ .Inner }}</div>
+</div>
+{{- else }}
+<img class="sizing-border-box circle" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+{{- end }}

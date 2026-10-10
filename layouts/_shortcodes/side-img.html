@@ -1,5 +1,0 @@
-{{ $src := .Get "src" }}
-<div class='d-flex {{ .Get "class" }}'>
-    <img class='sizing-border-box {{ .Get "img-class" }}' src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
-    <div class='d-flex flex-column {{ .Get "inner-class" }}'>{{ .Inner }}</div>
-</div>
