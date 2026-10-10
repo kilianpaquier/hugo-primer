@@ -1,5 +1,5 @@
 /**
- * documentReady checks whether the current document is loading are already ready to receive instructions.
+ * documentReady checks whether the current document is loading or already ready to receive instructions.
  *
  * When loading, callback is wrapped with DOMContentLoaded event. If not loading, then callback is executed directly.
  *

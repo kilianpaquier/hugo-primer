@@ -1,6 +1,6 @@
 ---
 date: 2025-04-16
-description: "How to: extras links, logo, titles and additional side content"
+description: "How to: extra links, logo, titles and additional side content"
 tags:
   - Setup
   - Navigation
@@ -12,8 +12,8 @@ weight: 15
 
 ## Logo, title, subtitle
 
-Side content can also be customized !
-Logo, title and subtitle may be defined as followed in configuration file `hugo.(yaml|toml)`:
+Side content can also be customized!
+Logo, title and subtitle may be defined as follows in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
@@ -27,9 +27,9 @@ params:
     title: Title
 ```
 
-## Extras links
+## Extra links
 
-Additionally, extras links may be defined with Hugo menu `profile`:
+Additionally, extra links may be defined with the Hugo `profile` menu:
 
 ```yaml
 menus:
@@ -57,10 +57,10 @@ menus:
       url: https://example.com
 ```
 
-Is is as such possible to define as many links as wished 😀.
+It is therefore possible to define as many links as you wish 😀.
 
 You can find more information on menus [here](https://gohugo.io/content-management/menus/).
 
 ## Extras
 
-Aside `profile` menu and extras links, it is possible to override layout `layouts/partials/hugo-primer/side.html` to add content below extras links.
+Besides the `profile` menu and extra links, it is possible to override the `layouts/_partials/hugo-primer/side.html` layout to add content below the extra links.

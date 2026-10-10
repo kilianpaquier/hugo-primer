@@ -6,7 +6,7 @@
  * @param {string} selector is the selector of the element to wait for
  * @param {number} timeout is the timeout before stopping active wait on element
  *
- * @returns {Promise<HTMLElement>} Promise resolved or rejected once timeout is atteigned or selector is loaded
+ * @returns {Promise<HTMLElement>} Promise resolved or rejected once timeout is reached or selector is loaded
  */
 const wait = (selector, timeout) => {
     return new Promise((resolve, reject) => {

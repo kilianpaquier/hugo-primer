@@ -6,7 +6,7 @@ cascade:
         enabled: true
         format: terse
 date: 2025-04-16
-description: Liste de tous les *posts* du thème **hugo-primer**. Apprenez-en plus sur comment l'utiliser et configurer !
+description: Liste de tous les *posts* du thème **hugo-primer**. Apprenez à l'utiliser et à le configurer !
 title: Walkthrough
 params:
   hugo_primer:

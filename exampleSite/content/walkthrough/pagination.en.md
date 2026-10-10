@@ -10,7 +10,7 @@ weight: 35
 
 # {{% param "title" %}}
 
-With this theme, two pagination are available. In both cases, order and sort can be modified in configuration file `hugo.(yaml|toml)`:
+With this theme, two kinds of pagination are available. In both cases, order and sort can be modified in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
@@ -26,7 +26,7 @@ params:
 ## Single pages "pagination"
 
 On single pages (like this one for instance), only `< Previous` and `Next >` slots can be displayed.
-This pagination is disabled by default, and can be enabled simply by giving in `front matter` page properties the following configuration:
+This pagination is disabled by default, and can be enabled simply by adding the following configuration to the page `front matter`:
 
 ```yaml
 ---
@@ -37,7 +37,7 @@ params:
 ---
 ```
 
-It can also be configured globally on the whole section with `cascade` property on the parent page (section):
+It can also be configured globally on the whole section with the `cascade` property on the parent page (section):
 
 ```yaml
 ---
@@ -50,7 +50,7 @@ cascade:
 ```
 
 In more advanced cases, you might want to use the [**`paginate`**](/walkthrough/shortcodes#paginate) shortcode to have a more precise pagination.
-Well, this shortcode at least allows you to specify custom `< Previous` and `Next >` URLs, even give only one of them.
+This shortcode allows you to specify custom `< Previous` and `Next >` URLs, or only one of them.
 
 ## List pages pagination
 

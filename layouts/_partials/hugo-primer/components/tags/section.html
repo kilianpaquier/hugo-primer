@@ -13,7 +13,7 @@ Renders the tags used by the pages of a section, or all tags when the section is
 {{- $section := .section }}
 {{- $tags := .taxonomy }}
 
-<!-- filter tags for only current section when page is not tags' one -->
+<!-- filter tags for only current section unless on the tags page -->
 {{- if ne $section "tags" }}
     {{- $filter := newScratch }}
     {{- range $term, $pages := $tags }}

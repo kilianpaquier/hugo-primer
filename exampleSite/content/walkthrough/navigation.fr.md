@@ -1,6 +1,6 @@
 ---
 date: 2025-04-16
-description: "How to : personalisation de la navigation"
+description: "How to : personnalisation de la navigation"
 tags:
   - Setup
   - Navigation
@@ -35,4 +35,4 @@ menus:
 
 Vous l'aurez compris, peu importe le nombre de menus que vous ajoutez, ceux-ci seront affichés ! 😉
 
-Vous pouvez obtenir plus d'information sur menus [ici](https://gohugo.io/content-management/menus/).
+Vous pouvez obtenir plus d'informations sur les menus [ici](https://gohugo.io/content-management/menus/).

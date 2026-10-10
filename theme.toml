@@ -1,7 +1,7 @@
 name = "hugo-primer"
 license = "MIT"
 licenselink = "https://github.com/kilianpaquier/hugo-primer/blob/main/LICENSE"
-description = "Primer Design System to Hugo"
+description = "Primer Design System for Hugo"
 
 homepage = "https://github.com/kilianpaquier/hugo-primer"
 demosite = "https://hugo-primer.kilianpaquier.dev"

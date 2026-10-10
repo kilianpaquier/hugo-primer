@@ -13,7 +13,7 @@ weight: 5
 Avant tout *setup* du thème, il faut créer un projet [**Hugo**](https://gohugo.io/).
 
 Pour cela vous pouvez suivre les indications sur https://gohugo.io/getting-started/quick-start/
-ou suivre les étapes ci-dessous (dans le cas où vous auriez déjà **Hugo** d'installé / **Go** si vous comptez importer le thème comme recommandé).
+ou suivre les étapes ci-dessous (dans le cas où vous auriez déjà installé **Hugo** / **Go** si vous comptez importer le thème comme recommandé).
 
 ## Initialisation d'un projet
 
@@ -44,18 +44,18 @@ hugo mod tidy
 
 ## Git submodule
 
-Si vous souhaitez passer un *submodule* **Git**, deux possibilités :
+Si vous souhaitez passer par un *submodule* **Git**, deux possibilités :
 
 **Avec SSH** :
 
 ```sh
-git submodules add git@github.com:kilianpaquier/hugo-primer.git themes/hugo-primer
+git submodule add git@github.com:kilianpaquier/hugo-primer.git themes/hugo-primer
 ```
 
 **Avec HTTPS** :
 
 ```sh
-git submodules add https://github.com/kilianpaquier/hugo-primer.git themes/hugo-primer
+git submodule add https://github.com/kilianpaquier/hugo-primer.git themes/hugo-primer
 ```
 
 Vous devez ensuite dans la configuration `hugo.(yaml|toml)` ajouter la propriété suivante :

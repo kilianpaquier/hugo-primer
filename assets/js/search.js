@@ -37,7 +37,7 @@ const toItemHTML = item => {
 }
 
 /**
- * section returns a built HTML search section (i.e. an Hugo section).
+ * section returns a built HTML search section (i.e. a Hugo section).
  *
  * @param {string} section section name
  * @param { { item: Item }[] } finds all search elements returned
@@ -105,7 +105,7 @@ const previous = (current, results) => {
  * @returns {HTMLLIElement} the next element to select
  */
 const next = (current, results) => {
-    // return last of all sub-lists
+    // return first of all sub-lists
     const firstChild = 'li[role="option"]:first-of-type'
     const firstDivider = "li.ActionList-sectionDivider:not(:empty):first-child"
     if (!current) {
@@ -117,9 +117,9 @@ const next = (current, results) => {
     if (next && next.role === "option") return next
 
     let divider = current.closest("li.ActionList-sectionDivider:not(:empty)").nextElementSibling // current parent
-    if (!divider) return results.querySelector(`${firstDivider} ${firstChild}`) // we are at the top, let's go back to the bottom
+    if (!divider) return results.querySelector(`${firstDivider} ${firstChild}`) // we are at the bottom, let's go back to the top
 
-    // get the first previous sibling with children
+    // get the first next sibling with children
     while (divider.children.length === 0) {
         divider = divider.nextElementSibling
     }

@@ -80,7 +80,7 @@ ul.pagination {
 
         &:not(:last-child) {
             // it might look a lot on local dev environment
-            // but it's fine on production. Why ? Dunno.
+            // but it's fine on production. Why? Dunno.
             margin-right: var(--base-size-4);
         }
     }

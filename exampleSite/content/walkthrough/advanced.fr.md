@@ -16,7 +16,7 @@ weight: 50
 ## Favicon
 
 Le *favicon* représente la petite icône que vous pouvez voir dans le nom de l'onglet.
-Il est donc primordial de pouvoir la configurer car il s'agit souvent du logo d'un site (dans la configuration `hugo.(yaml|toml)`) :
+Il est donc primordial de pouvoir le configurer car il s'agit souvent du logo d'un site (dans la configuration `hugo.(yaml|toml)`) :
 
 ```yaml
 params:
@@ -29,15 +29,13 @@ params:
 Il est aussi possible d'utiliser la clé `copyright` de la configuration `hugo.(yaml|toml)`, une clé par défaut, déjà offerte par Hugo.
 En fournissant une valeur, la notion *copyright* apparaîtra en bas de page, dans le *footer*.
 
-Au-delà, il est possible de complètement surcharger le *footer* en surchargeant le *layout* `layouts/partials/hugo-primer/footer.html` :
+Au-delà, il est possible de complètement surcharger le *footer* en surchargeant le *layout* `layouts/_partials/hugo-primer/footer.html` :
 
 ```html
-<!-- override this layout to replace the footer content -->
+{{- $container := site.Params.hugo_primer.styles.container }}
+{{- $offset := or .IsPage (eq .Kind "404") }}
 
-{{ $container := site.Params.hugo_primer.styles.container }}
-{{ $offset := or .IsPage (eq .Kind "404") }}
-
-{{ if or site.Copyright site.Params.hugo_primer.notices }}
+{{- if or site.Copyright site.Params.hugo_primer.notices }}
 <footer>
     <div class="{{ $container }} py-6">
         <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}">
@@ -48,7 +46,7 @@ Au-delà, il est possible de complètement surcharger le *footer* en surchargean
         </div>
     </div>
 </footer>
-{{ end }}
+{{- end }}
 ```
 
 ## Notices
@@ -78,11 +76,11 @@ params:
 
 Vous pouvez le modifier pour élargir et jouer avec les *paddings* globaux.
 La modification de ce style impacte à la fois la navigation, le contenu principal, la section des commentaires **giscus** et le *footer*.
-Vous pouvez trouver plus d'information sur le *grid* système de **Primer** [ici](https://primer.style/css/storybook/?path=/story/utilities-grid--container).
+Vous pouvez trouver plus d'informations sur le système de *grid* de **Primer** [ici](https://primer.style/css/storybook/?path=/story/utilities-grid--container).
 
 ## Stylesheet personnalisée
 
-Il est possible d'ajouter une feuille de style "maison" au format Sass ou CSS via la configuration hugo suivante :
+Il est possible d'ajouter une feuille de style "maison" au format Sass ou CSS via la configuration Hugo suivante :
 
 ```yaml
 params:
@@ -106,8 +104,8 @@ params:
 
 ## Lazysizes
 
-Avec le thème, vous pouvez utiliser la classe CSS `lazyload` afin de ne charger les images que lorsqu'elles rentrent dans le champs de vision de la page.
-Par défaut activée, la fonctionnalité (basé sur [**lazysizes**](https://afarkas.github.io/lazysizes/index.html)) peut être désactivée avec la configuration `hugo.(yaml|toml)` :
+Avec le thème, vous pouvez utiliser la classe CSS `lazyload` afin de ne charger les images que lorsqu'elles rentrent dans le champ de vision de la page.
+Par défaut activée, la fonctionnalité (basée sur [**lazysizes**](https://afarkas.github.io/lazysizes/index.html)) peut être désactivée avec la configuration `hugo.(yaml|toml)` :
 
 ```yaml
 params:
@@ -117,7 +115,7 @@ params:
       disabled: false
 ```
 
-Il est facile d'ajouter une classe à une balise HTML, mais comment faire pour image directement en *markdown* ?
+Il est facile d'ajouter une classe à une balise HTML, mais comment faire pour une image directement en *markdown* ?
 Vous pouvez utiliser le *shortcode* `figure` d'Hugo comme ci-dessous (plus d'informations [ici](https://gohugo.io/shortcodes/figure/)) :
 
 ```md
@@ -150,7 +148,7 @@ une nouvelle balise `link` est ajoutée à la balise `head` avec les propriété
 <link rel="prefetch" href="<URL>" fetchpriority="high" as="document">
 ```
 
-En ajoutant cette balise, **instantpage** indique au navigateur qu'il peut pré-charger des ressources pour améliorer l'expérience de navigation de votre utilisateur.
+En ajoutant cette balise, **instantpage** indique au navigateur qu'il peut précharger des ressources pour améliorer l'expérience de navigation de votre utilisateur.
 Vous pouvez trouver plus d'informations sur la documentation **MDN** [ici](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel/prefetch).
 
 ## Versions des styles
@@ -161,13 +159,13 @@ Enfin, pour finir sur cette partie "avancée", les versions utilisées des style
 params:
   hugo_primer:
     versions:
-      dompurify: v3.2.6
-      fuse: v7.1.0
+      dompurify: 3.4.16
+      fuse: 7.5.0
       instantpage: 5.2.0
-      primer_css: v21
-      primer_primitives: v10
-      primer_react: v37
-      primer_view_components: v0
+      primer_css: 22.3.2
+      primer_primitives: 11.10.0
+      primer_react: 38.40.1
+      primer_view_components: 0.53.5
 ```
 
 Il est donc possible de les modifier pour fixer une version ou mettre à jour sur une plus récente.

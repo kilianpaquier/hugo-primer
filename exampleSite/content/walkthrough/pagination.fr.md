@@ -19,13 +19,13 @@ params:
       format: default
       order: date
       sort: desc
-      # slots: 5 # le nombre de page à afficher dans la pagination (< Précédent, 1, 2, 3, 4, ..., Suivant >)
+      # slots: 5 # le nombre de pages à afficher dans la pagination (< Précédent, 1, 2, 3, 4, ..., Suivant >)
       # pagerSize: 5 # le nombre d'éléments par page
 ```
 
 ## "Pagination" sur les pages uniques
 
-Sur les pages uniques (comme celle-ci par exemple), seulement les *slots* `< Précédent` et `Suivant >` peuvent être affichés.
+Sur les pages uniques (comme celle-ci par exemple), seuls les *slots* `< Précédent` et `Suivant >` peuvent être affichés.
 Cette pagination est désactivée par défaut, pour l'activer il suffit de fournir en paramètres de page la configuration suivante :
 
 ```yaml
@@ -37,7 +37,7 @@ params:
 ---
 ```
 
-La pagination peut aussi être activée au global d'une section avec la propriété `cascade` sur la page parent (section) :
+La pagination peut aussi être activée au global d'une section avec la propriété `cascade` sur la page parente (section) :
 
 ```yaml
 ---
@@ -49,9 +49,9 @@ cascade:
 ---
 ```
 
-Dans des cas plus poussés, il est possible d'utiliser le shortcode [**`paginate`**](/walkthrough/shortcodes#paginate) pour utiliser une pagination plus personalisable.
-Enfin, c'est la même que présentée ci-dessus mais les éléments pointés par `< Précédent` et `Suivant >` sont personalisables,
-et il est possible de nous fournir que l'un des deux.
+Dans des cas plus poussés, il est possible d'utiliser le shortcode [**`paginate`**](/walkthrough/shortcodes#paginate) pour utiliser une pagination plus personnalisable.
+Enfin, c'est la même que présentée ci-dessus mais les éléments pointés par `< Précédent` et `Suivant >` sont personnalisables,
+et il est possible de n'en fournir qu'un des deux.
 
 ## Pagination sur les pages listées
 

@@ -12,7 +12,7 @@ weight: 15
 
 ## Logo, titre, sous-titre
 
-Le contenu latéral est lui aussi personalisable !
+Le contenu latéral est lui aussi personnalisable !
 Le logo, le titre, le sous-titre peuvent être définis comme suit dans la configuration `hugo.(yaml|toml)` :
 
 ```yaml
@@ -57,11 +57,11 @@ menus:
       url: https://example.com
 ```
 
-Il est donc possible de définir autant de liens que souhaités 😀.
+Il est donc possible de définir autant de liens que souhaité 😀.
 
-Vous pouvez obtenir plus d'information sur menus [ici](https://gohugo.io/content-management/menus/).
+Vous pouvez obtenir plus d'informations sur les menus [ici](https://gohugo.io/content-management/menus/).
 
 ## Suppléments
 
-Au-delà du menu `profile`, il est possible de surcharger le *layout* `layouts/partials/hugo-primer/side.html`
+Au-delà du menu `profile`, il est possible de surcharger le *layout* `layouts/_partials/hugo-primer/side.html`
 pour ajouter des éléments supplémentaires en dessous des liens *extras*.

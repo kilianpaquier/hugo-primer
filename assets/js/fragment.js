@@ -23,7 +23,7 @@ window.addEventListener("hashchange", hashchange)
 documentReady(hashchange)
 
 documentReady(() => {
-    // Note: could handle h3, h4, h5, h6 but it's kinda weird a link by their side
+    // Note: could handle h3, h4, h5, h6 but a link next to them looks odd
     const titles = document.querySelectorAll(".markdown-body h1, .markdown-body h2")
 
     for (const title of titles) {

@@ -10,10 +10,10 @@ const preferredColor = () => {
 }
 
 /**
- * themes is the slice of theme available
+ * themes is the slice of themes available
  *
  * it's a mapping between the theme name and its value,
- * since system theme either point to dark or light depending on the use
+ * since system theme either points to dark or light depending on the use
  */
 const themes = [
     { name: "system", theme: preferredColor() },

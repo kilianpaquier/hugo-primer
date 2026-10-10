@@ -13,7 +13,7 @@ weight: 20
 
 ## Introduction
 
-By default disabled (as you may see in below code snippet),
+Disabled by default (as you may see in the code snippet below),
 comments with [**giscus**](https://giscus.app) can be enabled directly in Hugo configuration file `hugo.(yaml|toml)`:
 
 ```yml
@@ -34,26 +34,24 @@ params:
       #   data-strict:
 ```
 
-**Giscus** was choosen for this theme since it provides both day and night theme in coherence with **GitHub** website style.
-Also because authentication goes through its **GitHub** App, as such it's less painful to integrate an authenticated comment system.
+**Giscus** was chosen for this theme since it provides both day and night themes consistent with the **GitHub** website style.
+Its authentication also goes through its **GitHub** App, which makes an authenticated comment system less painful to integrate.
 
 ## Replace giscus
 
 You are however free to provide your own comment system (more information [here](https://gohugo.io/content-management/comments/))
-by overriding layout `layouts/partials/hugo-primer/comments.html`:
+by overriding the `layouts/_partials/hugo-primer/comments.html` layout:
 
 ```html
-<!-- override this layout to replace the comments system content -->
-
-{{ $container := site.Params.hugo_primer.styles.container }}
-{{ if not site.Params.hugo_primer.giscus.disabled }}
+{{- $container := site.Params.hugo_primer.styles.container }}
+{{- if not site.Params.hugo_primer.giscus.disabled }}
     <section class="{{ $container }}">
         <hr class="col-12 my-4" aria-hidden="true" />
         <div class="col-12 px-0 mx-auto">
             <div id="giscus" class="giscus"></div>
         </div>
     </section>
-{{ end }}
+{{- end }}
 ```
 
 However, please note that this partial is only included in `_default/single.html`.

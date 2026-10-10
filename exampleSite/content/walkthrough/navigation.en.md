@@ -10,8 +10,8 @@ weight: 10
 
 # {{% param "title" %}}
 
-Navigation may be added or modified with **hugo-primer**, actually, by default navigation is undefined (no navigation).
-To enable it, it's sufficient to edit configuration file `hugo.(yaml|toml)` and add a `main` menu:
+Navigation may be added or modified with **hugo-primer**. By default, navigation is undefined (no navigation).
+To enable it, edit the `hugo.(yaml|toml)` configuration file and add a `main` menu:
 
 ```yaml
 menus:

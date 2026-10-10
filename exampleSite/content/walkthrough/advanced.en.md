@@ -15,8 +15,8 @@ weight: 50
 
 ## Favicon
 
-Favicon represent the small icon in the tab name.
-It is as such essential to be able to configure it, since it may be in the majority of cases, the website logo (still in configuration file `hugo.(yaml|toml)`):
+The favicon is the small icon shown next to the tab name.
+Since it's the website logo in most cases, it can be configured in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
@@ -26,18 +26,16 @@ params:
 
 ## Copyright
 
-You are also able to provide configuration file `hugo.(yaml|toml)` with Hugo property `copyright`.
-When given, copyright section will appear in bottom page, inside the footer.
+You can also set the Hugo `copyright` property in the `hugo.(yaml|toml)` configuration file.
+When given, the copyright appears at the bottom of the page, inside the footer.
 
-Beyond this configuration, you are also able to completely override footer by overriding layout `layouts/partials/hugo-primer/footer.html`:
+Beyond this configuration, you can completely replace the footer by overriding the `layouts/_partials/hugo-primer/footer.html` layout:
 
 ```html
-<!-- override this layout to replace the footer content -->
+{{- $container := site.Params.hugo_primer.styles.container }}
+{{- $offset := or .IsPage (eq .Kind "404") }}
 
-{{ $container := site.Params.hugo_primer.styles.container }}
-{{ $offset := or .IsPage (eq .Kind "404") }}
-
-{{ if or site.Copyright site.Params.hugo_primer.notices }}
+{{- if or site.Copyright site.Params.hugo_primer.notices }}
 <footer>
     <div class="{{ $container }} py-6">
         <div class="col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}">
@@ -48,7 +46,7 @@ Beyond this configuration, you are also able to completely override footer by ov
         </div>
     </div>
 </footer>
-{{ end }}
+{{- end }}
 ```
 
 ## Notices
@@ -66,8 +64,8 @@ params:
 
 ## Website container
 
-As shown in theme overview, all styles are based on **Primer**.
-To avoid the whole content to take too much place on large screen, default container is defined in configuration file `hugo.(yaml|toml)`:
+As shown in the theme overview, all styles are based on **Primer**.
+To keep the content from taking too much space on large screens, a default container is defined in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
@@ -82,7 +80,7 @@ You can find more information about **Primer** grid system [here](https://primer
 
 ## Custom stylesheet
 
-It is possible to add a custom stylesheet through to following `hugo.(yaml|toml)` configuration:
+It is possible to add a custom stylesheet through the following `hugo.(yaml|toml)` configuration:
 
 ```yaml
 params:
@@ -106,9 +104,9 @@ params:
 
 ## Lazysizes
 
-With this theme, you can use CSS class `lazyload` to load images only once they enter page view.
-This feature, based on [**lazysizes**](https://afarkas.github.io/lazysizes/index.html) is by default enabled
-and can be disabled in configuration file `hugo.(yaml|toml)`:
+With this theme, you can use the CSS class `lazyload` to load images only once they enter the page view.
+This feature, based on [**lazysizes**](https://afarkas.github.io/lazysizes/index.html), is enabled by default
+and can be disabled in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
@@ -118,8 +116,8 @@ params:
       disabled: false
 ```
 
-Overall, it's easy to add a class on an HTML tag. However, how to on an image defined in markdown content ?
-You can easily achieve that with Hugo `figure` shortcode like provided below (more information [here](https://gohugo.io/shortcodes/figure/)):
+Overall, it's easy to add a class to an HTML tag. However, how do you add one to an image defined in Markdown content?
+You can easily achieve that with the Hugo `figure` shortcode as shown below (more information [here](https://gohugo.io/shortcodes/figure/)):
 
 ```md
 {{</* figure
@@ -133,8 +131,8 @@ You can easily achieve that with Hugo `figure` shortcode like provided below (mo
 
 ## Instant pages
 
-To speed up pages loading, this theme uses [**instantpage**](https://instant.page/).
-It is enabled by default, like almost everything else and can be disabled in configuration file `hugo.(yaml|toml)`:
+To speed up page loading, this theme uses [**instantpage**](https://instant.page/).
+It is enabled by default, like almost everything else, and can be disabled in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
@@ -144,32 +142,32 @@ params:
       disabled: false
 ```
 
-How does it work ? Once in a while, when the user hovers an internal link (another page of your website for instance),
-a new HTML tag `link` is added to `head` HTML tag with following properties:
+How does it work? When the user hovers over an internal link (another page of your website for instance),
+a new HTML `link` tag is added to the `head` HTML tag with the following properties:
 
 ```html
 <link rel="prefetch" href="<URL>" fetchpriority="high" as="document">
 ```
 
-By adding this tag, **instantpage** indicates to the user browser that it can preload resources to improve user navigation experience.
-You may find more information on **MDN** documentation [here](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel/prefetch).
+By adding this tag, **instantpage** tells the user's browser that it can preload resources to improve the navigation experience.
+You may find more information in the **MDN** documentation [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/prefetch).
 
 ## Styles versions
 
-At last, to end this "advanced" section, all **Primer** styles versions (and other imports) are defined in configuration file `hugo.(yaml|toml)`:
+Finally, all **Primer** styles versions (and other imports) are defined in the `hugo.(yaml|toml)` configuration file:
 
 ```yaml
 params:
   hugo_primer:
     versions:
-      dompurify: v3.2.6
-      fuse: v7.1.0
+      dompurify: 3.4.16
+      fuse: 7.5.0
       instantpage: 5.2.0
-      primer_css: v21
-      primer_primitives: v10
-      primer_react: v37
-      primer_view_components: v0
+      primer_css: 22.3.2
+      primer_primitives: 11.10.0
+      primer_react: 38.40.1
+      primer_view_components: 0.53.5
 ```
 
-It is as such feasible to edit those to fix a specific version or to update one (or all) to a newer version.
-Obviously, this theme will try to follow as much as possible versions upgrades.
+You can therefore edit those to pin a specific version or to update one (or all) to a newer version.
+Obviously, this theme will try to keep up with version upgrades as much as possible.
