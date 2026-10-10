@@ -12,8 +12,8 @@
         <summary class="text-small fgColor-muted">{{ .description }}</summary>
 
         <!-- place tags at the bottom as much as possible -->
-        <div class="mt-auto">
-            {{ with .tags }}{{ partial "hugo-primer/components/tags/many.html" . }}{{ end }}
-        </div>
+        {{- with .tags }}
+        <div class="mt-auto">{{ partial "hugo-primer/components/tags/many.html" . }}</div>
+        {{- end }}
     </div>
 </div>
