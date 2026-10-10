@@ -1,21 +1,15 @@
 # hugo-primer <!-- omit in toc -->
 
 <div align="center">
-  <a href="https://gitlab.com/kilianpaquier/hugo-primer/-/releases">
-    <img alt="GitLab Release" src="https://img.shields.io/gitlab/v/release/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&include_prereleases&sort=semver&style=for-the-badge">
-  </a>
-  <a href="https://gitlab.com/kilianpaquier/hugo-primer/-/work_items">
-    <img alt="GitLab Issues" src="https://img.shields.io/gitlab/issues/open/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge">
-  </a>
-  <a href="https://gitlab.com/kilianpaquier/hugo-primer/-/blob/HEAD/LICENSE">
-    <img alt="GitLab License" src="https://img.shields.io/gitlab/license/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge">
-  </a>
-  <a href="https://gitlab.com/kilianpaquier/hugo-primer/-/pipelines?ref=main">
-    <img alt="GitLab CICD" src="https://img.shields.io/gitlab/pipeline-status/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&branch=main&style=for-the-badge">
-  </a>
-  <a href="https://score.getplumber.io/gitlab.com/kilianpaquier/hugo-primer">
-    <img alt="Plumber Score" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fscore.getplumber.io%2Fgitlab.com%2Fkilianpaquier%2Fhugo-primer.json&style=for-the-badge">
-  </a>
+
+<!-- BEGIN_KICKR_BADGES -->
+[![GitLab Release](https://img.shields.io/gitlab/v/release/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&include_prereleases&sort=semver&style=for-the-badge)](https://gitlab.com/kilianpaquier/hugo-primer/-/releases)
+[![GitLab Issues](https://img.shields.io/gitlab/issues/open/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge)](https://gitlab.com/kilianpaquier/hugo-primer/-/work_items)
+[![GitLab License](https://img.shields.io/gitlab/license/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&style=for-the-badge)](https://gitlab.com/kilianpaquier/hugo-primer/-/blob/HEAD/LICENSE)
+[![GitLab CICD](https://img.shields.io/gitlab/pipeline-status/kilianpaquier%2Fhugo-primer?gitlab_url=https%3A%2F%2Fgitlab.com&branch=main&style=for-the-badge)](https://gitlab.com/kilianpaquier/hugo-primer/-/pipelines?ref=main)
+[![Plumber Score](https://img.shields.io/endpoint?url=https%3A%2F%2Fscore.getplumber.io%2Fgitlab.com%2Fkilianpaquier%2Fhugo-primer.json&style=for-the-badge)](https://score.getplumber.io/gitlab.com/kilianpaquier/hugo-primer)
+<!-- END_KICKR_BADGES -->
+
 </div>
 
 ---
