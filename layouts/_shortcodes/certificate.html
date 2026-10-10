@@ -1,0 +1,37 @@
+{{- /*
+Renders a certificate card with its badge image on the side of the inner Markdown content.
+Place it inside a flex grid div, for instance with the classes d-flex flex-wrap gutter-condensed row-gap-6.
+
+@param {string} [class=col-12 col-lg-6] The CSS classes of the grid column.
+@param {string} src The badge image URL, its base name is used as alt text.
+@param {string} [url] The credential URL, shown as a green verified icon opening in a new tab.
+
+@returns {template.HTML}
+
+@examples
+
+  {{% div class="d-flex flex-wrap gutter-condensed row-gap-6 mb-3" %}}
+
+  {{% certificate src="/educations/badge.webp" url="https://www.credly.com/badges/<id>" %}}
+
+  ### Certificate name
+  {class="m-0"}
+  Issuer
+  {class="m-0"}
+
+  {{% /certificate %}}
+
+  {{% /div %}}
+*/}}
+{{- $src := .Get "src" }}
+<div class='{{ .Get "class" | default "col-12 col-lg-6" }}'>
+    <div class="Box d-flex col-gap-5 p-3 height-full">
+        <img class="sizing-border-box flex-self-center" src="{{ $src }}" alt="{{ path.BaseName $src }}" width="48">
+        <div class="d-flex flex-column flex-1 flex-self-center row-gap-1">{{ .Inner }}</div>
+        {{- with .Get "url" }}
+        <a class="top-0 right-0" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label='{{ T "arias.verify" }}'>
+            <span class="d-flex octicon fgColor-success">{{ readFile "/static/primer/verified-16.svg" | safeHTML }}</span>
+        </a>
+        {{- end }}
+    </div>
+</div>
