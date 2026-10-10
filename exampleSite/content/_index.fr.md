@@ -20,12 +20,3 @@ Ce thème est 100% basé sur les styles **Primer** :
 
 De nombreux exemples des composants se trouvent [ici](https://primer.style/product/components/),
 que ce soit dans le cadre d'un usage plus poussé du thème ou pour un usage tout autre.
-
----
-
-Comme c'est la page de présentation du thème, et que reconstruire sans **React** les composants a été un peu galère,
-voici quelques liens utiles (au moins pour moi-même) pour accéder aux styles directement :
-
-- https://cdn.jsdelivr.net/npm/@primer/react@38/dist/Pagination/Pagination-16a5b4c6.css (sans *pretty*)
-- https://cdn.jsdelivr.net/npm/@primer/view-components@0/app/assets/styles/primer_view_components.css (sans *pretty*)
-- https://cdn.jsdelivr.net/npm/@primer/view-components@0/app/assets/javascripts/primer_view_components.js (sans *pretty*)
