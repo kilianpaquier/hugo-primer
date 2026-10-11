@@ -6,14 +6,14 @@
                 <div class="Box-header lh-default border-bottom p-3 d-flex flex-items-center">
                     {{- $title := index .Fragments.Headings 0 }}
                     {{- $overlay := and $title.Headings  (gt (len $title.Headings) 1) (not .Params.no_toc) }}
-                    <div class="dropdown">
-                        <button id="headings-button" {{ if not $overlay }}disabled{{ end }} popovertarget="headings-overlay" class="Button Button--iconOnly Button--invisible" type="button"
-                            aria-haspopup="menu" aria-controls="headings-overlay" aria-label='{{ T "arias.headings" }}'>
+                    <div class="dropdown position-relative">
+                        <button id="headings-button" {{ if not $overlay }}disabled{{ end }} class="Button Button--iconOnly Button--invisible" type="button"
+                            aria-haspopup="menu" aria-controls="headings-overlay" aria-expanded="false" aria-label='{{ T "arias.headings" }}'>
                             <span class="octicon d-flex">{{ "/static/primer/list-unordered-16.svg" | readFile | safeHTML }}</span>
                         </button>
                         {{- if $overlay }}
-                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" popover="auto" role="menu"
-                                aria-labelledby="headings-button">
+                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" class="position-absolute" role="menu"
+                                aria-labelledby="headings-button" hidden>
                                 <section class="Overlay Overlay--size-auto p-2">
                                     <ul class="ActionListWrap" aria-labelledby="headings-button">
                                         {{- range $title.Headings }}

@@ -35,3 +35,30 @@ documentReady(() => {
         title.innerHTML = sanitize(inner)
     }
 })
+
+documentReady(() => {
+    const button = document.getElementById("headings-button")
+    const overlay = document.getElementById("headings-overlay")
+    if (!overlay) {
+        return
+    }
+
+    const toggle = open => {
+        overlay.hidden = !open
+        button.setAttribute("aria-expanded", open)
+    }
+
+    document.addEventListener("click", e => {
+        if (button.contains(e.target)) {
+            toggle(overlay.hidden)
+        } else if (!overlay.contains(e.target) || e.target.closest("a")) {
+            toggle(false)
+        }
+    })
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && !overlay.hidden) {
+            toggle(false)
+            button.focus()
+        }
+    })
+})
