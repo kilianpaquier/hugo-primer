@@ -38,14 +38,15 @@ Renders nothing without main menu.
                     {{- end }}
                 </ul>
 
-                <!-- button menu for smaller screens -->
-                <button id="menu-button" popovertarget="menu-overlay" class="Button Button--iconOnly Button--secondary flex-shrink-0" type="button"
-                    aria-haspopup="menu" aria-controls="menu-overlay" aria-labelledby="tooltip-menu-button">
-                    <span class="d-flex flex-justify-center">{{ "/static/primer/kebab-horizontal-16.svg" | readFile | safeHTML }}</span>
-                </button>
-                <tool-tip id="tooltip-menu-button" for="menu-button" class="position-absolute sr-only" popover="manual" data-direction="se" data-type="label" aria-hidden="true" role="tooltip">
-                    {{ T "navigation.menu" }}
-                </tool-tip>
+                <!-- more menu for smaller screens -->
+                <div id="menu" class="d-flex flex-items-center flex-shrink-0">
+                    <span class="AppHeader--separator"></span>
+                    <button id="menu-button" popovertarget="menu-overlay" class="UnderlineNav-item flex-items-center" type="button"
+                        aria-haspopup="menu" aria-controls="menu-overlay" aria-label='{{ T "navigation.menu" }}'>
+                        <span>{{ T "navigation.more" }}</span>
+                        <span class="octicon d-flex ml-1 fgColor-muted">{{ "/static/primer/triangle-down-16.svg" | readFile | safeHTML }}</span>
+                    </button>
+                </div>
                 <anchored-position id="menu-overlay" anchor="menu-button" anchor-offset="normal" align="end" popover="auto" role="menu" aria-label="Navigation">
                     <div class="Overlay Overlay--size-auto p-2">
                         <ul class="ActionListWrap" aria-label="Navigation">

@@ -78,6 +78,11 @@ $gaps: (
     z-index: 1;
 }
 
+#menu-button {
+    padding-left: var(--base-size-12);
+    padding-right: var(--base-size-12);
+}
+
 ul.pagination {
     > li {
         margin-top: 0;
