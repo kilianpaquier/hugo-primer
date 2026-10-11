@@ -5,7 +5,7 @@ Without inner content (self-closing shortcode), only the image is rendered.
 
 @param {string} [class] The CSS classes of the wrapper, ignored without inner content.
 @param {string} [height] The image height.
-@param {string} [img-class] The CSS classes of the image, appended to sizing-border-box (e.g. circle).
+@param {string} [img-class] The CSS classes of the image (e.g. circle).
 @param {string} src The image URL, its base name is used as alt text.
 @param {string} [width] The image width.
 
@@ -26,9 +26,9 @@ Without inner content (self-closing shortcode), only the image is rendered.
 {{- $src := .Get "src" }}
 {{- if .Inner }}
 <div class='d-flex {{ .Get "class" }}'>
-    <img class="sizing-border-box flex-self-center {{ $img_class }}" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+    <img class="flex-self-center {{ $img_class }}" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
     <div class="d-flex flex-column row-gap-1">{{ .Inner }}</div>
 </div>
 {{- else }}
-<img class="sizing-border-box {{ $img_class }}" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+<img class="{{ $img_class }}" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
 {{- end }}

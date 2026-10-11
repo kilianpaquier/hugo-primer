@@ -78,6 +78,12 @@ modal-dialog {
 
 .TimelineItem-badge {
     z-index: 0;
+
+    @each $size in large, small, xlarge, xsmall {
+        &.TimelineItem-badge--#{$size} {
+            --control-medium-size: var(--control-#{$size}-size);
+        }
+    }
 }
 
 .Box-header {

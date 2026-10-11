@@ -15,6 +15,10 @@ Renders a Primer timeline item with a side badge and some content.
   {{ partial "hugo-primer/components/primer/timeline-item.html" (dict "badge" "/logo/10.webp" "body" .Content) }}
 */}}
 <div class='TimelineItem {{ .class }}'>
-    <img class="TimelineItem-badge sizing-border-box" src="{{ .badge }}" alt="{{ path.BaseName .badge }}">
+    {{- if .badge }}
+    <img class="TimelineItem-badge" src="{{ .badge }}" alt="{{ path.BaseName .badge }}">
+    {{- else }}
+    <span class="TimelineItem-badge TimelineItem-badge--xsmall"></span>
+    {{- end }}
     <div class='d-flex flex-column TimelineItem-body {{ .body_class }}'>{{ .body }}</div>
 </div>

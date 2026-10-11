@@ -30,7 +30,7 @@ Place it inside a flex grid div, for instance with the classes d-flex flex-wrap 
 {{- $src := .Get "src" }}
 <div class='{{ .Get "class" | default "col-12 col-lg-6" }}'>
     <div class="Box d-flex col-gap-5 p-3 height-full">
-        <img class="sizing-border-box flex-self-center" src="{{ $src }}" alt="{{ path.BaseName $src }}" width="48">
+        <img class="flex-self-center" src="{{ $src }}" alt="{{ path.BaseName $src }}" width="48">
         <div class="d-flex flex-column flex-1 flex-self-center row-gap-1">{{ .Inner }}</div>
         {{- with .Get "url" }}
         <a class="top-0 right-0" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label='{{ T "arias.verify" }}'>
