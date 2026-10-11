@@ -226,6 +226,38 @@ Date
 
 {{% /div %}}
 
+## Alerte
+
+Une bannière **Primer** avec une icône et un titre selon son type : `note` (par défaut), `tip`, `important`, `warning` ou `caution`.
+Les alertes GitHub dans les citations *Markdown* sont rendues de la même façon.
+
+```md
+> [!tip]
+> Contenu Markdown.
+
+{{</* alert type="type d'alerte (optionnel)" title="titre personnalisé (optionnel)" */>}}
+Contenu Markdown.
+{{</* /alert */>}}
+```
+
+### Exemple
+
+```md
+> [!note]
+> Rendu depuis une alerte **GitHub**.
+
+{{</* alert type="warning" title="Prudence" */>}}
+Rendu depuis le *shortcode* avec un titre personnalisé.
+{{</* /alert */>}}
+```
+
+> [!note]
+> Rendu depuis une alerte **GitHub**.
+
+{{< alert type="warning" title="Prudence" >}}
+Rendu depuis le *shortcode* avec un titre personnalisé.
+{{< /alert >}}
+
 ## Item chronologique
 
 Un item chronologique reprend le composant associé de **Primer** [ici](https://primer.style/product/components/timeline/).

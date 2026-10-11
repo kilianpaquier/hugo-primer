@@ -1,0 +1,16 @@
+{{- /*
+Renders GitHub alerts (> [!note]) as Primer banners, and other blockquotes as is.
+*/}}
+{{- if eq .Type "alert" }}
+{{ partial "hugo-primer/components/primer/alert.html"
+    (dict
+        "body" .Text
+        "title" .AlertTitle
+        "type" .AlertType
+    )
+}}
+{{- else }}
+<blockquote>
+    {{ .Text }}
+</blockquote>
+{{- end }}

@@ -1,0 +1,35 @@
+{{- /*
+Renders a Primer banner with a type icon, a title and some content.
+An unknown type is rendered as a note.
+
+@param {template.HTML} [body] The banner content.
+@param {string} [title] The banner title, the translated type name by default.
+@param {string} [type=note] The alert type, one of caution, important, note, tip or warning.
+
+@returns {template.HTML}
+
+@reference https://primer.style/product/components/banner/
+
+@examples
+
+  {{ partial "hugo-primer/components/primer/alert.html" (dict "type" "tip" "body" .Content) }}
+*/}}
+{{- $types := dict
+    "caution" (dict "class" "Banner--error" "icon" "/static/primer/stop-16.svg")
+    "important" (dict "class" "Banner--upsell" "icon" "/static/primer/report-16.svg")
+    "note" (dict "class" "" "icon" "/static/primer/info-16.svg")
+    "tip" (dict "class" "Banner--success" "icon" "/static/primer/light-bulb-16.svg")
+    "warning" (dict "class" "Banner--warning" "icon" "/static/primer/alert-16.svg")
+}}
+{{- $type := .type | default "note" | lower }}
+{{- if not (isset $types $type) }}{{ $type = "note" }}{{ end }}
+{{- $alert := index $types $type }}
+<div class='Banner mb-3 {{ $alert.class }}'>
+    <div class="Banner-visual">
+        <span class="d-flex octicon">{{ partial "hugo-primer/helpers/svg.html" (dict "src" $alert.icon "width" "16") }}</span>
+    </div>
+    <div class="Banner-message">
+        <p class="Banner-title text-bold">{{ .title | default (T (print "alerts." $type)) }}</p>
+        {{ .body }}
+    </div>
+</div>

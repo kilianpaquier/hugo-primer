@@ -36,3 +36,9 @@ arias:
   tags: Tags
   title: Title
   verify: Verify certificate
+alerts:
+  caution: Caution
+  important: Important
+  note: Note
+  tip: Tip
+  warning: Warning

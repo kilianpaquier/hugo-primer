@@ -226,6 +226,38 @@ Date
 
 {{% /div %}}
 
+## Alert
+
+A **Primer** banner with an icon and a title matching its type: `note` (default), `tip`, `important`, `warning` or `caution`.
+GitHub alerts in Markdown blockquotes are rendered the same way.
+
+```md
+> [!tip]
+> Markdown content.
+
+{{</* alert type="alert type (optional)" title="custom title (optional)" */>}}
+Markdown content.
+{{</* /alert */>}}
+```
+
+### Example
+
+```md
+> [!note]
+> Rendered from a **GitHub** alert.
+
+{{</* alert type="warning" title="Careful" */>}}
+Rendered from the shortcode with a custom title.
+{{</* /alert */>}}
+```
+
+> [!note]
+> Rendered from a **GitHub** alert.
+
+{{< alert type="warning" title="Careful" >}}
+Rendered from the shortcode with a custom title.
+{{< /alert >}}
+
 ## Timeline item
 
 A timeline item uses associated **Primer** style ([here](https://primer.style/product/components/timeline/)).

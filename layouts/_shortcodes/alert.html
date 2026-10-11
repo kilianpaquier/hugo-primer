@@ -1,0 +1,27 @@
+{{- /*
+Renders a Primer banner with a type icon, a title and the inner content.
+The inner content is rendered as Markdown and may hold raw HTML or other shortcodes, use the {{< >}} form.
+GitHub alerts in Markdown blockquotes (> [!note]) are rendered the same way.
+
+@param {string} [title] The banner title, the translated type name by default.
+@param {string} [type=note] The alert type, one of caution, important, note, tip or warning.
+
+@returns {template.HTML}
+
+@reference https://primer.style/product/components/banner/
+
+@examples
+
+  {{< alert type="tip" >}}
+
+  Some Markdown content with a {{< label >}}label{{< /label >}}.
+
+  {{< /alert >}}
+*/}}
+{{ partial "hugo-primer/components/primer/alert.html"
+    (dict
+        "body" (.Inner | .Page.RenderString (dict "display" "block"))
+        "title" (.Get "title")
+        "type" (.Get "type")
+    )
+}}
