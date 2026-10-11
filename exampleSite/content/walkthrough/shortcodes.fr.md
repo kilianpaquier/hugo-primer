@@ -281,6 +281,28 @@ Une barre de progression **Primer** remplie jusqu'à `value` pourcent.
 {{< progress-bar value="40" class="bgColor-accent-emphasis" size="large" >}}
 {{< /div >}}
 
+## Label
+
+Un label **Primer** autour d'un texte court, `class` définit sa variante et sa taille.
+
+```md
+{{</* label class="classes CSS (optionnel)" */>}}texte{{</* /label */>}}
+```
+
+### Exemple
+
+```md
+{{</* label */>}}défaut{{</* /label */>}}
+{{</* label class="Label--success" */>}}stable{{</* /label */>}}
+{{</* label class="Label--attention Label--large" */>}}bêta{{</* /label */>}}
+```
+
+{{< div class="d-flex flex-justify-center col-gap-2" >}}
+{{< label >}}défaut{{< /label >}}
+{{< label class="Label--success" >}}stable{{< /label >}}
+{{< label class="Label--attention Label--large" >}}bêta{{< /label >}}
+{{< /div >}}
+
 ## Item chronologique
 
 Un item chronologique reprend le composant associé de **Primer** [ici](https://primer.style/product/components/timeline/).

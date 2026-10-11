@@ -281,6 +281,28 @@ A **Primer** progress bar filled up to `value` percent.
 {{< progress-bar value="40" class="bgColor-accent-emphasis" size="large" >}}
 {{< /div >}}
 
+## Label
+
+A **Primer** label around a short text, `class` sets its variant and size.
+
+```md
+{{</* label class="CSS classes (optional)" */>}}text{{</* /label */>}}
+```
+
+### Example
+
+```md
+{{</* label */>}}default{{</* /label */>}}
+{{</* label class="Label--success" */>}}stable{{</* /label */>}}
+{{</* label class="Label--attention Label--large" */>}}beta{{</* /label */>}}
+```
+
+{{< div class="d-flex flex-justify-center col-gap-2" >}}
+{{< label >}}default{{< /label >}}
+{{< label class="Label--success" >}}stable{{< /label >}}
+{{< label class="Label--attention Label--large" >}}beta{{< /label >}}
+{{< /div >}}
+
 ## Timeline item
 
 A timeline item uses associated **Primer** style ([here](https://primer.style/product/components/timeline/)).

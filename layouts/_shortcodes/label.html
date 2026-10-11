@@ -1,0 +1,14 @@
+{{- /*
+Renders a Primer label around the inner text.
+
+@param {string} [class] The CSS classes appended to Label, for instance Label--success Label--large.
+
+@returns {template.HTML}
+
+@reference https://primer.style/product/components/label/
+
+@examples
+
+  {{< label class="Label--success" >}}stable{{< /label >}}
+*/}}
+<span class='Label {{ .Get "class" }}'>{{ .Inner }}</span>
