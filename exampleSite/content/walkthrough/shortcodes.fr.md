@@ -152,26 +152,28 @@ Markdown content:
 {{% avatar-item src="/logo/10.webp" height="50px" /%}}
 {{% /div %}}
 
-## Certificats
+## Carte média
 
-Une carte de certificat affiche l'image de son badge sur le côté de son contenu *Markdown*.
-Avec `url`, une icône de vérification menant vers le certificat est placée dans le coin supérieur droit de la carte.
-Chaque carte est une colonne de grille, par défaut deux par ligne sur grand écran et une par ligne en dessous (`class` remplace les classes de colonne `col-12 col-lg-6`).
-Les cartes se placent dans une grille flex `div`.
+Une carte avec une image sur le côté de son contenu *Markdown*.
+Avec `url`, `icon` (requis) est affiché dans le coin supérieur droit et mène vers celui-ci.
+Par défaut chaque carte est une colonne de grille, à placer dans une grille flex `div` (`class` la remplace).
 
 ```md
 {{%/* div class="d-flex flex-wrap gutter-condensed row-gap-6 mb-3" */%}}
 
-{{%/* certificate src="URL de l'image du badge" url="URL du certificat (optionnel)" class="classes CSS de la colonne (optionnel)" */%}}
+{{%/* media-card
+  class="classes CSS de la colonne (optionnel)" icon="source SVG de l'icône (requis avec url)" icon-class="classes CSS de l'icône (optionnel)"
+  url="URL de vérification (optionnel)" src="URL de l'image"
+*/%}}
 
-### Nom du certificat
+### Titre de la carte
 {class="m-0"}
-Émetteur
+Sous-titre
 {class="m-0"}
 Date
 {class="m-0 text-small"}
 
-{{%/* /certificate */%}}
+{{%/* /media-card */%}}
 
 {{%/* /div */%}}
 ```
@@ -181,46 +183,46 @@ Date
 ```md
 {{%/* div class="d-flex flex-wrap flex-justify-center gutter-condensed row-gap-6 mb-3" */%}}
 
-{{%/* certificate src="/logo/10.webp" url="https://gohugo.io" class="col-12 col-lg-4" */%}}
-### Nom du certificat
+{{%/* media-card src="/logo/10.webp" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" class="col-12 col-lg-4" */%}}
+### Titre de la carte
 {class="m-0"}
-Émetteur
+Sous-titre
 {class="m-0"}
 Date
 {class="m-0 text-small"}
-{{%/* /certificate */%}}
+{{%/* /media-card */%}}
 
-{{%/* certificate src="/logo/10.webp" class="col-12 col-lg-4" */%}}
+{{%/* media-card src="/logo/10.webp" class="col-12 col-lg-4" */%}}
 ### Sans URL
 {class="m-0"}
-Émetteur
+Sous-titre
 {class="m-0"}
 Date
 {class="m-0 text-small"}
-{{%/* /certificate */%}}
+{{%/* /media-card */%}}
 
 {{%/* /div */%}}
 ```
 
 {{% div class="d-flex flex-wrap flex-justify-center gutter-condensed row-gap-6 mb-3" %}}
 
-{{% certificate src="/logo/10.webp" url="https://gohugo.io" class="col-12 col-lg-4" %}}
-### Nom du certificat
+{{% media-card src="/logo/10.webp" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" class="col-12 col-lg-4" %}}
+### Titre de la carte
 {class="m-0"}
-Émetteur
+Sous-titre
 {class="m-0"}
 Date
 {class="m-0 text-small"}
-{{% /certificate %}}
+{{% /media-card %}}
 
-{{% certificate src="/logo/10.webp" class="col-12 col-lg-4" %}}
+{{% media-card src="/logo/10.webp" class="col-12 col-lg-4" %}}
 ### Sans URL
 {class="m-0"}
-Émetteur
+Sous-titre
 {class="m-0"}
 Date
 {class="m-0 text-small"}
-{{% /certificate %}}
+{{% /media-card %}}
 
 {{% /div %}}
 

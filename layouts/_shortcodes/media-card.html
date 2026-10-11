@@ -1,10 +1,12 @@
 {{- /*
-Renders a certificate card with its badge image on the side of the inner Markdown content.
+Renders a card with an image on the side of the inner Markdown content, for instance a certificate badge.
 Place it inside a flex grid div, for instance with the classes d-flex flex-wrap gutter-condensed row-gap-6.
 
 @param {string} [class=col-12 col-lg-6] The CSS classes of the grid column.
-@param {string} src The badge image URL, its base name is used as alt text.
-@param {string} [url] The credential URL, shown as a green verified icon opening in a new tab.
+@param {string} [icon] The SVG source (local path or https URL) of the link icon, required with url.
+@param {string} [icon-class] The CSS classes of the link icon, appended to d-flex octicon.
+@param {string} src The image URL, its base name is used as alt text.
+@param {string} [url] The verification URL, shown as an icon opening in a new tab.
 
 @returns {template.HTML}
 
@@ -12,17 +14,19 @@ Place it inside a flex grid div, for instance with the classes d-flex flex-wrap 
 
   {{% div class="d-flex flex-wrap gutter-condensed row-gap-6 mb-3" %}}
 
-  {{% certificate src="/educations/badge.webp" url="https://www.credly.com/badges/<id>" %}}
+  {{% media-card src="/logo/10.webp" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" %}}
 
-  ### Certificate name
+  ### Card title
   {class="m-0"}
-  Issuer
+  Subtitle
   {class="m-0"}
 
-  {{% /certificate %}}
+  {{% /media-card %}}
 
   {{% /div %}}
 */}}
+{{- $icon_class := .Get "icon-class" }}
+{{- $icon := .Get "icon" }}
 {{- $src := .Get "src" }}
 <div class='{{ .Get "class" | default "col-12 col-lg-6" }}'>
     <div class="Box d-flex col-gap-5 p-3 height-full">
@@ -30,7 +34,7 @@ Place it inside a flex grid div, for instance with the classes d-flex flex-wrap 
         <div class="d-flex flex-column flex-1 flex-self-center row-gap-1">{{ .Inner }}</div>
         {{- with .Get "url" }}
         <a class="top-0 right-0" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label='{{ T "arias.verify" }}'>
-            <span class="d-flex octicon fgColor-success">{{ readFile "/static/primer/verified-16.svg" | safeHTML }}</span>
+            <span class="d-flex octicon {{ $icon_class }}">{{ partial "hugo-primer/helpers/svg.html" (dict "src" $icon "width" "16") }}</span>
         </a>
         {{- end }}
     </div>
