@@ -258,6 +258,29 @@ Rendu depuis le *shortcode* avec un titre personnalisé.
 Rendu depuis le *shortcode* avec un titre personnalisé.
 {{< /alert >}}
 
+## Barre de progression
+
+Une barre de progression **Primer** remplie jusqu'à `value` pourcent.
+
+```md
+{{</* progress-bar
+  class="classes CSS de la partie remplie (optionnel)" size="small ou large (optionnel)"
+  value="pourcentage"
+*/>}}
+```
+
+### Exemple
+
+```md
+{{</* progress-bar value="75" */>}}
+{{</* progress-bar value="40" class="bgColor-accent-emphasis" size="large" */>}}
+```
+
+{{< div class="d-flex flex-column row-gap-3" >}}
+{{< progress-bar value="75" >}}
+{{< progress-bar value="40" class="bgColor-accent-emphasis" size="large" >}}
+{{< /div >}}
+
 ## Item chronologique
 
 Un item chronologique reprend le composant associé de **Primer** [ici](https://primer.style/product/components/timeline/).

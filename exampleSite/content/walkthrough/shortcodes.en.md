@@ -258,6 +258,29 @@ Rendered from the shortcode with a custom title.
 Rendered from the shortcode with a custom title.
 {{< /alert >}}
 
+## Progress bar
+
+A **Primer** progress bar filled up to `value` percent.
+
+```md
+{{</* progress-bar
+  class="CSS classes of the filled part (optional)" size="small or large (optional)"
+  value="percentage"
+*/>}}
+```
+
+### Example
+
+```md
+{{</* progress-bar value="75" */>}}
+{{</* progress-bar value="40" class="bgColor-accent-emphasis" size="large" */>}}
+```
+
+{{< div class="d-flex flex-column row-gap-3" >}}
+{{< progress-bar value="75" >}}
+{{< progress-bar value="40" class="bgColor-accent-emphasis" size="large" >}}
+{{< /div >}}
+
 ## Timeline item
 
 A timeline item uses associated **Primer** style ([here](https://primer.style/product/components/timeline/)).
