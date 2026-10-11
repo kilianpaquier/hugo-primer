@@ -1,3 +1,9 @@
+## [1.4.2](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.1...v1.4.2) (2026-10-11)
+
+### Bug Fixes
+
+* **timeline-item:** make badge optional and add badge size modifiers ([2bffdb5](https://gitlab.com/kilianpaquier/hugo-primer/commit/2bffdb528383d63c47c074f79cbac19d7d90af4c))
+
 ## [1.4.1](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.0...v1.4.1) (2026-10-11)
 
 ### Bug Fixes
