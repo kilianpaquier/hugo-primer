@@ -1,3 +1,40 @@
+## [1.3.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.6...v1.3.0) (2026-10-11)
+
+### Features
+
+* **shortcodes:** add certificate shortcode ([cf2f089](https://gitlab.com/kilianpaquier/hugo-primer/commit/cf2f08992272884ca990409dec9b7fa13a4a2b22))
+* **shortcodes:** replace side-img with avatar-item ([2eb1783](https://gitlab.com/kilianpaquier/hugo-primer/commit/2eb1783835ee18abcfbbbad61a498d0a106264cc))
+
+### Bug Fixes
+
+* **card:** render the tags container only when tags are given ([7cb49cd](https://gitlab.com/kilianpaquier/hugo-primer/commit/7cb49cd50ee870ee4150abb67fd564beee89af47))
+* **home:** show pinned cards two per row from large screens ([b9ec886](https://gitlab.com/kilianpaquier/hugo-primer/commit/b9ec8864966a1b7f61adf5125cf37f4cc48c2e2c))
+
+### Documentation
+
+* **example:** document avatar-item and certificate, center shortcode examples ([878d3d2](https://gitlab.com/kilianpaquier/hugo-primer/commit/878d3d2628cfddba1cc17ddee0c351f527399ad2))
+* **example:** remove primer styles links from overview ([9184df5](https://gitlab.com/kilianpaquier/hugo-primer/commit/9184df580a19a6847928746d85defd5f2c6e6863))
+* fix typos and grammar ([1cd0889](https://gitlab.com/kilianpaquier/hugo-primer/commit/1cd08899b011de13c1baf027c1f5da2bd5881328))
+* **layouts:** document shortcodes and partials with hugo doc blocks ([33f4d8f](https://gitlab.com/kilianpaquier/hugo-primer/commit/33f4d8f2aa5018387e8f48bbb9a395ef2dd5598f))
+* **readme:** fix typos and grammar ([09f1456](https://gitlab.com/kilianpaquier/hugo-primer/commit/09f1456e55deaedef50900b02aee723256eeea5b))
+
+### Chores
+
+* **deps:** update dependency @primer/react to v38.40.1 ([334522a](https://gitlab.com/kilianpaquier/hugo-primer/commit/334522a8716f43a0751533fb4dec801d4e51a561))
+
+### Code Refactoring
+
+* **layouts:** trim whitespace around silent template actions ([a2daa28](https://gitlab.com/kilianpaquier/hugo-primer/commit/a2daa284a5715bacc307abb8a070d592fc1288c9))
+
+### Continuous Integration
+
+* **deps:** update go toolchain directive to v1.27.2 [security] ([42de672](https://gitlab.com/kilianpaquier/hugo-primer/commit/42de672bf9b8d812f81c81ca18296287f2feba24))
+* **layout:** regenerate kickr layout ([ec8966a](https://gitlab.com/kilianpaquier/hugo-primer/commit/ec8966a37c0ab18b5da7529c9705347c4c4ea796))
+* **layout:** regenerate kickr layout ([df737d5](https://gitlab.com/kilianpaquier/hugo-primer/commit/df737d5ab0b2ac1377b4cdcacc5d2daf01c8441e))
+* **layout:** regenerate kickr layout ([3eda0c4](https://gitlab.com/kilianpaquier/hugo-primer/commit/3eda0c4375319adf97f02f9a461b674355c31a1c))
+* **netlify:** fix invalid rules reference ([09ab52c](https://gitlab.com/kilianpaquier/hugo-primer/commit/09ab52c95ed89f3facf5810ed3d8b5505f6e6ca3))
+* **netlify:** fix invalid rules reference ([667dbd4](https://gitlab.com/kilianpaquier/hugo-primer/commit/667dbd4f1c63abaaff947abe05fb614166cd2f81))
+
 ## [1.2.6](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.5...v1.2.6) (2026-10-04)
 
 ### Documentation
