@@ -1,3 +1,9 @@
+## [1.4.1](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.0...v1.4.1) (2026-10-11)
+
+### Bug Fixes
+
+* **shortcodes:** make avatar-item circle optional with img-class param ([c09477d](https://gitlab.com/kilianpaquier/hugo-primer/commit/c09477d31e245ce8326a49e94c0e2e1fd1429a36))
+
 ## [1.4.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.3.0...v1.4.0) (2026-10-11)
 
 ### Features
