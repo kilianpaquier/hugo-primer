@@ -1,3 +1,19 @@
+## [1.4.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.3.0...v1.4.0) (2026-10-11)
+
+### Features
+
+* **media-card:** rename and generify certificate shortcode (icon, its class) ([17a2a65](https://gitlab.com/kilianpaquier/hugo-primer/commit/17a2a6560119fce09d1a9b9bb55fc83e58f7670c))
+* **navigation:** use "More" button instead of burger one with orange underline when the current page is within it ([e78b5eb](https://gitlab.com/kilianpaquier/hugo-primer/commit/e78b5ebeb27cdff961ff5064ba17146f4e84f4d0))
+* **shortcodes:** add alert shortcode and render github alerts as primer banners ([e1d99f5](https://gitlab.com/kilianpaquier/hugo-primer/commit/e1d99f57538b7d0708dffcb4fadf2982db48bf07))
+* **shortcodes:** add label shortcode ([b767581](https://gitlab.com/kilianpaquier/hugo-primer/commit/b767581629601034d0cb90908a5602c791df639e))
+* **shortcodes:** add progress-bar shortcode ([1e32892](https://gitlab.com/kilianpaquier/hugo-primer/commit/1e3289250a4721c1425758e7b21ae59b4cb5bfa1))
+
+### Bug Fixes
+
+* **img:** ensure images within the shortcode are not distorted on small screens ([1604395](https://gitlab.com/kilianpaquier/hugo-primer/commit/160439588f6715d47ae8d58b1a90814a214d3c70))
+* **pages:** correctly handle pages menus, no more overlay on top of top navigation, auto closing on section selection ([9adbd95](https://gitlab.com/kilianpaquier/hugo-primer/commit/9adbd95be6ad26c2f4adb59153ba0a1538dc098c))
+* **svg:** trim whitespace around inlined svg so markdown doesn't wrap it in paragraphs ([1c6a55d](https://gitlab.com/kilianpaquier/hugo-primer/commit/1c6a55d7178a549ff50ec4566e1120727b3466ed))
+
 ## [1.3.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.2.6...v1.3.0) (2026-10-11)
 
 ### Features
