@@ -100,10 +100,6 @@ ul.pagination {
     z-index: 2;
 }
 
-.border-none {
-    border: none;
-}
-
 .scrollbar-thin {
     scrollbar-width: thin;
 }
@@ -114,6 +110,11 @@ ul.pagination {
 
 .markdown-body [id] {
     scroll-margin-top: 75px;
+}
+
+// max-width: 100% shrinks width without height when the parent is narrower
+.markdown-body img {
+    object-fit: contain;
 }
 
 .sizing-border-box {

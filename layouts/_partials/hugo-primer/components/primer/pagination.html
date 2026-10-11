@@ -84,7 +84,7 @@ In terse format, a missing previous or next button isn't rendered. In default fo
         </li>
     {{- else if eq .format "default" }}
         <li class="page-item disabled {{ .class }}" aria-label='{{ T "pagination.prev" }}'>
-            <button disabled class="page-link prc-Pagination-Page-Etgqf octicon border-none" role="button" tabindex="-1" rel="prev">
+            <button disabled class="page-link prc-Pagination-Page-Etgqf octicon border-0" role="button" tabindex="-1" rel="prev">
                 {{ "/static/primer/chevron-left-16.svg" | readFile | safeHTML }}
                 {{ T "pagination.prev" }}
             </button>
@@ -104,7 +104,7 @@ In terse format, a missing previous or next button isn't rendered. In default fo
         </li>
     {{- else if eq .format "default" }}
         <li class="page-item disabled {{ .class }}" aria-label='{{ T "pagination.next" }}'>
-            <button disabled class="page-link prc-Pagination-Page-Etgqf octicon border-none" role="button" tabindex="-1" rel="next">
+            <button disabled class="page-link prc-Pagination-Page-Etgqf octicon border-0" role="button" tabindex="-1" rel="next">
                 {{ T "pagination.next" }}
                 {{ "/static/primer/chevron-right-16.svg" | readFile | safeHTML }}
             </button>
