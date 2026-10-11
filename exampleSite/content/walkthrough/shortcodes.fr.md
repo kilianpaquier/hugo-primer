@@ -95,12 +95,13 @@ L'attribut `alt` ne peut pas être fourni et aura comme valeur le nom de l'image
 ## Élément avec avatar
 
 Un *wrapper* simple (avec une balise `div`) pour positionner une image sur le côté d'un texte.
-L'image est toujours ronde et centrée verticalement.
-Sans contenu (*shortcode* auto-fermant), seule l'image ronde est rendue et `class` est ignoré.
+L'image est centrée verticalement.
+Sans contenu (*shortcode* auto-fermant), seule l'image est rendue et `class` est ignoré.
 
 ```md
 {{%/* avatar-item
   class="classes CSS pour le wrapper"
+  img-class="classes CSS de l'image, par exemple circle (optionnel)"
   src="URL de l'image"
   width="largeur de l'image"
   height="hauteur de l'image"
@@ -117,6 +118,7 @@ Markdown content:
 ```md
 {{%/* avatar-item
   class="row-gap-3 col-gap-3 mt-3"
+  img-class="circle"
   src="/logo/10.webp"
   height="50px"
 */%}}
@@ -131,6 +133,7 @@ Markdown content:
 {{% div class="d-flex flex-justify-center" %}}
 {{% avatar-item
   class="row-gap-3 col-gap-3 mt-3"
+  img-class="circle"
   src="/logo/10.webp"
   height="50px"
 %}}
@@ -145,11 +148,11 @@ Markdown content:
 ### Exemple sans contenu
 
 ```md
-{{%/* avatar-item src="/logo/10.webp" height="50px" /*/%}}
+{{%/* avatar-item src="/logo/10.webp" height="50px" img-class="circle" /*/%}}
 ```
 
 {{% div class="d-flex flex-justify-center" %}}
-{{% avatar-item src="/logo/10.webp" height="50px" /%}}
+{{% avatar-item src="/logo/10.webp" height="50px" img-class="circle" /%}}
 {{% /div %}}
 
 ## Carte média

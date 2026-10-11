@@ -95,12 +95,13 @@ The HTML attribute `alt` cannot be provided and will have the image name as valu
 ## Avatar item
 
 Simple wrapper (with `div` tag) to place an image on the side of a text / content.
-The image is always round and vertically centered.
-Without content (self-closing shortcode), only the round image is rendered and `class` is ignored.
+The image is vertically centered.
+Without content (self-closing shortcode), only the image is rendered and `class` is ignored.
 
 ```md
 {{%/* avatar-item
   class="CSS classes for the wrapper"
+  img-class="CSS classes for the image, e.g. circle (optional)"
   src="URL de l'image"
   width="image width"
   height="image height"
@@ -117,6 +118,7 @@ Markdown content:
 ```md
 {{%/* avatar-item
   class="row-gap-3 col-gap-3 mt-3"
+  img-class="circle"
   src="/logo/10.webp"
   height="50px"
 */%}}
@@ -131,6 +133,7 @@ Markdown content:
 {{% div class="d-flex flex-justify-center" %}}
 {{% avatar-item
   class="row-gap-3 col-gap-3 mt-3"
+  img-class="circle"
   src="/logo/10.webp"
   height="50px"
 %}}
@@ -145,11 +148,11 @@ Markdown content:
 ### Example without content
 
 ```md
-{{%/* avatar-item src="/logo/10.webp" height="50px" /*/%}}
+{{%/* avatar-item src="/logo/10.webp" height="50px" img-class="circle" /*/%}}
 ```
 
 {{% div class="d-flex flex-justify-center" %}}
-{{% avatar-item src="/logo/10.webp" height="50px" /%}}
+{{% avatar-item src="/logo/10.webp" height="50px" img-class="circle" /%}}
 {{% /div %}}
 
 ## Media card
