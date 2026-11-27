@@ -1,13 +1,18 @@
 {{- $items := slice }}
 {{- range site.RegularPages }}
     {{- $icon := (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre }}
+    {{- $permalink := .RelPermalink }}
+    {{- if and .Params.build (eq .Params.build.render "link") }}
+        {{- $permalink = "" }}
+        {{- with .Parent }}{{ $permalink = .RelPermalink }}{{ end }}
+    {{- end }}
     {{- $items = $items | append
         (dict
             "content" .Plain
             "date" (.Date | dateFormat ":date_medium")
             "description" (.Description | markdownify | plainify | htmlUnescape)
             "icon" (strings.Replace ($icon | default "/static/primer/file-code-16.svg" | readFile) "\n" "")
-            "permalink" (cond (and .Params.build (eq .Params.build.render "link")) "" .RelPermalink)
+            "permalink" $permalink
             "section" (.Section | title)
             "tags" .Params.tags
             "title" .Title
