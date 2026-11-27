@@ -1,3 +1,22 @@
+## [1.4.3](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.2...v1.4.3) (2026-11-27)
+
+### Chores
+
+* **deps:** update dependency @primer/css to v22.3.3 ([bdba81f](https://gitlab.com/kilianpaquier/hugo-primer/commit/bdba81f81def89947aec127ea475bab77897ca3c))
+* **deps:** update dependency @primer/react to v38.42.0 ([48549fb](https://gitlab.com/kilianpaquier/hugo-primer/commit/48549fbedeed4a7e021658a7b25487c6a19923b5))
+* **deps:** update dependency @primer/react to v38.43.0 ([1fe7b95](https://gitlab.com/kilianpaquier/hugo-primer/commit/1fe7b95ba09b4697de1af70d3a5df3a0c6ecaf2e))
+* **deps:** update dependency @primer/react to v38.45.0 ([b25fe38](https://gitlab.com/kilianpaquier/hugo-primer/commit/b25fe38853a6ec305bf39cf068c71e522650db4c))
+* **deps:** update dependency @primer/react to v38.46.0 ([5488f47](https://gitlab.com/kilianpaquier/hugo-primer/commit/5488f47a79a68608642bfd5a47a0c31ca80ff72c))
+* **deps:** update dependency dompurify to v3.4.17 [security] ([c8a909d](https://gitlab.com/kilianpaquier/hugo-primer/commit/c8a909de387a4f962691123ecac489d58cfa1673))
+* **deps:** update dependency dompurify to v3.4.18 ([0664556](https://gitlab.com/kilianpaquier/hugo-primer/commit/06645567b69e8054b38026f6047a65f017785713))
+
+### Continuous Integration
+
+* **deps:** update go toolchain directive to v1.27.3 [security] ([8753411](https://gitlab.com/kilianpaquier/hugo-primer/commit/8753411f300111d5a7671d0185aa242fbe150e3e))
+* **deps:** update go toolchain directive to v1.27.4 [security] ([b6e3f20](https://gitlab.com/kilianpaquier/hugo-primer/commit/b6e3f209c925cb0c34feceabd84f773ff15aad9d))
+* **layout:** regenerate kickr layout ([43d6eed](https://gitlab.com/kilianpaquier/hugo-primer/commit/43d6eedb5f8a72d046703c939349d2276cbcc5a8))
+* **layout:** regenerate kickr layout ([5063285](https://gitlab.com/kilianpaquier/hugo-primer/commit/50632851dd6162cbaa45369e26939fe5fa01931e))
+
 ## [1.4.2](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.1...v1.4.2) (2026-10-11)
 
 ### Bug Fixes
