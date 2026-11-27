@@ -1,6 +1,7 @@
 {{- /*
 Renders an inline SVG fetched at build time, with an optional tooltip.
 Fails the build when the SVG can't be read.
+The ids of the SVG are prefixed with a hash of its source, and the tooltip id is prefixed with svg-, so they can't clash with other ids of the page.
 
 @param {string} [class] The CSS classes of the SVG, its base name is always appended.
 @param {string} [height] The SVG height.
@@ -57,7 +58,7 @@ Fails the build when the SVG can't be read.
 {{- if .width }}{{ $attrs = $attrs | append (printf "width=%q" .width) }}{{- end }}
 
 {{- if .tooltip }}
-    {{- $id := replace (.tooltip | lower) " " "-" }}
+    {{- $id := print "svg-" (replace (.tooltip | lower) " " "-") }}
     {{- $attrs = $attrs | append (printf "id=%q" $id) }}
     {{- $attrs = $attrs | append (printf "aria-labelledby=%q" (print "tooltip-" $id)) }}
 
@@ -69,5 +70,11 @@ Fails the build when the SVG can't be read.
 {{- $str := "" }}
 {{- range $attrs }}{{ $str = print $str " " . }}{{- end }}
 {{- $newsvg := printf `<svg %s ${1}>${2}</svg>` $str }}
+
+{{- /* make the SVG internal ids unique per source, ids and their references are rewritten with a prefix */}}
+{{- $prefix := print "svg-" (substr (md5 $src) 0 8) }}
+{{- $resource = replaceRE `(\sid=")([^"]+)"` (printf `${1}%s-${2}"` $prefix) $resource }}
+{{- $resource = replaceRE `url\(#([^)]+)\)` (printf `url(#%s-${1})` $prefix) $resource }}
+{{- $resource = replaceRE `(href="#)([^"]+)"` (printf `${1}%s-${2}"` $prefix) $resource }}
 
 {{- replaceRE $oldsvg $newsvg $resource | strings.TrimSpace | safeHTML -}}

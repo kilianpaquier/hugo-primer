@@ -1,7 +1,8 @@
 {{- /*
 Renders a Primer timeline item with a side badge and some content.
 
-@param {string} badge The badge image URL, its base name is used as alt text.
+@param {string} [alt] The badge alternative text, empty (decorative) when absent.
+@param {string} badge The badge image URL.
 @param {template.HTML} [body] The item content.
 @param {string} [body_class] The CSS classes of the content.
 @param {string} [class] The CSS classes of the item.
@@ -16,7 +17,7 @@ Renders a Primer timeline item with a side badge and some content.
 */}}
 <div class='TimelineItem {{ .class }}'>
     {{- if .badge }}
-    <img class="TimelineItem-badge" src="{{ .badge }}" alt="{{ path.BaseName .badge }}">
+    <img class="TimelineItem-badge" src="{{ .badge }}" alt="{{ .alt }}">
     {{- else }}
     <span class="TimelineItem-badge TimelineItem-badge--xsmall"></span>
     {{- end }}

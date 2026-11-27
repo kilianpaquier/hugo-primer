@@ -20,12 +20,16 @@ params:
   hugo_primer:
     nav_logo: /logo.webp
     profile_logo:
+      alt: Logo description (optional)
       sizes: "(max-width: 768px) 170px, 290px"
       src: /logo/20.webp
       srcset: /logo/10.webp 192w, /logo/20.webp 384w
     subtitle: Subtitle
     title: Title
 ```
+
+When `profile_logo` is a map, its optional `alt` key sets the logo alternative text.
+Without it (or when `profile_logo` is a string), the logo is decorative with an empty `alt`, since the title is displayed next to it.
 
 ## Extra links
 

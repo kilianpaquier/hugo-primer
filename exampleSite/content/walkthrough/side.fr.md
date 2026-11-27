@@ -20,12 +20,16 @@ params:
   hugo_primer:
     nav_logo: /logo.webp
     profile_logo:
+      alt: Description du logo (optionnel)
       sizes: "(max-width: 768px) 170px, 290px"
       src: /logo/20.webp
       srcset: /logo/10.webp 192w, /logo/20.webp 384w
     subtitle: Subtitle
     title: Title
 ```
+
+Quand `profile_logo` est une table, sa clé optionnelle `alt` définit le texte alternatif du logo.
+Sans elle (ou quand `profile_logo` est une chaîne), le logo est décoratif avec un `alt` vide, puisque le titre est affiché à côté.
 
 ## Liens
 

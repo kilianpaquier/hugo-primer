@@ -55,12 +55,13 @@ An alternative to the Hugo native `figure` shortcode. Without the `caption` attr
 
 When `caption` isn't given, the `class` attribute shouldn't be given either since it will not be used.
 
-The HTML attribute `alt` cannot be provided and will have the image name as value (i.e. `src="/images/my-image.jpg"` then `alt="my-image"`).
+The HTML attribute `alt` is given with the `alt` attribute, and is empty (decorative image) when it is absent.
 
 ```md
 {{</* img
   class="CSS classes for the figure"
   src="image URL"
+  alt="image alternative text (optional, decorative when absent)"
   img-class="CSS classes for the image"
   width="image width"
   height="image height"
@@ -74,6 +75,7 @@ The HTML attribute `alt` cannot be provided and will have the image name as valu
 {{</* img
   class="col-2"
   src="/logo/10.webp"
+  alt="Arthur"
   height="100px"
   img-class="mb-1"
   caption="Arthur in The Beginning After the End"
@@ -85,6 +87,7 @@ The HTML attribute `alt` cannot be provided and will have the image name as valu
 {{< img
   class="col-2"
   src="/logo/10.webp"
+  alt="Arthur"
   height="100px"
   img-class="mb-1"
   caption="Arthur in The Beginning After the End"
@@ -103,6 +106,7 @@ Without content (self-closing shortcode), only the image is rendered and `class`
   class="CSS classes for the wrapper"
   img-class="CSS classes for the image, e.g. circle (optional)"
   src="URL de l'image"
+  alt="image alternative text (optional, decorative when absent)"
   width="image width"
   height="image height"
 */%}}
@@ -120,6 +124,7 @@ Markdown content:
   class="row-gap-3 col-gap-3 mt-3"
   img-class="circle"
   src="/logo/10.webp"
+  alt="Arthur"
   height="50px"
 */%}}
 
@@ -135,6 +140,7 @@ Markdown content:
   class="row-gap-3 col-gap-3 mt-3"
   img-class="circle"
   src="/logo/10.webp"
+  alt="Arthur"
   height="50px"
 %}}
 
@@ -148,11 +154,11 @@ Markdown content:
 ### Example without content
 
 ```md
-{{%/* avatar-item src="/logo/10.webp" height="50px" img-class="circle" /*/%}}
+{{%/* avatar-item src="/logo/10.webp" alt="Arthur" height="50px" img-class="circle" /*/%}}
 ```
 
 {{% div class="d-flex flex-justify-center" %}}
-{{% avatar-item src="/logo/10.webp" height="50px" img-class="circle" /%}}
+{{% avatar-item src="/logo/10.webp" alt="Arthur" height="50px" img-class="circle" /%}}
 {{% /div %}}
 
 ## Media card
@@ -167,6 +173,8 @@ By default each card is a grid column, so place the cards inside a flex grid `di
 {{%/* media-card
   class="column CSS classes (optional)" icon="icon SVG source (required with url)" icon-class="icon CSS classes (optional)"
   url="verification URL (optional)" src="image URL"
+  alt="image alternative text (optional, decorative when absent)"
+  label="name of the verified item, read by screen readers in the link name (optional, defaults to alt)"
 */%}}
 
 ### Card title
@@ -186,7 +194,7 @@ Date
 ```md
 {{%/* div class="d-flex flex-wrap flex-justify-center gutter-condensed row-gap-6 mb-3" */%}}
 
-{{%/* media-card src="/logo/10.webp" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" class="col-12 col-lg-4" */%}}
+{{%/* media-card src="/logo/10.webp" alt="Hugo badge" label="Hugo" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" class="col-12 col-lg-4" */%}}
 ### Card title
 {class="m-0"}
 Subtitle
@@ -195,7 +203,7 @@ Date
 {class="m-0 text-small"}
 {{%/* /media-card */%}}
 
-{{%/* media-card src="/logo/10.webp" class="col-12 col-lg-4" */%}}
+{{%/* media-card src="/logo/10.webp" alt="Badge" class="col-12 col-lg-4" */%}}
 ### Without URL
 {class="m-0"}
 Subtitle
@@ -209,7 +217,7 @@ Date
 
 {{% div class="d-flex flex-wrap flex-justify-center gutter-condensed row-gap-6 mb-3" %}}
 
-{{% media-card src="/logo/10.webp" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" class="col-12 col-lg-4" %}}
+{{% media-card src="/logo/10.webp" alt="Hugo badge" label="Hugo" url="https://gohugo.io" icon="/static/primer/link-16.svg" icon-class="fgColor-accent" class="col-12 col-lg-4" %}}
 ### Card title
 {class="m-0"}
 Subtitle
@@ -218,7 +226,7 @@ Date
 {class="m-0 text-small"}
 {{% /media-card %}}
 
-{{% media-card src="/logo/10.webp" class="col-12 col-lg-4" %}}
+{{% media-card src="/logo/10.webp" alt="Badge" class="col-12 col-lg-4" %}}
 ### Without URL
 {class="m-0"}
 Subtitle
@@ -314,6 +322,7 @@ It is a simple item with a side badge and some content.
 ```md
 {{%/* timeline-item
   badge="/primer/book-16.svg"
+  alt="badge alternative text (optional, decorative when absent)"
   class="CSS classes for the item"
   inner-class="CSS classes for the content"
 */%}}
@@ -327,14 +336,14 @@ Markdown content:
 ### Example
 
 ```md
-{{%/* timeline-item badge="/logo/10.webp" inner-class="fgColor-default" */%}}
+{{%/* timeline-item badge="/logo/10.webp" alt="Arthur" inner-class="fgColor-default" */%}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{%/* /timeline-item */%}}
-{{%/* timeline-item badge="/logo/10.webp" inner-class="fgColor-default" */%}}
+{{%/* timeline-item badge="/logo/10.webp" alt="Arthur" inner-class="fgColor-default" */%}}
 
 Markdown content:
 {class="mb-0"}
@@ -344,14 +353,14 @@ Markdown content:
 ```
 
 {{% div class="d-flex flex-column flex-items-center" %}}
-{{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
+{{% timeline-item badge="/logo/10.webp" alt="Arthur" inner-class="fgColor-default" %}}
 
 Markdown content:
 {class="mb-0"}
 - A bullet point ...
 
 {{% /timeline-item %}}
-{{% timeline-item badge="/logo/10.webp" inner-class="fgColor-default" %}}
+{{% timeline-item badge="/logo/10.webp" alt="Arthur" inner-class="fgColor-default" %}}
 
 Markdown content:
 {class="mb-0"}

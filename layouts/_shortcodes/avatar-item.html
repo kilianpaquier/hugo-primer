@@ -3,32 +3,33 @@ Renders an image on the side of the inner Markdown content.
 The image is vertically centered.
 Without inner content (self-closing shortcode), only the image is rendered.
 
+@param {string} [alt] The image alternative text, empty (decorative) when absent.
 @param {string} [class] The CSS classes of the wrapper, ignored without inner content.
 @param {string} [height] The image height.
 @param {string} [img-class] The CSS classes of the image (e.g. circle).
-@param {string} src The image URL, its base name is used as alt text.
+@param {string} src The image URL.
 @param {string} [width] The image width.
 
 @returns {template.HTML}
 
 @examples
 
-  {{% avatar-item src="/logo/10.webp" width="30px" class="col-gap-5 mb-3" img-class="circle" %}}
+  {{% avatar-item src="/logo/10.webp" alt="Arthur" width="30px" class="col-gap-5 mb-3" img-class="circle" %}}
 
   ### Title
   Some Markdown content.
 
   {{% /avatar-item %}}
 
-  {{% avatar-item src="/logo/10.webp" height="50px" img-class="circle" /%}}
+  {{% avatar-item src="/logo/10.webp" alt="Arthur" height="50px" img-class="circle" /%}}
 */}}
 {{- $img_class := .Get "img-class" }}
 {{- $src := .Get "src" }}
 {{- if .Inner }}
 <div class='d-flex {{ .Get "class" }}'>
-    <img class="flex-self-center {{ $img_class }}" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+    <img class="flex-self-center {{ $img_class }}" src="{{ $src }}" alt='{{ .Get "alt" }}' height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
     <div class="d-flex flex-column row-gap-1">{{ .Inner }}</div>
 </div>
 {{- else }}
-<img class="{{ $img_class }}" src="{{ $src }}" alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+<img class="{{ $img_class }}" src="{{ $src }}" alt='{{ .Get "alt" }}' height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
 {{- end }}

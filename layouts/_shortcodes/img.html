@@ -1,7 +1,8 @@
 {{- /*
 Renders an image, wrapped in a figure element with a caption when caption is given.
-The image base name is used as alt text.
+The image has an empty alt text (decorative) without the alt param.
 
+@param {string} [alt] The image alternative text, empty (decorative) when absent.
 @param {string} [caption] The figure caption, no figure element is rendered without it.
 @param {string} [caption-class] The CSS classes of the caption.
 @param {string} [class] The CSS classes of the figure, ignored without caption.
@@ -16,7 +17,7 @@ The image base name is used as alt text.
 
 @examples
 
-  {{< img src="/logo/10.webp" height="100px" >}}
+  {{< img src="/logo/10.webp" alt="Arthur" height="100px" >}}
 
   {{< img src="/logo/10.webp" height="100px" caption="Arthur" caption-class="text-italic text-center" >}}
 */}}
@@ -25,10 +26,10 @@ The image base name is used as alt text.
 {{- $sizes := .Get "sizes" }}
 
 {{- if .Get "caption" }}
-    <figure class='d-inline-flex flex-column flex-items-center {{ .Get "class" }}' aria-label='{{ .Get "caption" }}'>
-        <img src="{{ $src }}" srcset="{{ $srcset }}" sizes="{{ $sizes }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
-        <figcaption class='{{ .Get "caption-class" }}' aria-label='{{ .Get "caption" }}'>{{ .Get "caption" }}</figcaption>
+    <figure class='d-inline-flex flex-column flex-items-center {{ .Get "class" }}'>
+        <img src="{{ $src }}" srcset="{{ $srcset }}" sizes="{{ $sizes }}" class='{{ .Get "img-class" }}' alt='{{ .Get "alt" }}' height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+        <figcaption class='{{ .Get "caption-class" }}'>{{ .Get "caption" }}</figcaption>
     </figure>
 {{- else }}
-    <img src="{{ $src }}" srcset="{{ $srcset }}" sizes="{{ $sizes }}" class='{{ .Get "img-class" }}' alt="{{ path.BaseName $src }}" height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
+    <img src="{{ $src }}" srcset="{{ $srcset }}" sizes="{{ $sizes }}" class='{{ .Get "img-class" }}' alt='{{ .Get "alt" }}' height='{{ .Get "height" }}' width='{{ .Get "width" }}'>
 {{- end }}

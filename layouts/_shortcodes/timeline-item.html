@@ -1,7 +1,8 @@
 {{- /*
 Renders a Primer timeline item with a side badge and the inner Markdown content.
 
-@param {string} badge The badge image URL, its base name is used as alt text.
+@param {string} [alt] The badge alternative text, empty (decorative) when absent.
+@param {string} badge The badge image URL.
 @param {string} [class] The CSS classes of the item.
 @param {string} [inner-class] The CSS classes of the content.
 
@@ -19,6 +20,7 @@ Renders a Primer timeline item with a side badge and the inner Markdown content.
 */}}
 {{ partial "hugo-primer/components/primer/timeline-item.html"
     (dict
+        "alt" (.Get "alt")
         "badge" (.Get "badge")
         "body_class" (.Get "inner-class")
         "body" .Inner
