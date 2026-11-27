@@ -1,3 +1,16 @@
+## [1.5.0](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.3...v1.5.0) (2026-11-27)
+
+### Features
+
+* add urls links and plain titles for unrendered pages ([97bd585](https://gitlab.com/kilianpaquier/hugo-primer/commit/97bd5851bb60657e94ba23fcc77c538eed325d53))
+
+### Bug Fixes
+
+* **a11y:** expose search combobox, theme state and copy status ([b1c31a8](https://gitlab.com/kilianpaquier/hugo-primer/commit/b1c31a81fd75d70e369b9fe7b67ff2f7f2f0a81e))
+* **a11y:** fix landmarks, headings, labels and pagination markup ([00a324a](https://gitlab.com/kilianpaquier/hugo-primer/commit/00a324ab433bee24e6b7e56658a5746302870a62))
+* **a11y:** use explicit alt text, link labels and unique svg ids ([ced4b59](https://gitlab.com/kilianpaquier/hugo-primer/commit/ced4b59994875f39d26c44a21a9e393a1006a2d0))
+* **search:** link unrendered pages to their section ([ef822fa](https://gitlab.com/kilianpaquier/hugo-primer/commit/ef822faa18668b18d9add5978fce135a00bf888c))
+
 ## [1.4.3](https://gitlab.com/kilianpaquier/hugo-primer/compare/v1.4.2...v1.4.3) (2026-11-27)
 
 ### Chores
