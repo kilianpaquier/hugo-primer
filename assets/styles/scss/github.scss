@@ -99,7 +99,7 @@ modal-dialog {
     border-bottom: none;
 }
 
-.ActionListItem[aria-selected=true] {
+.ActionListItem[aria-selected=true], .ActionListItem--navActive {
     font-weight: inherit;
     &:after {
         left: calc(var(--base-size-8, .5rem) * -1);
@@ -205,11 +205,17 @@ modal-dialog {
     font-size: 150px;
 
     .not-found-lightbulb-ani {
+        opacity: 1;
+    }
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+        .not-found-lightbulb-ani {
             opacity: .25;
-        animation-name: lightbulb;
-        animation-duration: 2.5s;
-        animation-fill-mode: forwards;
-        animation-delay: 1.3s
+            animation-name: lightbulb;
+            animation-duration: 2.5s;
+            animation-fill-mode: forwards;
+            animation-delay: 1.3s
+        }
     }
 
     .not-found-lightbulb-ani > svg {

@@ -7,14 +7,18 @@ timings:
   reading_time: "{{ . }} min read"
 pagination:
   next: Next
+  page: "Page {{ . }}"
   prev: Previous
 navigation:
   change_lang: Change language
   change_theme: Change theme
   menu: Additional navigation options
   more: More
-  not_found: Didn't find anything here!
+  not_found: Page not found
   pins: Pinned
+  theme_dark: "Change theme (current: dark)"
+  theme_light: "Change theme (current: light)"
+  theme_system: "Change theme (current: system)"
 search:
   button: Type {{ . }} to search
   clear: Clear search
@@ -26,10 +30,14 @@ search:
   syntax: Search syntax tips
 arias:
   content: Main content
+  copied: Copied
   copy: Copy
+  copy_failed: Copy failed
   extra_links: External links
+  heading_link: "Link to section {{ . }}"
   headings: Headings
   langs: Languages
+  new_tab: new tab # lowercase because used under parenthesis
   side: Side content
   skip_to_content: Skip to main content
   subtitle: Subtitle

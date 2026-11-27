@@ -16,7 +16,12 @@ documentReady(() => {
         // create copy button
         const button = document.createElement("button")
         button.classList.add("Button", "Button--iconOnly", "Button--invisible", "Button--small", "octicon", "m-2")
-        button.ariaLabel = '{{ lang.Translate "arias.copy" }}'
+        button.ariaLabel = '{{ T "arias.copy" }}'
+
+        // create polite live region announcing the copy result to assistive technologies
+        const status = document.createElement("span")
+        status.classList.add("sr-only")
+        status.role = "status"
 
         // change copy button icon when it's clicked, depending on clipboard copy success
         let copyTimeout = 0
@@ -26,10 +31,12 @@ documentReady(() => {
                 .then(() => {
                     button.innerHTML = copied
                     button.classList.add("copied")
+                    status.textContent = '{{ T "arias.copied" }}'
                 })
                 .catch(e => {
                     button.innerHTML = noCopied
                     button.classList.add("not-copied")
+                    status.textContent = '{{ T "arias.copy_failed" }}'
                     console.error(e)
                 })
                 .finally(() => {
@@ -37,12 +44,13 @@ documentReady(() => {
                     copyTimeout = setTimeout(() => {
                         button.innerHTML = copy
                         button.classList.remove("copied", "not-copied")
+                        status.textContent = ""
                     }, 1000)
                 })
         })
 
         button.innerHTML = copy
-        clipboard.appendChild(button)
+        clipboard.append(button, status)
         highlight.appendChild(clipboard)
     }
 })

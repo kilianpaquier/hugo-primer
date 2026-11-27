@@ -22,16 +22,21 @@ import { escape, sanitize } from "./lib/sanitize"
  * @param {Item} item to transform
  */
 const toItemHTML = item => {
+    const href = item.url || item.permalink
+    const open = href
+        ? `<a href="${escape(href)}" class="ActionListContent" aria-label="${escape(item.title)}" ${item.url ? 'target="_blank" rel="noopener noreferrer"' : ""}>`
+        : `<div class="ActionListContent" aria-label="${escape(item.title)}">`
+    const close = href ? "</a>" : "</div>"
     return `
     <li class="ActionListItem" role="option" aria-label="${escape(item.title)}">
-        <a href="${escape(item.url ?? item.permalink)}" class="ActionListContent" aria-label="${escape(item.title)}" ${item.url ? 'target="_blank" rel="noopener noreferrer"' : ""}>
+        ${open}
             <span class="ActionListItem-visual ActionListItem-visual--leading octicon">${item.icon}</span>
             <span class="ActionListItem-descriptionWrap">
                 <span class="ActionListItem-label">${escape(item.title)}</span>
                 <span class="ActionListItem-description">${escape(item.description)}</span>
             </span>
             <span class="ActionListItem-action ActionListItem-action--trailing no-wrap">{{ T "search.jump" }}</span>
-        </a>
+        ${close}
     </li>
     `
 }
@@ -162,11 +167,26 @@ documentReady(async () => {
 
     // retrieve search elements
     const results = document.getElementById("search-results")
+    const input = document.getElementById("search-input")
+    const button = document.getElementById("search-button")
+
+    // select sets the selected option (aria-selected and aria-activedescendant on input), or clears the selection when el is not defined
+    const select = el => {
+        results.querySelector('li[aria-selected="true"][role="option"]')?.removeAttribute("aria-selected")
+        if (el) {
+            el.setAttribute("aria-selected", "true")
+            input.setAttribute("aria-activedescendant", el.id)
+        } else {
+            input.removeAttribute("aria-activedescendant")
+        }
+    }
 
     // define search wrapper with HTML after search setup
     const search = value => {
-        const finds = fuse.search(value)
+        const finds = value.trim() ? fuse.search(value) : [] // an empty search has no result
         results.innerHTML = "" // clean results before showing new ones
+        select() // the previously selected option doesn't exist anymore
+        input.setAttribute("aria-expanded", finds.length > 0)
         if (finds.length == 0) return
 
         const groups = Object.entries(Object.groupBy(finds, item => item.item.section))
@@ -181,6 +201,9 @@ documentReady(async () => {
             })
         results.append(...groups) // add all elements at the same time to avoid progressive display issue
 
+        // options ids are required by aria-activedescendant, and they're unique since results are fully replaced on each search
+        results.querySelectorAll('li[role="option"]').forEach((option, i) => option.id = `search-option-${i}`)
+
         // handle scrollbar space with list (must be handled after displaying all results)
         if (results.scrollHeight > results.clientHeight) {
             results.classList.add("scrollbar-space")
@@ -189,15 +212,27 @@ documentReady(async () => {
         }
     }
 
-    // open overlay with / and handle list selection with ArrowUp, ArrowDown and Enter
-    const input = document.getElementById("search-input")
-    const button = document.getElementById("search-button")
+    // show the right modifier key in hints depending on the platform (Cmd on Mac, Ctrl elsewhere)
+    if (/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) {
+        document.querySelectorAll("[data-modifier-key]").forEach(el => el.textContent = "⌘")
+    }
+
+    // open overlay with Ctrl+K or Cmd+K and handle list selection with ArrowUp, ArrowDown and Enter
     document.addEventListener("keydown", e => {
-        // open overlay on / if it's not already opened
-        if (e.key === "/" && !input.checkVisibility()) {
+        // open overlay on Ctrl+K or Cmd+K if it's not already opened
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k" && !input.checkVisibility()) {
             e.preventDefault()
             button.click()
         }
+    })
+
+    // select the clicked result and give focus back to input, since arrows navigation is handled on input keydown
+    results.addEventListener("click", e => {
+        const clicked = e.target.closest('li[role="option"]')
+        if (!clicked) return
+
+        select(clicked)
+        input.focus()
     })
 
     // clear input on clear click (button inside input field)
@@ -218,8 +253,7 @@ documentReady(async () => {
             if (e.key === "ArrowDown") el = next(current, results)
             if (e.key === "ArrowUp") el = previous(current, results)
 
-            current?.removeAttribute("aria-selected")
-            el?.setAttribute("aria-selected", "true")
+            select(el)
             el?.scrollIntoView({ block: "center" })
 
             return

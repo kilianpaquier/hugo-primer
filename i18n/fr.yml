@@ -7,14 +7,18 @@ timings:
   reading_time: "{{ . }} min de lecture"
 pagination:
   next: Suivant
+  page: "Page {{ . }}"
   prev: Précédent
 navigation:
   change_lang: Changement de langue
   change_theme: Changement de thème
   menu: Autres options de navigation
   more: Plus
-  not_found: Didn't find anything here!
+  not_found: Page introuvable
   pins: Pinned
+  theme_dark: "Changement de thème (actuel : sombre)"
+  theme_light: "Changement de thème (actuel : clair)"
+  theme_system: "Changement de thème (actuel : système)"
 search:
   button: Taper {{ . }} pour rechercher
   clear: Effacer la recherche
@@ -26,10 +30,14 @@ search:
   syntax: Astuces de recherche
 arias:
   content: Contenu principal
+  copied: Copié
   copy: Copier
+  copy_failed: Échec de la copie
   extra_links: Liens externes
+  heading_link: "Lien vers la section {{ . }}"
   headings: Sommaire
   langs: Langues
+  new_tab: nouvel onglet # lowercase because used under parenthesis
   side: Contenu latéral
   skip_to_content: Aller au contenu principal
   subtitle: Sous-titre

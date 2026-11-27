@@ -2,21 +2,25 @@ import documentReady from "./lib/ready"
 import { escape, sanitize } from "./lib/sanitize"
 
 /**
- * hashchange tries to add aria-selected property to the element associated with current URL hash
+ * hashchange tries to mark as current the headings overlay item associated with current URL hash
  *
  * @param {HashChangeEvent|undefined} e the hashchange event
  */
 const hashchange = e => {
     const id = decodeURIComponent(window.location.hash.substring(1))
 
-    // remove old aria-selected
+    // remove old current mark
     if (e?.oldURL) {
         const start = window.location.href.replace(window.location.hash, "")
         const previousID = decodeURIComponent(e.oldURL.replaceAll(start, "")).substring(1)
-        document.getElementById(`${previousID}-item`)?.removeAttribute("aria-selected")
+        const previous = document.getElementById(`${previousID}-item`)
+        previous?.classList.remove("ActionListItem--navActive")
+        previous?.firstElementChild?.removeAttribute("aria-current")
     }
 
-    document.getElementById(`${id}-item`)?.setAttribute("aria-selected", "true")
+    const current = document.getElementById(`${id}-item`)
+    current?.classList.add("ActionListItem--navActive")
+    current?.firstElementChild?.setAttribute("aria-current", "true")
 }
 
 window.addEventListener("hashchange", hashchange)
@@ -30,7 +34,8 @@ documentReady(() => {
         title.classList.add("markdown-heading")
 
         const content = title.textContent
-        const inner = `<span class="heading-element">${escape(content)}</span><a class="anchor" href="#${escape(title.id)}">{{ strings.Replace ("/static/primer/link-16.svg" | readFile) "\n" "" }}</a>`
+        const label = '{{ T "arias.heading_link" "{title}" }}'.replace("{title}", content)
+        const inner = `<span class="heading-element">${escape(content)}</span><a class="anchor" href="#${escape(title.id)}" aria-label="${escape(label)}">{{ strings.Replace ("/static/primer/link-16.svg" | readFile) "\n" "" }}</a>`
 
         title.innerHTML = sanitize(inner)
     }

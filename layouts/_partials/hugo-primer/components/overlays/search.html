@@ -12,9 +12,10 @@ Renders the search modal dialog: search input, results list and search syntax li
         aria-modal="true" aria-label='{{ T "search.dialog" }}'>
         <div class="Overlay-body Overlay-body--paddingNone d-flex flex-column bgColor-default rounded-3 row-gap-5">
             <!-- overlay search -->
-            <div class="FormControl FormControl-input-wrap" aria-label='{{ T "search.form" }}'>
+            <div class="FormControl FormControl-input-wrap">
                 <span class="FormControl-input-leadingVisualWrap octicon">{{ "/static/primer/search-16.svg" | readFile | safeHTML }}</span>
-                <input id="search-input" class="FormControl-input" placeholder='{{ T "search.input" }}' autofocus>
+                <input id="search-input" class="FormControl-input" placeholder='{{ T "search.input" }}' aria-label='{{ T "search.input" }}' role="combobox"
+                    aria-controls="search-results" aria-expanded="false" aria-autocomplete="list" autofocus>
                 <button id="search-clear" class="FormControl-input-trailingAction octicon" aria-label='{{ T "search.clear" }}'>
                     {{ "/static/primer/x-16.svg" | readFile | safeHTML }}
                 </button>
@@ -26,7 +27,10 @@ Renders the search modal dialog: search input, results list and search syntax li
 
         <!-- overlay footer with search syntax -->
         <div class="Overlay-footer Overlay-footer--divided">
-            <a href="https://www.fusejs.io/extended-search.html" class="Link text-small ml-2" target="_blank" rel="noopener noreferrer">{{ T "search.syntax" }}</a>
+            <a href="https://www.fusejs.io/extended-search.html" class="Link text-small ml-2" target="_blank" rel="noopener noreferrer">
+                {{ T "search.syntax" }}
+                <span class="sr-only">({{ T "arias.new_tab" }})</span>
+            </a>
         </div>
     </modal-dialog>
 </div>

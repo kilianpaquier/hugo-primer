@@ -55,13 +55,27 @@ const setTheme = theme => {
 // update as fast as possible the theme to avoid rendering issues
 setTheme(themes[getTheme()] ?? themes[0])
 
-wait("#theme-button", 3000).then(button => {
+/**
+ * labels is the mapping between the theme name and the translated button label exposing it
+ */
+const labels = {
+    system: '{{ T "navigation.theme_system" }}',
+    light: '{{ T "navigation.theme_light" }}',
+    dark: '{{ T "navigation.theme_dark" }}',
+}
+
+Promise.all([wait("#theme-button", 3000), wait("#tooltip-theme-button", 3000)]).then(([button, tooltip]) => {
+    // expose current theme in tooltip (which labels the button)
+    const label = theme => tooltip.textContent = labels[theme.name]
+    label(themes[getTheme()] ?? themes[0])
+
     // change theme on click with a rotation
     button.addEventListener("click", () => {
         const theme = getTheme()
         const next = themes[theme+1] ?? themes[0]
 
         setTheme(next)
+        label(next)
         localStorage.setItem("theme", theme+1)
     })
 }).catch(console.error)
