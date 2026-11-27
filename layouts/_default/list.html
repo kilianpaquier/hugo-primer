@@ -17,9 +17,16 @@
 
         <ul class="list-style-none">
             {{- range $index, $page := (.Paginate $pages $size).Pages }}
-                <li class="border-bottom {{ if and (not $tags) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}" aria-label="{{ $page.Title }}">
-                    <h2 aria-label="Title">
-                        <a href="{{ $page.Params.URL | default $page.RelPermalink }}" class="Link" {{ if $page.Params.URL}}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $page.Title | markdownify }}</a>
+                <li class="border-bottom {{ if and (not $tags) (eq $index 0) }}pt-0 pb-4{{ else }}py-4{{ end }}">
+                    {{- $rendered := not (and $page.Params.build (eq $page.Params.build.render "link")) }}
+                    <h2>
+                        {{- if $page.Params.URL }}
+                            <a href="{{ $page.Params.URL }}" class="Link" target="_blank" rel="noopener noreferrer">{{ $page.Title | markdownify }}<span class="sr-only">({{ T "arias.new_tab" }})</span></a>
+                        {{- else if $rendered }}
+                            <a href="{{ $page.RelPermalink }}" class="Link">{{ $page.Title | markdownify }}</a>
+                        {{- else }}
+                            {{ $page.Title | markdownify }}
+                        {{- end }}
                     </h2>
                     <summary class="fgColor-muted mb-3 list-style-none" aria-label="Description">
                         {{ $page.Description | markdownify }}
@@ -40,12 +47,8 @@
                             </li>
                         {{- end }}
 
-                        <!-- page tags -->
-                        {{- range $page.GetTerms "tags" }}
-                            <li aria-label="{{ .Name }}">
-                                {{ partial "hugo-primer/components/tags/one.html" . }}
-                            </li>
-                        {{- end }}
+                        <!-- page tags and external links -->
+                        {{ partial "hugo-primer/components/tags/items.html" (dict "tags" ($page.GetTerms "tags") "urls" $page.Params.urls) }}
 
                         {{- $date := $page.Date | dateFormat ":date_medium" }}
                         <li class="text-small fgColor-muted flex-self-center" aria-label='{{ T "timings.aria_posted" }}'>

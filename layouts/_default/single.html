@@ -2,7 +2,7 @@
     {{- $container := site.Params.hugo_primer.styles.container }}
     <section id="main" class="{{ $container }}" aria-label='{{ T "arias.content" }}'>
         <div class="Box Box--spacious">
-            {{- if or .Fragments.Headings (.GetTerms "tags") }}
+            {{- if or .Fragments.Headings (.GetTerms "tags") .Params.urls }}
                 <div class="Box-header lh-default border-bottom p-3 d-flex flex-items-center">
                     {{- $title := index .Fragments.Headings 0 }}
                     {{- $overlay := and $title.Headings  (gt (len $title.Headings) 1) (not .Params.no_toc) }}
@@ -29,9 +29,11 @@
                         {{- end }}
                     </div>
 
-                    {{- with .GetTerms "tags" }}
+                    {{- if or (.GetTerms "tags") .Params.urls }}
                         <div class="ml-auto">
-                            {{ partial "hugo-primer/components/tags/many.html" . }}
+                            <ul class="d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+                                {{ partial "hugo-primer/components/tags/items.html" (dict "tags" (.GetTerms "tags") "urls" .Params.urls) }}
+                            </ul>
                         </div>
                     {{- end }}
                 </div>

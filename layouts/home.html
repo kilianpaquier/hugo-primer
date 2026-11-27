@@ -15,12 +15,13 @@
                                 (dict
                                     "description" (.Description | markdownify)
                                     "icon" ($icon | default "/static/primer/file-code-16.svg")
-                                    "permalink" .RelPermalink
+                                    "permalink" (cond (and .Params.build (eq .Params.build.render "link")) "" .RelPermalink)
                                     "tags" (.GetTerms "tags")
                                     "title" .Title
                                     "url" .Params.URL
                                 )
                             }}
+                                    "urls" .Params.URLs
                         </li>
                     {{- end }}
                 {{- end }}

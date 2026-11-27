@@ -1,12 +1,13 @@
 {{- /*
-Renders a Primer Box card with a title link, an optional icon, a description and optional tags at the bottom.
+Renders a Primer Box card with a title link, an optional icon, a description and optional tags and links at the bottom.
 
 @param {string} [description] The text below the title.
 @param {string} [icon] The SVG source (local path or https URL) shown before the title.
-@param {string} [permalink] The internal link target of the title.
+@param {string} [permalink] The internal link target of the title, the title is plain text when both url and permalink are empty.
 @param {page.Pages} [tags] The taxonomy terms rendered at the bottom, for instance the result of .GetTerms "tags".
 @param {string} title The card title, rendered as a link.
 @param {string} [url] The external link target of the title, opened in a new tab and preferred over permalink.
+@param {[]map} [urls] The external links (name, url and an optional icon defaulting to link-16.svg) rendered at the bottom, each opened in a new tab.
 
 @returns {template.HTML}
 
@@ -19,17 +20,33 @@ Renders a Primer Box card with a title link, an optional icon, a description and
         {{- if .icon }}
             <div class="d-flex flex-items-center col-gap-3 row-gap-3">
                 <span class="d-flex octicon fgColor-muted">{{ partial "hugo-primer/helpers/svg.html" (dict "src" .icon "width" "16") }}</span>
-                <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .title }}</a>
+                {{- if or .url .permalink }}
+                    <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>
+                        {{ .title }}
+                        {{ if .url }}<span class="sr-only">({{ T "arias.new_tab" }})</span>{{ end }}
+                    </a>
+                {{- else }}
+                    <span class="text-bold">{{ .title }}</span>
+                {{- end }}
             </div>
         {{- else }}
-            <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .title }}</a>
+            {{- if or .url .permalink }}
+                <a class="Link text-bold" href="{{ .url | default .permalink }}" {{ if .url }}target="_blank" rel="noopener noreferrer"{{ end }}>
+                    {{ .title }}
+                    {{ if .url }}<span class="sr-only">({{ T "arias.new_tab" }})</span>{{ end }}
+                </a>
+            {{- else }}
+                <span class="text-bold">{{ .title }}</span>
+            {{- end }}
         {{- end }}
 
         <summary class="text-small fgColor-muted">{{ .description }}</summary>
 
         <!-- place tags at the bottom as much as possible -->
-        {{- with .tags }}
-        <div class="mt-auto">{{ partial "hugo-primer/components/tags/many.html" . }}</div>
+        {{- if or .tags .urls }}
+        <ul class="mt-auto d-flex flex-row flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
+            {{ partial "hugo-primer/components/tags/items.html" (dict "tags" .tags "urls" .urls) }}
+        </ul>
         {{- end }}
     </div>
 </div>

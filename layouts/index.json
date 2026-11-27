@@ -7,11 +7,12 @@
             "date" (.Date | dateFormat ":date_medium")
             "description" (.Description | markdownify | plainify)
             "icon" (strings.Replace ($icon | default "/static/primer/file-code-16.svg" | readFile) "\n" "")
-            "permalink" .RelPermalink
+            "permalink" (cond (and .Params.build (eq .Params.build.render "link")) "" .RelPermalink)
             "section" (.Section | title)
             "tags" .Params.tags
             "title" .Title
             "url" .Params.URL
+            "urls" .Params.URLs
         )
     }}
 {{- end }}

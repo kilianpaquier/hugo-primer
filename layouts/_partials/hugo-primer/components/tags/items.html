@@ -1,0 +1,26 @@
+{{- /*
+Renders the list items of tags, linking to their taxonomy term pages, followed by external links, to place inside a <ul>.
+
+@param {[]map} [urls] The external links (name, url and an optional icon defaulting to link-16.svg), each opened in a new tab.
+@param {page.Pages} [tags] The taxonomy terms, for instance the result of .GetTerms "tags".
+
+@returns {template.HTML}
+
+@examples
+
+  <ul>{{ partial "hugo-primer/components/tags/items.html" (dict "tags" (.GetTerms "tags") "urls" .Params.urls) }}</ul>
+*/}}
+{{- range .tags }}
+    <li>{{ partial "hugo-primer/components/tags/one.html" . }}</li>
+{{- end }}
+{{- range .urls }}
+    <li>
+        {{ partial "hugo-primer/components/primer/tag.html"
+            (dict
+                "icon" (dict "src" (.icon | default "/static/primer/link-16.svg") "width" "16")
+                "name" .name
+                "url" .url
+            )
+        }}
+    </li>
+{{- end }}
