@@ -1,5 +1,7 @@
 {{- define "main" }}
-    <section id="main" aria-label='{{ T "arias.content" }}'>
+    <div id="main">
+        <h1 class="sr-only">{{ .Title | markdownify }}</h1>
+
         {{- $section := .Section }}
         {{- $tags := site.Taxonomies.tags }}
 
@@ -28,15 +30,15 @@
                             {{ $page.Title | markdownify }}
                         {{- end }}
                     </h2>
-                    <summary class="fgColor-muted mb-3 list-style-none" aria-label="Description">
+                    <p class="fgColor-muted mt-0 mb-3">
                         {{ $page.Description | markdownify }}
-                    </summary>
+                    </p>
 
                     <ul class="d-flex flex-wrap list-style-none mt-2 col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
                         <!-- show section on tags page only -->
                         {{- $menu := (index (where (index site.Menus "main") "Identifier" $page.Section) 0) }}
                         {{- if and (eq $section "tags") $menu.Pre }}
-                            <li aria-label="Section">
+                            <li>
                                 {{ partial "hugo-primer/components/primer/tag.html"
                                     (dict
                                         "icon" (dict "src" $menu.Pre "width" "16")
@@ -73,5 +75,5 @@
         </ul>
 
         {{ partial "hugo-primer/components/primer/pagination.html" (dict "page" . "format" $format "slots" $slots) }}
-    </section>
+    </div>
 {{- end }}

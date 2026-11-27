@@ -40,7 +40,7 @@ Renders a Primer Box card with a title link, an optional icon, a description and
             {{- end }}
         {{- end }}
 
-        <summary class="text-small fgColor-muted">{{ .description }}</summary>
+        <p class="text-small fgColor-muted m-0">{{ .description }}</p>
 
         <!-- place tags at the bottom as much as possible -->
         {{- if or .tags .urls }}

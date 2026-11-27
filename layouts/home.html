@@ -1,5 +1,7 @@
 {{- define "main" }}
-    <section id="main" aria-label='{{ T "arias.content" }}'>
+    <div id="main">
+        <h1 class="sr-only">{{ site.Title | markdownify | plainify }}</h1>
+
         <article class="Box Box--spacious mb-3">
             <div class="Box-body markdown-body">{{ .Content }}</div>
         </article>
@@ -9,7 +11,7 @@
             <ul class="list-style-none d-flex flex-wrap gutter-condensed" aria-label="Pins">
                 {{- range $term, $pins := site.Taxonomies.pin }}
                     {{- range $pins }}
-                        <li class="col-12 col-lg-6 mb-3" aria-label="{{ .Title }}">
+                        <li class="col-12 col-lg-6 mb-3">
                             {{- $icon := (index (where (index site.Menus "main") "Identifier" .Section) 0).Pre }}
                             {{ partial "hugo-primer/components/primer/card.html"
                                 (dict
@@ -19,13 +21,13 @@
                                     "tags" (.GetTerms "tags")
                                     "title" .Title
                                     "url" .Params.URL
+                                    "urls" .Params.URLs
                                 )
                             }}
-                                    "urls" .Params.URLs
                         </li>
                     {{- end }}
                 {{- end }}
             </ul>
         {{- end }}
-    </section>
+    </div>
 {{- end }}

@@ -14,22 +14,23 @@ Renders nothing without main menu.
 {{- $menu := index site.Menus "main" }}
 
 {{- if $menu }}
-    <header class="bgColor-inset AppHeader--box-shadow position-sticky top-0">
+    <div class="bgColor-inset AppHeader--box-shadow position-sticky top-0">
         <div class="{{ $container }}">
             {{- $offset := or .IsPage (eq .Kind "404") }}
             <nav id="underline-nav" class="UnderlineNav overflow-hidden flex-items-center box-shadow-none col-12 {{ if not $offset }}col-md-8 col-lg-9 offset-md-4 offset-lg-3{{ end }}" aria-label="Navigation">
-                <ul class="UnderlineNav-body list-style-none" aria-label="Navigation">
+                <ul class="UnderlineNav-body list-style-none">
                     {{- $currentpage := . }}
                     {{- range $menu }}
                         {{- $page := .Page }}
                         {{- $rel := relLangURL .URL }}
-                        <li id="{{ .Identifier }}" class="d-inline-flex" aria-label="{{ .Name }}">
+                        <li id="{{ .Identifier }}" class="d-inline-flex">
                             <a class="UnderlineNav-item flex-items-center" href="{{ $rel }}"
-                                {{- if eq $currentpage.RelPermalink $rel }}aria-current="page"{{ end }}
-                                {{- if $currentpage.HasMenuCurrent .Menu . }}aria-current="true"{{ end }}
+                                {{- if eq $currentpage.RelPermalink $rel }} aria-current="page"
+                                {{- else if $currentpage.HasMenuCurrent .Menu . }} aria-current="true"{{ end }}
                                 {{ if not $page }}target="_blank" rel="noopener noreferrer"{{ end }}>
                                 {{ with .Pre }}<span class="UnderlineNav-octicon d-flex">{{ partial "hugo-primer/helpers/svg.html" (dict "src" . "width" "16") }}</span>{{ end }}
                                 <span>{{ .Name }}</span>
+                                {{- if not $page }}<span class="sr-only">({{ T "arias.new_tab" }})</span>{{ end }}
                                 {{- if and (not .Params.disable_counter) $page (gt $page.RegularPages 0) }}
                                     <span class="Counter">{{ len $page.RegularPages }}</span>
                                 {{- end }}
@@ -42,22 +43,21 @@ Renders nothing without main menu.
                 <div id="menu" class="d-flex flex-items-center flex-shrink-0">
                     <span class="AppHeader--separator"></span>
                     <button id="menu-button" popovertarget="menu-overlay" class="UnderlineNav-item flex-items-center" type="button"
-                        aria-haspopup="menu" aria-controls="menu-overlay" aria-label='{{ T "navigation.menu" }}'>
+                        aria-controls="menu-overlay" aria-label='{{ T "navigation.menu" }}'>
                         <span>{{ T "navigation.more" }}</span>
                         <span class="octicon d-flex ml-1 fgColor-muted">{{ "/static/primer/triangle-down-16.svg" | readFile | safeHTML }}</span>
                     </button>
                 </div>
-                <anchored-position id="menu-overlay" anchor="menu-button" anchor-offset="normal" align="end" popover="auto" role="menu" aria-label="Navigation">
+                <anchored-position id="menu-overlay" anchor="menu-button" anchor-offset="normal" align="end" popover="auto">
                     <div class="Overlay Overlay--size-auto p-2">
-                        <ul class="ActionListWrap" aria-label="Navigation">
+                        <ul class="ActionListWrap">
                             {{- $currentpage := . }}
                             {{- range $menu }}
                                 {{- $page := .Page }}
                                 {{- $rel := relLangURL .URL }}
                                 {{- $current := or (eq $currentpage.RelPermalink $rel) ($currentpage.HasMenuCurrent .Menu .) }}
-                                <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2" role="menuitem"
-                                    aria-label="{{ .Name }}" {{ if $current }}aria-selected="true"{{ end }}>
-                                    <a href="{{ $rel }}" class="ActionListContent d-flex flex-items-center">
+                                <li id="{{ .Identifier }}-overlay" class="ActionListItem mx-2 {{ if $current }}ActionListItem--navActive{{ end }}">
+                                    <a href="{{ $rel }}" class="ActionListContent d-flex flex-items-center" {{ if $current }}aria-current="page"{{ end }}>
                                         {{ with .Pre }}<span class="ActionListItem-visual ActionListItem-visual--leading">{{ partial "hugo-primer/helpers/svg.html" (dict "src" . "width" "16") }}</span>{{ end }}
                                         <span class="ActionListItem-label">{{ .Name }}</span>
                                     </a>
@@ -68,5 +68,5 @@ Renders nothing without main menu.
                 </anchored-position>
             </nav>
         </div>
-    </header>
+    </div>
 {{- end }}

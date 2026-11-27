@@ -1,6 +1,8 @@
 {{- define "main" }}
     {{- $container := site.Params.hugo_primer.styles.container }}
-    <section id="main" class="{{ $container }}" aria-label='{{ T "arias.content" }}'>
+    <div id="main" class="{{ $container }}">
+        <h1 class="sr-only">{{ .Title | markdownify }}</h1>
+
         <div class="Box Box--spacious">
             {{- if or .Fragments.Headings (.GetTerms "tags") .Params.urls }}
                 <div class="Box-header lh-default border-bottom p-3 d-flex flex-items-center">
@@ -8,16 +10,15 @@
                     {{- $overlay := and $title.Headings  (gt (len $title.Headings) 1) (not .Params.no_toc) }}
                     <div class="dropdown position-relative">
                         <button id="headings-button" {{ if not $overlay }}disabled{{ end }} class="Button Button--iconOnly Button--invisible" type="button"
-                            aria-haspopup="menu" aria-controls="headings-overlay" aria-expanded="false" aria-label='{{ T "arias.headings" }}'>
+                            aria-controls="headings-overlay" aria-expanded="false" aria-label='{{ T "arias.headings" }}'>
                             <span class="octicon d-flex">{{ "/static/primer/list-unordered-16.svg" | readFile | safeHTML }}</span>
                         </button>
                         {{- if $overlay }}
-                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" class="position-absolute" role="menu"
-                                aria-labelledby="headings-button" hidden>
+                            <anchored-position id="headings-overlay" anchor="headings-button" anchor-offset="normal" class="position-absolute" aria-labelledby="headings-button" hidden>
                                 <section class="Overlay Overlay--size-auto p-2">
                                     <ul class="ActionListWrap" aria-labelledby="headings-button">
                                         {{- range $title.Headings }}
-                                            <li id="{{ .ID }}-item" class="ActionListItem mx-2" role="menuitem">
+                                            <li id="{{ .ID }}-item" class="ActionListItem mx-2">
                                                 <a href="#{{ .ID }}" class="ActionListContent">
                                                     <span class="ActionListItem-label">{{ .Title | markdownify | plainify }}</span>
                                                 </a>
@@ -67,7 +68,7 @@
                 {{- end }}
             </article>
         </div>
-    </section>
+    </div>
 
     {{ partial "hugo-primer/comments.html" . }}
 {{- end }}

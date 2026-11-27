@@ -27,7 +27,7 @@ Renders the tags used by the pages of a section, or all tags when the section is
     <div class="border-bottom pb-4">
         <ul class="d-flex flex-wrap list-style-none col-gap-5 row-gap-3" aria-label='{{ T "arias.tags" }}'>
             {{- range $term, $taxonomy := . }}
-                <li aria-label="{{ $term | lower }}">
+                <li>
                     {{ partial "hugo-primer/components/primer/tag.html"
                         (dict
                             "icon" (dict "src" "/static/primer/tag-16.svg" "width" "16")

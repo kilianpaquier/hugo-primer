@@ -47,9 +47,9 @@ Empty entries are skipped and nothing is rendered when no file remains.
 {{- if gt (len $merged) 0 }}
     {{- with $merged | resources.Concat (path.Join "js" (print (md5 math.Rand) ".js")) | minify | fingerprint }}
         <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
-            {{- if $.module }}type="module"{{ end }}
-            {{- if $.async }}async{{ end }}
-            {{- if $.defer }}defer{{ end }}>
+            {{- if $.module }} type="module"{{ end }}
+            {{- if $.async }} async{{ end }}
+            {{- if $.defer }} defer{{ end }}>
         </script>
     {{- end }}
 {{- end }}

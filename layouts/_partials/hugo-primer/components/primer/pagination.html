@@ -30,18 +30,22 @@ In terse format, a missing previous or next button isn't rendered. In default fo
 {{- if in $validFormats $format }}
     {{ with $page.Paginator }} <!-- expected to be list.html pagination -->
         {{- if gt .TotalPages 1 }}
-            <ul class="pagination pagination-{{ $format }} prc-Pagination-PaginationContainer-HEhGo list-style-none" aria-label="Pagination">
-                {{ partial "inline/pagination/prev.html" (dict "prev" .Prev "format" $format) }}
-                {{ partial "inline/pagination/pages.html" (dict "paginator" . "slots" $slots) }}
-                {{ partial "inline/pagination/next.html" (dict "next" .Next "format" $format) }}
-            </ul>
+            <nav aria-label="Pagination">
+                <ul class="pagination pagination-{{ $format }} prc-Pagination-PaginationContainer-HEhGo list-style-none">
+                    {{ partial "inline/pagination/prev.html" (dict "prev" .Prev "format" $format) }}
+                    {{ partial "inline/pagination/pages.html" (dict "paginator" . "slots" $slots) }}
+                    {{ partial "inline/pagination/next.html" (dict "next" .Next "format" $format) }}
+                </ul>
+            </nav>
         {{- end }}
     {{ else }} <!-- expected to be single.html pagination -->
         {{- $class := "d-flex flex-justify-between px-0 mt-3" }}
-        <ul class="pagination pagination-{{ $format }} prc-Pagination-PaginationContainer-HEhGo {{ $class }} list-style-none" aria-label="Pagination">
-            {{ partial "inline/pagination/prev.html" (dict "prev" .prev "format" $format "class" "") }}
-            {{ partial "inline/pagination/next.html" (dict "next" .next "format" $format "class" "ml-auto") }}
-        </ul>
+        <nav aria-label="Pagination">
+            <ul class="pagination pagination-{{ $format }} prc-Pagination-PaginationContainer-HEhGo {{ $class }} list-style-none">
+                {{ partial "inline/pagination/prev.html" (dict "prev" .prev "format" $format "class" "") }}
+                {{ partial "inline/pagination/next.html" (dict "next" .next "format" $format "class" "ml-auto") }}
+            </ul>
+        </nav>
     {{- end }}
 {{- else }}
     {{- errorf "The 'format' specified in the map passed to the internal pagination template is invalid. Valid choices are: %s." (delimit $validFormats ", ") }}
@@ -61,12 +65,12 @@ In terse format, a missing previous or next button isn't rendered. In default fo
 
     {{- range $k := seq $start $end }}
         {{- if eq $paginator.PageNumber $k }}
-            <li class="page-item active" aria-label="Page {{ $k }}">
-                <a aria-current="page" aria-label="Page {{ $k }}" class="page-link active prc-Pagination-Page-Etgqf" role="button">{{ $k }}</a>
+            <li class="page-item active">
+                <a aria-current="page" aria-label='{{ T "pagination.page" $k }}' class="page-link active prc-Pagination-Page-Etgqf">{{ $k }}</a>
             </li>
         {{- else }}
-            <li class="page-item" aria-label="Page {{ $k }}">
-                <a href="{{ (index $paginator.Pagers (sub $k 1)).URL }}" aria-label="Page {{ $k }}" class="page-link prc-Pagination-Page-Etgqf" role="button">{{ $k }}</a>
+            <li class="page-item">
+                <a href="{{ (index $paginator.Pagers (sub $k 1)).URL }}" aria-label='{{ T "pagination.page" $k }}' class="page-link prc-Pagination-Page-Etgqf">{{ $k }}</a>
             </li>
         {{- end }}
     {{- end }}
@@ -76,14 +80,14 @@ In terse format, a missing previous or next button isn't rendered. In default fo
 {{- /* --------------------------------------------------------------------- */}}
 {{- define "_partials/inline/pagination/prev.html" }}
     {{- if .prev }}
-        <li class="page-item {{ .class }}" aria-label='{{ T "pagination.prev" }}'>
-            <a href="{{ .prev.URL }}" class="page-link prc-Pagination-Page-Etgqf octicon" role="button" rel="prev">
+        <li class="page-item {{ .class }}">
+            <a href="{{ .prev.URL }}" class="page-link prc-Pagination-Page-Etgqf octicon" rel="prev">
                 {{ "/static/primer/chevron-left-16.svg" | readFile | safeHTML }}
                 {{ T "pagination.prev" }}
             </a>
         </li>
     {{- else if eq .format "default" }}
-        <li class="page-item disabled {{ .class }}" aria-label='{{ T "pagination.prev" }}'>
+        <li class="page-item disabled {{ .class }}">
             <button disabled class="page-link prc-Pagination-Page-Etgqf octicon border-0" role="button" tabindex="-1" rel="prev">
                 {{ "/static/primer/chevron-left-16.svg" | readFile | safeHTML }}
                 {{ T "pagination.prev" }}
@@ -96,14 +100,14 @@ In terse format, a missing previous or next button isn't rendered. In default fo
 {{- /* --------------------------------------------------------------------- */}}
 {{- define "_partials/inline/pagination/next.html" }}
     {{- if .next }}
-        <li class="page-item {{ .class }}" aria-label='{{ T "pagination.next" }}'>
-            <a href="{{ .next.URL }}" class="page-link prc-Pagination-Page-Etgqf octicon" role="button" rel="next">
+        <li class="page-item {{ .class }}">
+            <a href="{{ .next.URL }}" class="page-link prc-Pagination-Page-Etgqf octicon" rel="next">
                 {{ T "pagination.next" }}
                 {{ "/static/primer/chevron-right-16.svg" | readFile | safeHTML }}
             </a>
         </li>
     {{- else if eq .format "default" }}
-        <li class="page-item disabled {{ .class }}" aria-label='{{ T "pagination.next" }}'>
+        <li class="page-item disabled {{ .class }}">
             <button disabled class="page-link prc-Pagination-Page-Etgqf octicon border-0" role="button" tabindex="-1" rel="next">
                 {{ T "pagination.next" }}
                 {{ "/static/primer/chevron-right-16.svg" | readFile | safeHTML }}
